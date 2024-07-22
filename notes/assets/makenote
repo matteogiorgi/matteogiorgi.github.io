@@ -15,6 +15,7 @@
 # ---
 for NOTE in *; do
     [[ "${NOTE##*.}" == "md" ]] || continue
+    [[ "${NOTE}" == "README.md" ]] && continue
     NAME="${NOTE%.*}"
     command pandoc "${NOTE}" -s --to=html5 -o "${DIRNOTE}"/"${NAME}".html \
           --mathjax \
