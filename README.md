@@ -1,3 +1,5 @@
-# geoteo.net
+# Geoteo
 
-<img width=80% src="./notes/evolution.png">
+<center>
+<img width=100% src="evolution.png">
+</center>
