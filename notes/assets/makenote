@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script is used by MakeNote function to convert *.md files
+# inside the current directory into html notes linked as a wiki.
+# As alternative `pandoc ${FILENOTE} --to=pdf -o ${DIRNOTE}/$1.pdf`
+# can be used to convert current markdown file into pdf with LaTeX.
+# ---
+# $FILENOTE -> current file path
+# $PARENT   -> current directory path
+# $PREFIX   -> prefix name (titlepage)
+# $DIRNOTE  -> notes directory path
+
+
+[[ -x "$(command -v pandoc)" ]] || exit 1
+# ---
+for NOTE in *; do
+    [[ "${NOTE##*.}" == "md" ]] || continue
+    NAME="${NOTE%.*}"
+    command pandoc "${NOTE}" -s --to=html5 -o "${DIRNOTE}"/"${NAME}".html \
+          --mathjax \
+          --lua-filter="${DIRNOTE}"/assets/link2html.lua \
+          -H "${DIRNOTE}"/assets/header.html \
+          -B "${DIRNOTE}"/assets/before.html \
+          -A "${DIRNOTE}"/assets/footer.html \
+          -T "${PREFIX}" \
+          &>/dev/null
+done
