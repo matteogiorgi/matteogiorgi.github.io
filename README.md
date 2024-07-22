@@ -1,3 +1,3 @@
 # geoteo.net
 
-<img width=80% src="evolution.png">
+<img width=80% src="./notes/evolution.png">
