@@ -1,4 +1,5 @@
 <style>
+h1 { margin-top: 2rem; }
 h2 { margin-top: 0rem; }
 h4 { margin-top: -1rem; }
 </style>
