@@ -26,6 +26,8 @@
       line-height: 1.4;
       color: black;
       background: white;
+      margin: 0 auto;
+      padding: 0 1rem;
   }
   code, pre, kbd {
       font-family: 'Ubuntu Mono', monospace;
@@ -54,6 +56,39 @@
   a:hover {
       text-decoration: underline;
   }
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+  }
+  .box {
+      flex: 1;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      margin: 10px;
+      background-color: #f9f9f9;
+      box-sizing: border-box;
+  }
+  @media (max-width: 1200px) {
+      body {
+          max-width: 50rem;
+      }
+  }
+  @media (max-width: 992px) {
+      .box {
+          flex: 1 1 100%;
+      }
+      body {
+          padding: 0 0.5rem;
+      }
+      blockquote {
+          padding: 1rem;
+      }
+      hr {
+          width: 80%;
+      }
+  }
   </style>
 </head>
 <body>
@@ -72,15 +107,15 @@ h4 { margin-top: -1rem; }
 <li><a href="https://github.com/matteogiorgi/pde-base"><code>pde-base</code></a>: base configuration for a personal <em>Debian</em> development environment.</li>
 <li><a href="https://github.com/matteogiorgi/pde-plug"><code>pde-plug</code></a>: <em>Vim</em> and <em>VSCode</em> plug-ins installers for your <em>Debian</em> development environment.</li>
 <li><a href="https://github.com/matteogiorgi/pde-tile"><code>pde-tile</code></a>: tile manager for your <em>Debian</em> development environment using <em>Qtile</em>.</li>
-<li><a href="https://github.com/matteogiorgi/toody"><code>toody</code></a>: a variability detector web application written for my BSc thesis.</li>
-<li><a href="https://github.com/matteogiorgi/wordle"><code>wordle</code></a>: a Java implementation of the popular game <em>Wordle</em>.</li>
-<li><a href="https://github.com/matteogiorgi/asteroids"><code>asteroids</code></a>: a Javascript implementation of the popular game <em>Asteroids</em>.</li>
-<li><a href="https://github.com/matteogiorgi/computability"><code>computability</code></a>: a failed attempt to write comprehensive notes on the theory of computability.</li>
+<li><a href="https://github.com/matteogiorgi/toody"><code>toody</code></a>: variability detector web application written for my BSc thesis.</li>
+<li><a href="https://github.com/matteogiorgi/wordle"><code>wordle</code></a>: Java implementation of the popular game <em>Wordle</em>.</li>
+<li><a href="https://github.com/matteogiorgi/asteroids"><code>asteroids</code></a>: Javascript implementation of the popular game <em>Asteroids</em>.</li>
+<li><a href="https://github.com/matteogiorgi/computability"><code>computability</code></a>: failed attempt to write comprehensive notes on the theory of computability.</li>
 <li><a href="https://github.com/matteogiorgi/wiener"><code>wiener</code></a>: an article on the <em>RSA</em> cryptosystem and the attack <em>M.J. Wiener</em> proposed in 1990.</li>
-<li><a href="https://github.com/matteogiorgi/funint"><code>funint</code></a>: a simple interpreter written in Ocaml for a toy language with static scoping and dynamic type checking.</li>
+<li><a href="https://github.com/matteogiorgi/funint"><code>funint</code></a>: simple interpreter written in Ocaml for a toy language with static scoping and dynamic type checking.</li>
 <li><a href="https://github.com/matteogiorgi/graph"><code>graph</code></a>: an implementation of undirected graph of generic homogeneous objects with no loops nore multiple edges.</li>
-<li><a href="https://github.com/matteogiorgi/membox"><code>membox</code></a>: a concurrent C server implementing a virtual repository hosting non null sequences of bytes.</li>
-<li><a href="https://github.com/matteogiorgi/sparse"><code>sparse</code></a>: a C library that allows to handle sparce matrices.</li>
+<li><a href="https://github.com/matteogiorgi/membox"><code>membox</code></a>: concurrent C server implementing a virtual repository hosting non null sequences of bytes.</li>
+<li><a href="https://github.com/matteogiorgi/sparse"><code>sparse</code></a>: C library that allows to handle sparce matrices.</li>
 </ul>
 <nav class="site-nav" style="font-size:70%; margin-top: 2rem;">
 <center>

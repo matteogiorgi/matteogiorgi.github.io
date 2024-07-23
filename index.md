@@ -1,19 +1,6 @@
 <style>
 h2 { margin-top: 0rem; }
 h4 { margin-top: -1rem; }
-.container {
-    display: flex;
-    width: 100%;
-}
-.box {
-    flex: 1;
-    padding: 20px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    margin: 10px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-}
 </style>
 
 

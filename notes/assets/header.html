@@ -11,6 +11,8 @@ body {
     line-height: 1.4;
     color: black;
     background: white;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 code, pre, kbd {
     font-family: 'Ubuntu Mono', monospace;
@@ -38,5 +40,38 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.box {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+@media (max-width: 1200px) {
+    body {
+        max-width: 50rem;
+    }
+}
+@media (max-width: 992px) {
+    .box {
+        flex: 1 1 100%;
+    }
+    body {
+        padding: 0 0.5rem;
+    }
+    blockquote {
+        padding: 1rem;
+    }
+    hr {
+        width: 80%;
+    }
 }
 </style>
