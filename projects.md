@@ -15,7 +15,7 @@ h4 { margin-top: -1rem; }
 - [`pde-plug`](https://github.com/matteogiorgi/pde-plug): *Vim* and *VSCode* plug-ins installers for your *Debian* development environment.
 - [`pde-tile`](https://github.com/matteogiorgi/pde-tile): tile manager for your *Debian* development environment using *Qtile*.
 - [`toody`](https://github.com/matteogiorgi/toody): variability detector web application written for my BSc thesis.
-- [`wordle`](https://github.com/matteogiorgi/wordle): Java implementation of the popular game *Wordle*.
+- [`wordle`](https://github.com/matteogiorgi/wordle): Java implementation of the game *Wordle* from the *New York Times*.
 - [`asteroids`](https://github.com/matteogiorgi/asteroids): Javascript implementation of the popular game *Asteroids*.
 - [`computability`](https://github.com/matteogiorgi/computability): failed attempt to write comprehensive notes on the theory of computability.
 - [`wiener`](https://github.com/matteogiorgi/wiener): an article on the *RSA* cryptosystem and the attack *M.J. Wiener* proposed in 1990.
