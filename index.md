@@ -17,7 +17,7 @@ h4 { margin-top: -1rem; }
 <center>
 ## About Me
 </center>
-- Computer Scientist and aspiring Quant, pursuing an MSc in *Computational Finance* from *UniPD*.
+- Aspiring Quant with a BSc in *Computer Science*, pursuing an MSc in *Computational Finance*.
 - List of my [major projects](projects.html) from last years.
 </div>
 <div class="box">
