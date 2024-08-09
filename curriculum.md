@@ -25,7 +25,11 @@ h4 { margin-top: -1rem; }
 ## Education
 - **`[2024]`** MSc in [Computational Finance](https://computationalfinance.math.unipd.it), *University of Padua* (ongoing)
 - **`[2023]`** BSc in [Computer Science](https://didattica.di.unipi.it/laurea-in-informatica), *University of Pisa*, summa cum laude (110L/110)
+    - Some notable subjects: *Operating Systems*, *Networks*, *Cryptography*, *Algorithms*, *Artificial Intelligence*
+    - Transcript of records from the *University of Pisa*: [computer science certificate](autocertificazione_informatica.pdf)
 - **`[2011]`** BEng in [Mechanical Engineering](https://meccanica.ing.unipi.it), *University of Pisa* (incomplete)
+    - Some notable subjects: *Classical Mechanics*, *Applied Mechanics*, *Materials Science*
+    - Transcript of records from the *University of Pisa*: [mechanical engineering certificate](autocertificazione_ingegneria.pdf)
 
 
 
