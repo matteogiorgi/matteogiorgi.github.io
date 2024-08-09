@@ -1,13 +1,13 @@
 <style>
 h1 { margin-top: 2rem; }
-h2 { margin-top: 0rem; }
+h2 { margin-top: 0.25rem; }
 h4 { margin-top: -1rem; }
 </style>
 
 
 <center>
 # Matteo Giorgi
-#### [`GitHub`](https://github.com/matteogiorgi) · [`LinkedIn`](https://www.linkedin.com/) · [`Curriculum`](https://www.geoteo.net/cv/src/cv.pdf)
+#### [`Full CV`](curriculum.html)
 <img width=80% src="evolution.png">
 </center>
 
@@ -17,15 +17,15 @@ h4 { margin-top: -1rem; }
 <center>
 ## About Me
 </center>
-- Aspiring Quant with a BSc in *Computer Science*, pursuing an MSc in *Computational Finance*.
-- List of my [major projects](projects.html) from last years.
+- Aspiring quant with a BSc in Computer Science, pursuing an MSc in Computational Finance
+- List of my [major projects](projects.html) from last years
 </div>
 <div class="box">
 <center>
 ## Contact
 </center>
-- **Email:** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
-- **Telegram:** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
-- **Meet:** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
+- **`EMAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
+- **`TELEGRAM`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
+- **`MEET`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
 </div>
 </div>
