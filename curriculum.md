@@ -63,7 +63,7 @@
 ## Competitive Sports
 - I have more than ten years of sailing activity at both national and international level in *Optimist*, *420* and *470* classes, most of which among the ranks of the Junior National Team. I competed in several prestigious regattas, above all *Kiel Week* and *Barcolana* as the two largest sailing events in the world.
     - **`NATIONAL`** Ranked first once and qualified among the first ten Italian Juniors other four times. Among others, winner of a *Young Barcolana*, a *Mediterranean Cup* and one *Trofeo Accademia Navale Juniores*.
-    - **`INTERNATIONAL`** Competed, as a member of the Italian National Team, in one *World Championship* in Qingdao (China), three *European Championships* in Tavira (Portugal), Dublin (Ireland), Riva dal Garda (Italy) and classified vice-champion in one *European Team Championship* in Berlin (Germany).
+    - **`INTERNATIONAL`** Competed, as a member of the Italian National Team, in one *World Championship* in Qingdao (China), three *European Championships* in Tavira (Portugal), Dublin (Ireland), and Riva del Garda (Italy), and finished as the runner-up in one *European Team Championship* in Berlin (Germany).
 - As a side activity, I have practiced running at a discrete level, participating in several 10km and half-marathons. I have also took part in a few long-distance races, such as the *Etna Marathon* at over 3000m above sea level.
 
 
