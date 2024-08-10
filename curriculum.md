@@ -69,4 +69,4 @@
 
 
 
-<h4 style="margin-top: 3rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</h4>
+<h5 style="margin-top: 3rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</h5>
