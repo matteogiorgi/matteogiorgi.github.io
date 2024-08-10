@@ -13,9 +13,9 @@ h4 { margin-top: -1rem; }
 </center>
 </div>
 <div class="box">
-- **`WEBSITE`** [`www.geoteo.net`](https://www.geoteo.net)
 - **`GITHUB`** [`github.com/matteogiorgi`](https://github.com/matteogiorgi)
-- **`EMAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
+- **`LINKEDIN`** [`linkedin.com/matteogiorgi`](https://www.linkedin.com/in/matteo-giorgi-aa8786322)
+- **`WEBSITE`** [`geoteo.net`](https://www.geoteo.net)
 </div>
 </div>
 
