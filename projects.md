@@ -6,7 +6,7 @@ h4 { margin-top: -1rem; }
 
 
 <center>
-# Major projects
+# Matteo Giorgi
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
 </center>
 
