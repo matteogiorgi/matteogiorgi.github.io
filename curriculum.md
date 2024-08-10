@@ -1,15 +1,8 @@
-<style>
-h4 { margin-top: -1rem; }
-</style>
-
-
-
-
 <div class="container" style="margin-top: 2rem;">
 <div class="box" style="background-color: #ffffff;">
 <center>
 # Matteo Giorgi
-#### `Curriculum Vitae`
+<h4 style="margin-top: -1rem;">`Curriculum Vitae`</h4>
 </center>
 </div>
 <div class="box">
@@ -72,3 +65,8 @@ h4 { margin-top: -1rem; }
     - **`NATIONAL`** Ranked first once and qualified among the first ten Italian Juniors other four times. Among others, winner of a *Young Barcolana*, a *Mediterranean Cup* and one *Trofeo Accademia Navale Juniores*.
     - **`INTERNATIONAL`** Competed, as a member of the Italian National Team, in one *World Championship* (Qingdao - China), three *European Championships* (Tavira - Portugal, Dublin - Ireland, Riva dal Garda - Italy) and classified vice-champion in one *European Team Championship* (Berlin - Germany).
 - As a side activity, I have practiced running at a discrete level, participating in several 10km and half-marathons. I have also took part in a few long-distance races, such as the *Etna Marathon* at over 3000m above sea level.
+
+
+
+
+<h4 style="margin-top: 3rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</h4>

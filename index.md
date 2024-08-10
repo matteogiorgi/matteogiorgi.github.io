@@ -7,7 +7,7 @@ h4 { margin-top: -1rem; }
 
 <center>
 # Matteo Giorgi
-#### [`Full CV`](curriculum)
+#### [`Full Curriculum`](curriculum)
 <img width=80% src="evolution.png">
 </center>
 
