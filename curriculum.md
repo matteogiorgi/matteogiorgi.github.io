@@ -23,13 +23,9 @@ h4 { margin-top: -1rem; }
 
 
 ## Education
-- **`[2024]`** MSc in [Computational Finance](https://computationalfinance.math.unipd.it), *University of Padua* (ongoing)
-- **`[2023]`** BSc in [Computer Science](https://didattica.di.unipi.it/laurea-in-informatica), *University of Pisa*, summa cum laude (110L/110)
-    - Some notable subjects: *Operating Systems*, *Networks*, *Cryptography*, *Algorithms*, *Artificial Intelligence*
-    - Transcript of records from the *University of Pisa*: [computer science certificate](autocertificazione_informatica.pdf)
-- **`[2011]`** BEng in [Mechanical Engineering](https://meccanica.ing.unipi.it), *University of Pisa* (incomplete)
-    - Some notable subjects: *Classical Mechanics*, *Applied Mechanics*, *Materials Science*
-    - Transcript of records from the *University of Pisa*: [mechanical engineering certificate](autocertificazione_ingegneria.pdf)
+- **`[2024]`** MSc in Computational Finance, *University of Padua* (ongoing)
+- **`[2023]`** BSc in [Computer Science](autocertificazione_informatica.pdf), *University of Pisa*, summa cum laude (110L/110)
+- **`[2011]`** BEng in [Mechanical Engineering](autocertificazione_ingegneria.pdf), *University of Pisa* (incomplete)
 
 
 
@@ -47,7 +43,7 @@ h4 { margin-top: -1rem; }
 - [**`TOODY`**](https://github.com/matteogiorgi/toody) *Python* web application for the detection of variability indicators in requirement documents of software systems, written for my BSc thesis. The application uses *Spacy* for *NLP* analysis and *Flask* for the web interface.
 - [**`LAB ASSISTANT`**](http://didawiki.di.unipi.it/doku.php/fisica/informatica/201617/start) Worked, in support of Professor Pelagatti, as lab assistant for the *C* laboratory exam at BSc in Physics at the *University of Pisa*. The main task was to help students during the exercise sessions and to correct their assignments.
 - **`CNR PROJECT`** Worked, together with a colleague of mine, as a *Python* programmer inside the *CNR* offices in Pisa, helping in the realisation of a scale model for blind people. The project was under the supervision of Doctor Furfari from *CNR* and Professor Pelagatti from the *University of Pisa*.
-- [**`PERSONAL DEBIAN ENVIRONMENT`**](https://github.com/matteogiorgi/pde-base) Public repositories containing a collection of configuration files and installation scripts for a complete and efficient *UNIX* work environment based on any *Debian* distribution.
+- **`PDE`**`[`[**`BASE`**](https://github.com/matteogiorgi/pde-base)`/`[**`PLUG`**](https://github.com/matteogiorgi/pde-plug)`/`[**`TILE`**](https://github.com/matteogiorgi/pde-tile)`]` Public repositories containing a collection of configuration files and installation scripts for a complete and efficient *UNIX* work environment based on any *Debian* distribution.
 - [**`ASTEROIDS`**](https://github.com/matteogiorgi/asteroids) *Javascript* implementation of the popular game *Asteroids*. The game is written using *p5.js* library and is particularly useful to understand the basics *Event Programming*.
 - [**`RSA REPORT`**](https://github.com/matteogiorgi/wiener) Independent studies, under the supervision of Professor Romani from the *University of Pisa*, regarding the attacks that exploit the *RSA* cryptosystem vulnerabilities with a specific focus on the *Wiener Attack* and its use of *Continued Fractions* for the factorization of the *RSA* module.
 - [**`HACKATHON`**](http://contaminationlab.unipi.it/conthackt-foodmobilitydigital) First place in the 2021 edition of *ContHackt*, organized by the *University of Pisa* and *Contamination Lab Pisa*. As winner, our team had access to the 2021/2022 *EUAcceL* project organized by the *European Institute of Innovation and Technology* and won the final stage with a blockchain prototype for the tracking of food products.
