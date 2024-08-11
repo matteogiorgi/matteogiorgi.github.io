@@ -23,6 +23,6 @@ h4 { margin-top: -1rem; }
 - [**`GRAPH`**](https://github.com/matteogiorgi/graph) undirected graph of generic homogeneous objects with no loops nore multiple edges, implemented in *Java*
 - [**`MEMBOX`**](https://github.com/matteogiorgi/membox) concurrent *C* server implementing a virtual repository hosting non null sequences of bytes
 - [**`SPARSE`**](https://github.com/matteogiorgi/sparse) *C* library that allows to handle sparce matrices
-- [**`DMENU`**](https://github.com/matteogiorgi/dmenu) suckless dynamic menu for *X* written in *C* and properly patched
-- [**`SLOCK`**](https://github.com/matteogiorgi/slock) suckless screen locker for *X* written in *C* and properly patched
-- [**`ST`**](https://github.com/matteogiorgi/st) suckless simple terminal emulator for *X* written in *C* and properly patched
+- [**`DMENU`**](https://github.com/matteogiorgi/dmenu) suckless dynamic menu for *X*, written in *C* and properly patched
+- [**`SLOCK`**](https://github.com/matteogiorgi/slock) suckless screen locker for *X*, written in *C* and properly patched
+- [**`ST`**](https://github.com/matteogiorgi/st) suckless simple terminal emulator for *X*, written in *C* and properly patched
