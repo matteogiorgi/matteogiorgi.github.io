@@ -7,8 +7,14 @@ h4 { margin-top: -1rem; }
 <center>
 # Matteo Giorgi
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
-<img width=80% src="evolution.png">
 </center>
+<div class="container">
+<div class="box" style="background-color: #ffffff;">
+<center>
+<img width=80% style="padding:20px;" src="evolution.png">
+</center>
+</div>
+</div>
 
 
 - [**`PDE-BASE`**](https://github.com/matteogiorgi/pde-base) Base configuration for a personal *Debian* development environment
