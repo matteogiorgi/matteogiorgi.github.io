@@ -70,6 +70,6 @@
 
 
 <center >
-<img style="margin-top: 4rem;" width=25% src="working.png">
+<img style="margin-top: 4rem;" width=25% src="hare.png">
 <h5 style="margin-top: 4rem; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</h5>
 </center>
