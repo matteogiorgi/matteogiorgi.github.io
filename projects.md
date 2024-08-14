@@ -7,7 +7,7 @@ h4 { margin-top: -1rem; }
 <center>
 # Matteo Giorgi
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
-<img width=60% src="lisper.png">
+<img width=80% src="evolution.png">
 </center>
 
 
@@ -26,3 +26,8 @@ h4 { margin-top: -1rem; }
 - [**`DMENU`**](https://github.com/matteogiorgi/dmenu) suckless dynamic menu for *X*, written in *C* and properly patched
 - [**`SLOCK`**](https://github.com/matteogiorgi/slock) suckless screen locker for *X*, written in *C* and properly patched
 - [**`ST`**](https://github.com/matteogiorgi/st) suckless simple terminal emulator for *X*, written in *C* and properly patched
+
+
+
+
+<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Thought with passion, crafted in VIM`</p>

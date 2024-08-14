@@ -69,7 +69,5 @@
 
 
 
-<center >
-<img style="margin-top: 4rem;" width=25% src="hare.png">
-<h5 style="margin-top: 4rem; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</h5>
-</center>
+<img style="display: block; margin-left: auto; margin-right: auto; margin-top: 4rem;" width=25% src="hare.png">
+<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</p>

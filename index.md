@@ -8,7 +8,7 @@ h4 { margin-top: -1rem; }
 <center>
 # Matteo Giorgi
 #### [`Full Curriculum`](curriculum)
-<img width=80% src="evolution.png">
+<img width=60% src="lisper.png">
 </center>
 
 
@@ -29,3 +29,8 @@ h4 { margin-top: -1rem; }
 - **`MEET`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
 </div>
 </div>
+
+
+
+
+<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Driven by curiosity and stubbornness`</p>
