@@ -17,7 +17,7 @@ h4 { margin-top: -1rem; }
 <center>
 ## About Me
 </center>
-- **`ASPIRING QUANT`** Computer Science graduate, pursuing an MSc in Computational Finance
+- **`ASPIRING QUANT`** Computer Science graduate, studing for an MSc in Computational Finance
 - [**`PROJECTS`**](projects) List of major works from recent years
 </div>
 <div class="box">
