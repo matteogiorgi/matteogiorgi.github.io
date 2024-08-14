@@ -1,6 +1,5 @@
 <style>
 h1 { margin-top: 2rem; }
-h2 { margin-top: 0rem; }
 h4 { margin-top: -1rem; }
 </style>
 
@@ -8,6 +7,7 @@ h4 { margin-top: -1rem; }
 <center>
 # Matteo Giorgi
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
+<img width=60% src="lisper.png">
 </center>
 
 
