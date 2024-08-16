@@ -23,7 +23,7 @@ h4 { margin-top: -1rem; }
 <center>
 ## About Me
 </center>
-- **`ASPIRING QUANT`** Computer Science graduate, studing for an MSc in Computational Finance
+- **`QUANT-ENTHUSIAST`** Computer Science graduate, studing for an MSc in Computational Finance
 - [**`PROJECTS`**](projects) List of major works from recent years
 </div>
 <div class="box">
@@ -31,8 +31,8 @@ h4 { margin-top: -1rem; }
 ## Contact
 </center>
 - **`MAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
-- **`MEET`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
-- **`TELEGRAM`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
+- **`CALL`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
+- **`CHAT`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
 </div>
 </div>
 

@@ -85,7 +85,7 @@
           width: 80%;
       }
   }
-  @media (min-width: 992px) {
+  @media screen and (min-width: 992px) {
       .img-scale-80 {
           padding: 20px;
           width: 80%;
@@ -101,7 +101,7 @@
           height: auto;
       }
   }
-  @media (max-width: 992px) {
+  @media screen and (max-width: 992px) {
       .img-scale-80 {
           padding: 40px;
           width: 100%;
@@ -117,7 +117,7 @@
           height: auto;
       }
   }
-  @media (max-width: 720px) {
+  @media screen and (max-width: 720px) {
       .img-scale-80, .img-scale-60 {
           padding: 0px;
           width: 100%;
@@ -125,6 +125,12 @@
       }
       .img-scale-25 {
           width: 35%;
+          height: auto;
+      }
+  }
+  @media print {
+      .img-scale-25 {
+          width: 25%;
           height: auto;
       }
   }
