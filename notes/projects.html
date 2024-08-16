@@ -71,7 +71,7 @@
       background-color: #f9f9f9;
       box-sizing: border-box;
   }
-  @media (max-width: 992px) {
+  @media screen and (max-width: 920px) {
       .box {
           flex: 1 1 100%;
       }
@@ -83,6 +83,35 @@
       }
       hr {
           width: 80%;
+      }
+      .img-scale-80 {
+          padding: 40px;
+          width: 100%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 100%;
+          height: auto;
+      }
+  }
+  @media screen and (max-width: 620px) {
+      .img-scale-80, .img-scale-60 {
+          padding: 0px;
+          width: 100%;
+          height: auto;
+      }
+  }
+  @media screen and (min-width: 920px) {
+      .img-scale-80 {
+          padding: 20px;
+          width: 80%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 60%;
+          height: auto;
       }
   }
   </style>
@@ -102,7 +131,7 @@ h4 { margin-top: -1rem; }
 <div class="container">
 <div class="box" style="background-color: #ffffff;">
 <center>
-<img width=80% style="padding:20px;" src="evolution.png">
+<img class="img-scale-80" src="evolution.png">
 </center>
 </div>
 </div>

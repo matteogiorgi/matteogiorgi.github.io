@@ -11,7 +11,7 @@ h4 { margin-top: -1rem; }
 <div class="container">
 <div class="box" style="background-color: #ffffff;">
 <center>
-<img width=80% style="padding:20px;" src="evolution.png">
+<img class="img-scale-80" src="evolution.png">
 </center>
 </div>
 </div>

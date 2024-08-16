@@ -12,7 +12,7 @@ h4 { margin-top: -1rem; }
 <div class="container">
 <div class="box" style="background-color: #ffffff;">
 <center>
-<img width=60% style="padding:20px;" src="lisper.png">
+<img class="img-scale-60" src="lisper.png">
 </center>
 </div>
 </div>

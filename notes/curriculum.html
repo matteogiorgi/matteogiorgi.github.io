@@ -71,7 +71,7 @@
       background-color: #f9f9f9;
       box-sizing: border-box;
   }
-  @media (max-width: 992px) {
+  @media screen and (max-width: 920px) {
       .box {
           flex: 1 1 100%;
       }
@@ -83,6 +83,35 @@
       }
       hr {
           width: 80%;
+      }
+      .img-scale-80 {
+          padding: 40px;
+          width: 100%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 100%;
+          height: auto;
+      }
+  }
+  @media screen and (max-width: 620px) {
+      .img-scale-80, .img-scale-60 {
+          padding: 0px;
+          width: 100%;
+          height: auto;
+      }
+  }
+  @media screen and (min-width: 920px) {
+      .img-scale-80 {
+          padding: 20px;
+          width: 80%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 60%;
+          height: auto;
       }
   }
   </style>
@@ -152,7 +181,9 @@
 </ul></li>
 <li>As a side activity, I have practiced running at a discrete level, participating in several 10km and half-marathons. I have also took part in a few long-distance races, such as the <em>Etna Marathon</em> at over 3000m above sea level.</li>
 </ul>
-<img style="display: block; margin-left: auto; margin-right: auto; margin-top: 4rem;" width=25% src="hare.png">
+<center>
+<img style="margin-top: 4rem;" width=25% src="hare.png">
+</center>
 <p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">
 <code>Download this Curriculum:</code> <a href="curriculum.pdf"><code>PDF</code></a>
 </p>
