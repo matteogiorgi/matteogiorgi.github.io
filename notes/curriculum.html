@@ -84,6 +84,24 @@
       hr {
           width: 80%;
       }
+  }
+  @media (min-width: 992px) {
+      .img-scale-80 {
+          padding: 20px;
+          width: 80%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 60%;
+          height: auto;
+      }
+      .img-scale-25 {
+          width: 25%;
+          height: auto;
+      }
+  }
+  @media (max-width: 992px) {
       .img-scale-80 {
           padding: 40px;
           width: 100%;
@@ -94,23 +112,19 @@
           width: 100%;
           height: auto;
       }
+      .img-scale-25 {
+          width: 25%;
+          height: auto;
+      }
   }
-  @media screen and (max-width: 720px) {
+  @media (max-width: 720px) {
       .img-scale-80, .img-scale-60 {
           padding: 0px;
           width: 100%;
           height: auto;
       }
-  }
-  @media screen and (min-width: 992px) {
-      .img-scale-80 {
-          padding: 20px;
-          width: 80%;
-          height: auto;
-      }
-      .img-scale-60 {
-          padding: 20px;
-          width: 60%;
+      .img-scale-25 {
+          width: 35%;
           height: auto;
       }
   }
@@ -182,7 +196,7 @@
 <li>As a side activity, I have practiced running at a discrete level, participating in several 10km and half-marathons. I have also took part in a few long-distance races, such as the <em>Etna Marathon</em> at over 3000m above sea level.</li>
 </ul>
 <center>
-<img style="margin-top: 4rem;" width=25% src="hare.png">
+<img class="img-scale-25" style="margin-top: 4rem;" src="hare.png">
 </center>
 <p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">
 <code>Download this Curriculum:</code> <a href="curriculum.pdf"><code>PDF</code></a>

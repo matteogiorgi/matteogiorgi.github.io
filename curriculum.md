@@ -69,5 +69,5 @@
 
 
 
-<center><img style="margin-top: 4rem;" width=25% src="hare.png"></center>
+<center><img class="img-scale-25" style="margin-top: 4rem;" src="hare.png"></center>
 <p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</p>

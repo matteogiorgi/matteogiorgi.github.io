@@ -84,6 +84,24 @@
       hr {
           width: 80%;
       }
+  }
+  @media (min-width: 992px) {
+      .img-scale-80 {
+          padding: 20px;
+          width: 80%;
+          height: auto;
+      }
+      .img-scale-60 {
+          padding: 20px;
+          width: 60%;
+          height: auto;
+      }
+      .img-scale-25 {
+          width: 25%;
+          height: auto;
+      }
+  }
+  @media (max-width: 992px) {
       .img-scale-80 {
           padding: 40px;
           width: 100%;
@@ -94,23 +112,19 @@
           width: 100%;
           height: auto;
       }
+      .img-scale-25 {
+          width: 25%;
+          height: auto;
+      }
   }
-  @media screen and (max-width: 720px) {
+  @media (max-width: 720px) {
       .img-scale-80, .img-scale-60 {
           padding: 0px;
           width: 100%;
           height: auto;
       }
-  }
-  @media screen and (min-width: 992px) {
-      .img-scale-80 {
-          padding: 20px;
-          width: 80%;
-          height: auto;
-      }
-      .img-scale-60 {
-          padding: 20px;
-          width: 60%;
+      .img-scale-25 {
+          width: 35%;
           height: auto;
       }
   }
