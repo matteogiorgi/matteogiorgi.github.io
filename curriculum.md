@@ -16,9 +16,9 @@
 
 
 ## Education
-- **`[2024]`** MSc in Computational Finance, *Department of Mathematics - University of Padua* (ongoing)
+- **`[2024]`** MSc in Computational Finance, *Department of Mathematics - University of Padua* (in progress)
 - **`[2023]`** BSc in [Computer Science](autocertificazione_informatica.pdf), *Department of Computer Science - University of Pisa*, summa cum laude (110L/110)
-- **`[2011]`** BEng in [Mechanical Engineering](autocertificazione_ingegneria.pdf), *Department of Industrial Engineering - University of Pisa* (incomplete)
+- **`[2011]`** BEng in [Mechanical Engineering](autocertificazione_ingegneria.pdf), *Department of Industrial Engineering - University of Pisa* (not completed)
 
 
 
