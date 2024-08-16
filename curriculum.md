@@ -7,7 +7,7 @@
 </div>
 <div class="box">
 - **`GITHUB`** [`github.com/matteogiorgi`](https://github.com/matteogiorgi)
-- **`LINKEDIN`** [`linkedin.com/matteogiorgi`](https://www.linkedin.com/in/matteo-giorgi-aa8786322)
+- **`LINKEDIN`** [`in/matteo-giorgi-aa8786322`](https://www.linkedin.com/in/matteo-giorgi-aa8786322)
 - **`WEBSITE`** [`geoteo.net`](https://www.geoteo.net)
 </div>
 </div>

@@ -30,9 +30,9 @@ h4 { margin-top: -1rem; }
 <center>
 ## Contact
 </center>
-- **`EMAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
-- **`TELEGRAM`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
+- **`MAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
 - **`MEET`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
+- **`TELEGRAM`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
 </div>
 </div>
 
