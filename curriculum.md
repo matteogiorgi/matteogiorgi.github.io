@@ -16,7 +16,7 @@
 
 
 ## Education
-- **`[2024]`** MSc in [Computational Finance](https://www.geoteo.net/404), *Department of Mathematics - University of Padua* (in progress)
+- **`[2024]`** MSc in [Computational Finance](https://www.geoteo.net/autocertificazione_matematica.pdf), *Department of Mathematics - University of Padua* (in progress)
 - **`[2023]`** BSc in [Computer Science](https://www.geoteo.net/autocertificazione_informatica.pdf), *Department of Computer Science - University of Pisa* (summa cum laude `110L/110`)
 - **`[2011]`** BEng in [Mechanical Engineering](https://www.geoteo.net/autocertificazione_ingegneria.pdf), *Department of Industrial Engineering - University of Pisa* (not completed)
 
