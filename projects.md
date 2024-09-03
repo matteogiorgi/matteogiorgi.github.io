@@ -17,10 +17,12 @@ h4 { margin-top: -1rem; }
 </div>
 
 
-- [**`PDE-BASE`**](https://github.com/matteogiorgi/pde-base) Base configuration for a personal *Debian* development environment
-- [**`PDE-PLUG`**](https://github.com/matteogiorgi/pde-plug) *Vim* and *VSCode* plug-ins installers for your *Debian* development environment
-- [**`PDE-TILE`**](https://github.com/matteogiorgi/pde-tile) Tile manager for your *Debian* development environment using *Qtile*
+<!-- - [**`PDE-BASE`**](https://github.com/matteogiorgi/pde-base) Base configuration for a personal *Debian* development environment -->
+<!-- - [**`PDE-PLUG`**](https://github.com/matteogiorgi/pde-plug) *Vim* and *VSCode* plug-ins installers for your *Debian* development environment -->
+<!-- - [**`PDE-TILE`**](https://github.com/matteogiorgi/pde-tile) Tile manager for your *Debian* development environment using *Qtile* -->
+
 - [**`TOODY`**](https://github.com/matteogiorgi/toody) Variability detector web application written for my BSc thesis
+- **`PDE`****`[`**[**`BASE`**](https://github.com/matteogiorgi/pde-base)**`/`**[**`PLUG`**](https://github.com/matteogiorgi/pde-plug)**`/`**[**`TILE`**](https://github.com/matteogiorgi/pde-tile)**`]`** Full configuration for a personal *Debian* development environment
 - [**`WORDLE`**](https://github.com/matteogiorgi/wordle) *Java* implementation of the game *Wordle* from the *New York Times*
 - [**`ASTEROIDS`**](https://github.com/matteogiorgi/asteroids) *Javascript* implementation of the popular game *Asteroids*
 - [**`COMPUTABILITY`**](https://github.com/matteogiorgi/computability) Failed attempt to write comprehensive notes on the theory of computability
