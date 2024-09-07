@@ -34,7 +34,7 @@ h4 { margin-top: -1rem; }
 - [**`DMENU`**](https://github.com/matteogiorgi/dmenu) Suckless dynamic menu for *X*, written in *C* and properly patched
 - [**`SLOCK`**](https://github.com/matteogiorgi/slock) Suckless screen locker for *X*, written in *C* and properly patched
 - [**`ST`**](https://github.com/matteogiorgi/st) Suckless simple terminal emulator for *X*, written in *C* and properly patched
-- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Math and Compsci resources for a Quants interview
+- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Math and compsci resources for quant interviews
 
 
 
