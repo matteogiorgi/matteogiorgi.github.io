@@ -31,10 +31,10 @@ h4 { margin-top: -1rem; }
 - [**`GRAPH`**](https://github.com/matteogiorgi/graph) Undirected graph of generic homogeneous objects with no loops nore multiple edges, implemented in *Java*
 - [**`MEMBOX`**](https://github.com/matteogiorgi/membox) Concurrent *C* server implementing a virtual repository hosting non null sequences of bytes
 - [**`SPARSE`**](https://github.com/matteogiorgi/sparse) *C* library that allows to handle sparce matrices
-- [**`DMENU`**](https://github.com/matteogiorgi/dmenu) Suckless dynamic menu for *X*, written in *C* and properly patched
-- [**`SLOCK`**](https://github.com/matteogiorgi/slock) Suckless screen locker for *X*, written in *C* and properly patched
-- [**`ST`**](https://github.com/matteogiorgi/st) Suckless simple terminal emulator for *X*, written in *C* and properly patched
-- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Math and compsci resources for quant interviews
+- [**`DMENU`**](https://github.com/matteogiorgi/dmenu) Suckless dynamic menu for *X11*, written in *C* and properly patched
+- [**`SLOCK`**](https://github.com/matteogiorgi/slock) Suckless screen locker for *X11*, written in *C* and properly patched
+- [**`ST`**](https://github.com/matteogiorgi/st) Suckless simple terminal emulator for *X11*, written in *C* and properly patched
+- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Computational math resources for quant interviews and *LeetCode* problems
 
 
 
