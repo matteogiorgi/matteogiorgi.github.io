@@ -17,10 +17,7 @@ h4 { margin-top: -1rem; }
 </div>
 
 
-<!-- - [**`PDE-BASE`**](https://github.com/matteogiorgi/pde-base) Base configuration for a personal *Debian* development environment -->
-<!-- - [**`PDE-PLUG`**](https://github.com/matteogiorgi/pde-plug) *Vim* and *VSCode* plug-ins installers for your *Debian* development environment -->
-<!-- - [**`PDE-TILE`**](https://github.com/matteogiorgi/pde-tile) Tile manager for your *Debian* development environment using *Qtile* -->
-
+- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Computational math resources for quant interviews and *LeetCode* problems
 - [**`PODEEN`**](https://github.com/matteogiorgi/podeen) Full configuration for a personal *Debian* development environment
 - [**`TOODY`**](https://github.com/matteogiorgi/toody) Variability detector web application written for my BSc thesis
 - [**`WORDLE`**](https://github.com/matteogiorgi/wordle) *Java* implementation of the game *Wordle* from the *New York Times*
@@ -34,7 +31,6 @@ h4 { margin-top: -1rem; }
 - [**`DMENU`**](https://github.com/matteogiorgi/dmenu) Suckless dynamic menu for *X11*, written in *C* and properly patched
 - [**`SLOCK`**](https://github.com/matteogiorgi/slock) Suckless screen locker for *X11*, written in *C* and properly patched
 - [**`ST`**](https://github.com/matteogiorgi/st) Suckless simple terminal emulator for *X11*, written in *C* and properly patched
-- [**`QMATH`**](https://github.com/matteogiorgi/qmath) Computational math resources for quant interviews and *LeetCode* problems
 
 
 
