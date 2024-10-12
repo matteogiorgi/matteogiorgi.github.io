@@ -1,5 +1,3 @@
-# [`geoteo.net`](https://www.geoteo.net)
+# Matteo Giorgi
 
-<center>
-<img width=100% src="/notes/lisper.png">
-</center>
+Source code for my personal site, take a look: [geoteo.net](https://www.geoteo.net).

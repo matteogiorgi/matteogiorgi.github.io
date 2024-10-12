@@ -13,7 +13,7 @@ h4 { margin-top: -1rem; }
 
 
 
-I am a BSc *Computer Science* graduate from the [University of Pisa](https://www.unipi.it/index.php/english), currently studying for an MSc in *Computational Finance* at the [University of Padua](https://www.unipd.it/en). I am a quant-enthusiast with a strong interest in numerical approximation and mathematical programming for stochastic optimization and portfolio management. I am also a programming languages enthusiast, with a focus on functional programming and a keen interest in cryptanalysis.
+I hold a BSc in *Computer Science* from the [University of Pisa](https://www.unipi.it/index.php/english) and am currently pursuing an MSc in *Computational Finance* at the [University of Padua](https://www.unipd.it/en). My academic focus includes numerical methods and mathematical programming, particularly in stochastic optimization and portfolio management. Additionally, I have a strong passion for programming languages, especially functional programming, and maintain a keen interest in cryptanalysis.
 
 I am always eager to explore new opportunities and expand my expertise in emerging fields. If you'd like to connect, feel free to **reach out** via the following channels:
 
