@@ -168,80 +168,15 @@
   body {
       max-width: 60rem;
   }
-  .container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-  }
-  .box {
-      flex: 1;
-      padding: 20px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      margin: 0px;
-      background-color: #f9f9f9;
-      box-sizing: border-box;
-  }
-  @media screen and (max-width: 992px) {
-      .box {
-          flex: 1 1 100%;
-      }
-      body {
-          padding: 0 0.5rem;
-      }
-      blockquote {
-          padding: 1rem;
-      }
-      hr {
-          width: 80%;
-      }
-  }
-  @media screen and (min-width: 992px) {
-      .img-scale-max {
-          padding: 20px;
-          width: 80%;
-          height: auto;
-      }
-      .img-scale-mid {
-          padding: 20px;
-          width: 60%;
-          height: auto;
-      }
-      .img-scale-min {
+  @media print {
+      .img-scale {
           width: 10%;
           height: auto;
       }
   }
-  @media screen and (max-width: 992px) {
-      .img-scale-max {
-          padding: 40px;
-          width: 100%;
-          height: auto;
-      }
-      .img-scale-mid {
-          padding: 20px;
-          width: 100%;
-          height: auto;
-      }
-      .img-scale-min {
-          width: 25%;
-          height: auto;
-      }
-  }
-  @media screen and (max-width: 720px) {
-      .img-scale-max, .img-scale-mid {
-          padding: 0px;
-          width: 100%;
-          height: auto;
-      }
-      .img-scale-min {
-          width: 35%;
-          height: auto;
-      }
-  }
-  @media print {
-      .img-scale-min {
-          width: 25%;
+  @media screen {
+      .img-scale {
+          width: 40%;
           height: auto;
       }
   }
@@ -260,13 +195,6 @@ h4 { margin-top: -1rem; }
 href="projects"><code>Projects</code></a> · <a
 href="curriculum"><code>Curriculum</code></a></h4>
 </center>
-<div class="container">
-<div class="box">
-<center>
-<img class="img-scale-mid" src="lisper.png">
-</center>
-</div>
-</div>
 <p>I am a BSc <em>Computer Science</em> graduate from the <a
 href="https://www.unipi.it/index.php/english">University of Pisa</a>,
 currently studying for an MSc in <em>Computational Finance</em> at the
@@ -286,7 +214,10 @@ href="https://meet.google.com/msc-hnrq-efd"><code>meet.google.com/msc-hnrq-efd</
 <strong><code>CHAT</code></strong> →  <a
 href="https://t.me/geoteodotnet"><code>t.me/geoteodotnet</code></a></p>
 </blockquote>
-<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">
+<center>
+<img class="img-scale" style="margin-top: 4rem;" src="hare.png">
+</center>
+<p style="text-align: center; margin-bottom: -4rem;">
 <code>Driven by curiosity and stubbornness</code>
 </p>
 <nav class="site-nav" style="font-size:70%; margin-top: 4rem; margin-bottom: 2rem;">

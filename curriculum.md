@@ -67,5 +67,5 @@ h4 { margin-top: -1rem; }
 
 
 
-<center><img class="img-scale-min" style="margin-top: 4rem;" src="hare.png"></center>
+<center><img class="img-scale" style="margin-top: 4rem;" src="hare.png"></center>
 <p style="text-align: center; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</p>

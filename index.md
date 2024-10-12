@@ -9,13 +9,6 @@ h4 { margin-top: -1rem; }
 # Matteo Giorgi
 #### [`Projects`](projects) · [`Curriculum`](curriculum)
 </center>
-<div class="container">
-<div class="box">
-<center>
-<img class="img-scale-mid" src="lisper.png">
-</center>
-</div>
-</div>
 
 
 
@@ -31,4 +24,5 @@ I am always eager to explore new opportunities and expand my expertise in emergi
 
 
 
-<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Driven by curiosity and stubbornness`</p>
+<center><img class="img-scale" style="margin-top: 4rem;" src="hare.png"></center>
+<p style="text-align: center; margin-bottom: -4rem;">`Driven by curiosity and stubbornness`</p>

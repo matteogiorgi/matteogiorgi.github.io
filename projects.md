@@ -9,13 +9,6 @@ h4 { margin-top: -1rem; }
 # Matteo Giorgi
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
 </center>
-<div class="container">
-<div class="box">
-<center>
-<img class="img-scale-max" src="evolution.png">
-</center>
-</div>
-</div>
 
 
 
@@ -38,4 +31,5 @@ h4 { margin-top: -1rem; }
 
 
 
-<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Thought with passion, crafted in VIM`</p>
+<center><img class="img-scale" style="margin-top: 4rem;" src="hare.png"></center>
+<p style="text-align: center; margin-bottom: -4rem;">`Thought with passion, crafted in VIM`</p>
