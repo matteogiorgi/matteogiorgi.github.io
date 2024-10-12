@@ -1,16 +1,14 @@
-<div class="container" style="margin-top: 2rem;">
-<div class="box" style="background-color: #ffffff;">
+<style>
+h4 { margin-top: -1rem; }
+</style>
+
+
+
+
 <center>
 # Matteo Giorgi
-<h4 style="margin-top: -1rem;">`Curriculum Vitae`</h4>
+#### [`Linkedin`](https://www.linkedin.com/in/matteo-giorgi-aa8786322) · [`GitHub`](https://github.com/matteogiorgi)
 </center>
-</div>
-<div class="box">
-- **`WEBSITE`** [`geoteo.net`](https://www.geoteo.net)
-- **`LINKEDIN`** [`in/matteo-giorgi-aa8786322`](https://www.linkedin.com/in/matteo-giorgi-aa8786322)
-- **`GITHUB`** [`github.com/matteogiorgi`](https://github.com/matteogiorgi)
-</div>
-</div>
 
 
 
@@ -69,5 +67,5 @@
 
 
 
-<center><img class="img-scale-25" style="margin-top: 4rem;" src="hare.png"></center>
-<p style="text-align: center; margin-top: 4rem; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</p>
+<center><img class="img-scale-min" style="margin-top: 4rem;" src="hare.png"></center>
+<p style="text-align: center; margin-bottom: -4rem;">`Download this Curriculum:` [`PDF`](curriculum.pdf)</p>

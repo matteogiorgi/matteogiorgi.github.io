@@ -1,7 +1,8 @@
 <style>
-h1 { margin-top: 2rem; }
 h4 { margin-top: -1rem; }
 </style>
+
+
 
 
 <center>
@@ -9,12 +10,14 @@ h4 { margin-top: -1rem; }
 #### [`Repositories`](https://github.com/matteogiorgi?tab=repositories)
 </center>
 <div class="container">
-<div class="box" style="background-color: #ffffff;">
+<div class="box">
 <center>
-<img class="img-scale-80" src="evolution.png">
+<img class="img-scale-max" src="evolution.png">
 </center>
 </div>
 </div>
+
+
 
 
 - [**`QMATH`**](https://github.com/matteogiorgi/qmath) Computational math resources for quant interviews and *LeetCode* problems
