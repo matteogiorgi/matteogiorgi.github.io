@@ -7,19 +7,17 @@ h4 { margin-top: -1rem; }
 
 <center>
 # Matteo Giorgi
-#### [`Projects`](projects) · [`Curriculum`](curriculum)
+#### [*Projects*](projects) · [*Curriculum*](curriculum)
 </center>
 
 
 
 
-I hold a BSc in *Computer Science* from the [University of Pisa](https://www.unipi.it/index.php/english) and am currently pursuing an MSc in *Computational Finance* at the [University of Padua](https://www.unipd.it/en). My academic focus includes numerical methods and mathematical programming, particularly in stochastic optimization and portfolio management. Additionally, I have a strong passion for programming languages, especially functional programming, and maintain a keen interest in cryptanalysis.
+Holding a BSc in *Computer Science* from the [University of Pisa](https://www.unipi.it/index.php/english), I am currently enrolled at the [University of Padua](https://www.unipd.it/en), pursuing an MSc in *Computational Finance*. My academic focus includes numerical methods and mathematical programming, particularly in stochastic optimization and portfolio management. Additionally, I maintain a keen interest in cryptanalysis and since the beginning of my studies I have been passionate about programming languages, especially functional programming.
 
-I am always eager to explore new opportunities and expand my expertise, feel free to reach out to me!
-
-- *Mail* → [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
-- *Call* → [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
-- *Chat* → [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
+- **`MAIL`** [`matteo.giorgi@protonmail.com`](mailto:matteo.giorgi@protonmail.com)
+- **`CALL`** [`meet.google.com/msc-hnrq-efd`](https://meet.google.com/msc-hnrq-efd)
+- **`CHAT`** [`t.me/geoteodotnet`](https://t.me/geoteodotnet)
 
 
 
