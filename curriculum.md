@@ -23,8 +23,8 @@ h4 { margin-top: -1rem; }
 
 ## Programming & Software
 - **`LANGUAGES`** *C/C++*, *Java*, *Python*, *JavaScript*, *Go*, *Scheme*, *OCaml*, *Haskell*, *Bash*, *AWK*
-- **`UNIX`** *GNU/Linux* and *BSD* system management, *C* system programming and good knowledge of the *POSIX* standard
-- **`TOOLS`** Experience with various software such as *Vim*, *Emacs*, *Git*, *Docker*, *LaTeX*, *MATLAB*, and *Wolfram Mathematica*
+- **`UNIX`** *GNU/Linux* and *BSD* system management, *C* system programming and good knowledge of *POSIX* standard
+- **`TOOLS`** Experience with various software such as *Vim*, *Emacs*, *Git*, *Docker*, *LaTeX*, *MATLAB*, *Wolfram Mathematica*
 - **`EXTRA`** Knowledge of *SQL*, *HTML* and *CSS*
 
 
