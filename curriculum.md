@@ -7,7 +7,7 @@ h4 { margin-top: -1rem; }
 
 <center>
 # Matteo Giorgi
-#### [*Linkedin*](https://www.linkedin.com/in/matteo-giorgi-aa8786322) · [*GitHub*](https://github.com/matteogiorgi)
+#### [`LINKEDIN`](https://www.linkedin.com/in/matteo-giorgi-aa8786322) · [`GITHUB`](https://github.com/matteogiorgi)
 </center>
 
 

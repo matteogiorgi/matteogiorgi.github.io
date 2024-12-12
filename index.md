@@ -7,7 +7,7 @@ h4 { margin-top: -1rem; }
 
 <center>
 # Matteo Giorgi
-#### [*Projects*](projects) · [*Curriculum*](curriculum)
+#### [`PROJECTS`](projects) · [`CURRICULUM`](curriculum)
 </center>
 
 

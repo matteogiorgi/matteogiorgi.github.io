@@ -7,7 +7,7 @@ h4 { margin-top: -1rem; }
 
 <center>
 # Matteo Giorgi
-#### [*Repositories*](https://github.com/matteogiorgi?tab=repositories)
+#### [`REPOSITORIES`](https://github.com/matteogiorgi?tab=repositories)
 </center>
 
 
