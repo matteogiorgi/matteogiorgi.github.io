@@ -1,0 +1,33 @@
+html, body {
+    background-color: #ffffff;
+}
+body {
+    max-width: 60rem;
+}
+p, ul, ol {
+    line-height: 1.4;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+pre {
+    line-height: 1.4;
+    padding: 1rem 1.4rem;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+}
+@media print {
+    .img-scale {
+        width: 20%;
+        height: auto;
+    }
+}
+@media screen {
+    .img-scale {
+        width: 30%;
+        height: auto;
+    }
+}
