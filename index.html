@@ -12,7 +12,8 @@
 
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
     html, body {
         min-height: 100vh;
         display: flex;
@@ -25,7 +26,9 @@
 		margin:1em auto;
 		max-width:45em;
 		padding:0 .62em 3.24em;
-		font:1.2em/1.62 "Cantarell", sans-serif;
+        font-family: "Ubuntu", serif;
+        font-weight: 400;
+        font-style: normal;
 	}
 	h1,h2,h3 {
 		line-height:1.2
@@ -40,8 +43,12 @@
     a:hover {
         text-decoration: underline;
     }
+    code, pre, kbd, samp {
+        font-family: "Ubuntu Mono", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
     pre {
-        line-height: 1.4;
         padding: 1rem 1.4rem;
         border: 1px solid #e1e4e8;
         border-radius: 6px;
@@ -100,28 +107,28 @@
     </center>
 
     <ul>
-        <li><a href="https://github.com/matteogiorgi/qmath"><strong><code>QINT</code></strong></a> Collection of useful resources for quant interviews and <em>LeetCode</em> problems</li>
-        <li><a href="https://github.com/matteogiorgi/podeen"><strong><code>PODEEN</code></strong></a> Full configuration for a personal <em>Debian</em> development environment</li>
-        <li><a href="https://github.com/matteogiorgi/toody"><strong><code>TOODY</code></strong></a> Variability detector web application written for my BSc thesis</li>
-        <li><a href="https://github.com/matteogiorgi/wordle"><strong><code>WORDLE</code></strong></a> <em>Java</em> implementation of the game <em>Wordle</em> from the <em>New York Times</em></li>
-        <li><a href="https://github.com/matteogiorgi/asteroids"><strong><code>ASTEROIDS</code></strong></a> <em>Javascript</em> implementation of the popular game <em>Asteroids</em></li>
-        <li><a href="https://github.com/matteogiorgi/computability"><strong><code>COMPUTABILITY</code></strong></a> Failed attempt to write comprehensive notes on the theory of computability</li>
-        <li><a href="https://github.com/matteogiorgi/wiener"><strong><code>WIENER</code></strong></a> An article on the <em>RSA</em> cryptosystem and the attack <em>M.J.  Wiener</em> proposed in 1990</li>
-        <li><a href="https://github.com/matteogiorgi/funint"><strong><code>FUNINT</code></strong></a> <em>Ocaml</em> interpreter for a toy language with static scoping and dynamic type checking</li>
-        <li><a href="https://github.com/matteogiorgi/graph"><strong><code>GRAPH</code></strong></a> <em>Java</em> undirected graph implementation of homogeneous generic objects</li>
-        <li><a href="https://github.com/matteogiorgi/membox"><strong><code>MEMBOX</code></strong></a> Concurrent <em>C</em> server of a virtual repository hosting non null sequences of bytes</li>
-        <li><a href="https://github.com/matteogiorgi/sparse"><strong><code>SPARSE</code></strong></a> <em>C</em> library that allows to handle sparce matrices</li>
-        <li><a href="https://github.com/matteogiorgi/dmenu"><strong><code>DMENU</code></strong></a> Suckless dynamic menu for <em>X11</em>, written in <em>C</em> and properly patched</li>
-        <li><a href="https://github.com/matteogiorgi/slock"><strong><code>SLOCK</code></strong></a> Suckless screen locker for <em>X11</em>, written in <em>C</em> and properly patched</li>
-        <li><a href="https://github.com/matteogiorgi/st"><strong><code>ST</code></strong></a> Suckless simple terminal emulator for <em>X11</em>, written in <em>C</em> and properly patched</li>
+        <li><a href="https://github.com/matteogiorgi/qmath"><code><b>QINT</b></code></a> Collection of useful resources for quant interviews and <em>LeetCode</em> problems</li>
+        <li><a href="https://github.com/matteogiorgi/podeen"><code><b>PODEEN</b></code></a> Full configuration for a personal <em>Debian</em> development environment</li>
+        <li><a href="https://github.com/matteogiorgi/toody"><code><b>TOODY</b></code></a> Variability detector web application written for my BSc thesis</li>
+        <li><a href="https://github.com/matteogiorgi/wordle"><code><b>WORDLE</b></code></a> <em>Java</em> implementation of the game <em>Wordle</em> from the <em>New York Times</em></li>
+        <li><a href="https://github.com/matteogiorgi/asteroids"><code><b>ASTEROIDS</b></code></a> <em>Javascript</em> implementation of the popular game <em>Asteroids</em></li>
+        <li><a href="https://github.com/matteogiorgi/computability"><code><b>COMPUTABILITY</b></code></a> Failed attempt to write comprehensive notes on the theory of computability</li>
+        <li><a href="https://github.com/matteogiorgi/wiener"><code><b>WIENER</b></code></a> An article on the <em>RSA</em> cryptosystem and the attack <em>M.J.  Wiener</em> proposed in 1990</li>
+        <li><a href="https://github.com/matteogiorgi/funint"><code><b>FUNINT</b></code></a> <em>Ocaml</em> interpreter for a toy language with static scoping and dynamic type checking</li>
+        <li><a href="https://github.com/matteogiorgi/graph"><code><b>GRAPH</b></code></a> <em>Java</em> undirected graph implementation of homogeneous generic objects</li>
+        <li><a href="https://github.com/matteogiorgi/membox"><code><b>MEMBOX</b></code></a> Concurrent <em>C</em> server of a virtual repository hosting non null sequences of bytes</li>
+        <li><a href="https://github.com/matteogiorgi/sparse"><code><b>SPARSE</b></code></a> <em>C</em> library that allows to handle sparce matrices</li>
+        <li><a href="https://github.com/matteogiorgi/dmenu"><code><b>DMENU</b></code></a> Suckless dynamic menu for <em>X11</em>, written in <em>C</em> and properly patched</li>
+        <li><a href="https://github.com/matteogiorgi/slock"><code><b>SLOCK</b></code></a> Suckless screen locker for <em>X11</em>, written in <em>C</em> and properly patched</li>
+        <li><a href="https://github.com/matteogiorgi/st"><code><b>ST</b></code></a> Suckless simple terminal emulator for <em>X11</em>, written in <em>C</em> and properly patched</li>
     </ul>
 
     <center>
         <h4 id="links" style="margin-top: 4rem; margin-bottom: -4rem;">
-            <a href="https://www.geoteo.net/resources/curriculum.pdf"><code>CV</code></a> ·
-            <a href="https://github.com/matteogiorgi"><code>GITHUB</code></a> ·
-            <a href="mailto:matteo.giorgi@protonmail.com"><code>MAIL</code></a> ·
-            <a href="https://meet.google.com/msc-hnrq-efd"><code>MEET</code></a>
+            <a href="https://www.geoteo.net/resources/curriculum.pdf"><code><b>CV</b></code></a> ·
+            <a href="https://github.com/matteogiorgi"><code><b>GITHUB</b></code></a> ·
+            <a href="mailto:matteo.giorgi@protonmail.com"><code><b>MAIL</b></code></a> ·
+            <a href="https://meet.google.com/msc-hnrq-efd"><code><b>MEET</b></code></a>
         </h4>
     </center>
 
