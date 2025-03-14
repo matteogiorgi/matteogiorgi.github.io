@@ -30,9 +30,14 @@
         font-family: "Ubuntu", serif;
         font-weight: 400;
         font-style: normal;
+        position: relative;
+        pointer-events: none;
 	}
-	h1,h2,h3 {
-		line-height:1.2
+	h1, h2, h3, p, ul, ol, a {
+		pointer-events: auto;
+	}
+	h1,h2, h3 {
+		line-height:1.2;
 	}
     p, ul, ol {
         line-height: 1.4;
@@ -56,12 +61,12 @@
     }
 	@media (prefers-color-scheme: dark){
 		body {
-			background:#000
+			background:#000;
 		}
 	}
     @media print {
 		body{
-			max-width:none
+			max-width:none;
 		}
         .img-scale {
             width: 20%;
@@ -82,6 +87,7 @@
         top: 0;
         left: 0;
         z-index: -1;
+		pointer-events: auto;
     }
 </style>
 
@@ -143,7 +149,7 @@
     <script>
         particlesJS("particles-js", {
             particles: {
-                number: { value: 100 },
+                number: { value: 150 },
                 size: { value: 3 },
                 move: { speed: 1 },
                 color: { value: "#C0BFBC" }, // particles
@@ -151,6 +157,25 @@
                     enable: true,
                     color: "#C0BFBC", // lines
                 }
+            },
+            interactivity: {
+                detect_on: "window",
+                events: {
+                    onhover: { enable: true, mode: ["grab", "bubble"] },
+                    onclick: { enable: true, mode: ["push"] }
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    bubble: { distance: 200, size: 10, duration: 2, opacity: 0.8 },
+                    push: { particles_nb: 10 }
+                }
+            }
+        });
+
+        document.getElementById('particles-js').addEventListener('click', () => {
+            //console.log('canvas clicked');
+            if (window.pJSDom && window.pJSDom.length) {
+                window.pJSDom[0].pJS.fn.modes.pushParticles(20);
             }
         });
     </script>
