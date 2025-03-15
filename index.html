@@ -89,6 +89,10 @@
         z-index: -1;
 		pointer-events: auto;
     }
+    ::selection {
+        background: #A80000;
+        color: #ffffff;
+    }
 </style>
 
 
@@ -149,31 +153,86 @@
     <script>
         particlesJS("particles-js", {
             particles: {
-                number: { value: 150 },
-                size: { value: 3 },
-                move: { speed: 1 },
-                color: { value: "#C0BFBC" },  //particles
+                number: {
+                    value: 160,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#4D4D6B"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true
+                },
+                size: {
+                    value: 5,
+                    random: true
+                },
                 line_linked: {
                     enable: true,
-                    color: "#C0BFBC",  //lines
+                    distance: 150,
+                    color: "#4D4D6B",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3.0,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    attract: {
+                        enable: false
+                    }
                 }
             },
             interactivity: {
                 detect_on: "window",
                 events: {
-                    onhover: { enable: true, mode: ["grab", "bubble"] },
-                    onclick: { enable: true, mode: ["push"] }
+                    onhover: {
+                        enable: true,
+                        mode: ["grab", "bubble"]
+                    },
+                    onclick: {
+                        enable: true,
+                    },
+                    resize: true
                 },
                 modes: {
-                    grab: { distance: 150, line_linked: { opacity: 1 } },
-                    bubble: { distance: 250, size: 10, duration: 2, opacity: 0.8 }
+                    grab: {
+                        distance: 150,
+                        line_linked: {
+                            opacity: 0.8
+                        }
+                    },
+                    bubble: {
+                        distance: 250,
+                        size: 8,
+                        duration: 2,
+                        opacity: 0.8
+                    }
                 }
             }
         });
 
-        document.getElementById('particles-js').addEventListener('click', () => {
+        document.addEventListener('mouseleave', () => {
             if (window.pJSDom && window.pJSDom.length) {
-                window.pJSDom[0].pJS.fn.modes.pushParticles(10);
+                const particles = window.pJSDom[0].pJS;
+                particles.interactivity.events.onhover.enable = false;
+            }
+        });
+
+        document.addEventListener('mouseenter', () => {
+            if (window.pJSDom && window.pJSDom.length) {
+                const particles = window.pJSDom[0].pJS;
+                particles.interactivity.events.onhover.enable = true;
             }
         });
     </script>
