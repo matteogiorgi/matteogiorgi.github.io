@@ -152,10 +152,10 @@
                 number: { value: 150 },
                 size: { value: 3 },
                 move: { speed: 1 },
-                color: { value: "#C0BFBC" }, // particles
+                color: { value: "#C0BFBC" },  //particles
                 line_linked: {
                     enable: true,
-                    color: "#C0BFBC", // lines
+                    color: "#C0BFBC",  //lines
                 }
             },
             interactivity: {
@@ -165,17 +165,15 @@
                     onclick: { enable: true, mode: ["push"] }
                 },
                 modes: {
-                    grab: { distance: 140, line_linked: { opacity: 1 } },
-                    bubble: { distance: 200, size: 10, duration: 2, opacity: 0.8 },
-                    push: { particles_nb: 10 }
+                    grab: { distance: 150, line_linked: { opacity: 1 } },
+                    bubble: { distance: 250, size: 10, duration: 2, opacity: 0.8 }
                 }
             }
         });
 
         document.getElementById('particles-js').addEventListener('click', () => {
-            //console.log('canvas clicked');
             if (window.pJSDom && window.pJSDom.length) {
-                window.pJSDom[0].pJS.fn.modes.pushParticles(20);
+                window.pJSDom[0].pJS.fn.modes.pushParticles(10);
             }
         });
     </script>
