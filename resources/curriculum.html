@@ -19,7 +19,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: #ffffff;
+        background: transparent;
         color: #000000;
     }
 	body{
@@ -29,6 +29,11 @@
         font-family: "Ubuntu", serif;
         font-weight: 400;
         font-style: normal;
+        position: relative;
+        pointer-events: none;
+	}
+	h1, h2, h3, p, ul, ol, a {
+		pointer-events: auto;
 	}
 	h1,h2,h3 {
 		line-height:1.2
@@ -74,6 +79,16 @@
             height: auto;
         }
     }
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: white;
+        top: 0;
+        left: 0;
+        z-index: -1;
+		pointer-events: auto;
+    }
     ::selection {
         background: #4D4D6B;
         color: #ffffff;
@@ -84,20 +99,21 @@
 
 
 <body>
+    <div id="particles-js"></div>
     <center>
         <h1 id="matteo-giorgi"><a href="https://www.geoteo.net">Matteo Giorgi</a></h1>
     </center>
 
     <h2 id="education">Education</h2>
     <ul>
-        <li>MSc in <a href="https://www.geoteo.net/resources/autocertificazione_matematica.pdf">Computational Finance</a>, <em>Department of Mathematics - University of Padua</em> (in progress as of 2025)</li>
-        <li>BSc in <a href="https://www.geoteo.net/resources/autocertificazione_informatica.pdf">Computer Science</a>, <em>Department of Computer Science - University of Pisa</em> (summa cum laude 110L/110)</li>
-        <li>BEng in <a href="https://www.geoteo.net/resources/autocertificazione_ingegneria.pdf">Mechanical Engineering</a>, <em>Department of Industrial Engineering - University of Pisa</em> (not completed)</li>
+        <li>MSc in <b>Computational Finance</b>, <em>Department of Mathematics - University of Padua</em> (in progress as of 2025) &mdash; <a href="https://www.geoteo.net/resources/autocertificazione_matematica.pdf"><code><b>CF records</b></code></a></li>
+        <li>BSc in <b>Computer Science</b>, <em>Department of Computer Science - University of Pisa</em> (summa cum laude 110L/110) &mdash; <a href="https://www.geoteo.net/resources/autocertificazione_informatica.pdf"><code><b>CS records</b></code></a></li>
+        <li>BEng in <b>Mechanical Engineering</b>, <em>Department of Industrial Engineering - University of Pisa</em> (not completed) &mdash; <a href="https://www.geoteo.net/resources/autocertificazione_ingegneria.pdf"><code><b>ME records</b></code></a></li>
     </ul>
 
     <h2 id="programming-software">Programming &amp; Software</h2>
     <ul>
-        <li><code><b>LANGUAGES</b></code> <em>C/C++</em>, <em>Java</em>, <em>Perl</em>, <em>Python</em>, <em>JavaScript</em>, <em>Go</em>, <em>Scheme</em>, <em>OCaml</em>, <em>Haskell</em>, <em>Bash</em>, <em>AWK</em>, <em>R</em></li>
+        <li><code><b>LANGUAGES</b></code> <em>C/C++</em>, <em>Fortran</em>, <em>Java</em>, <em>Perl</em>, <em>Python</em>, <em>JavaScript</em>, <em>Go</em>, <em>Scheme</em>, <em>OCaml</em>, <em>Haskell</em>, <em>Bash</em>, <em>AWK</em>, <em>AMPL</em>, <em>R</em></li>
         <li><code><b>UNIX</b></code> <em>GNU/Linux</em> and <em>BSD</em> system management, <em>C</em> system programming and good knowledge of the <em>POSIX</em> standard</li>
         <li><code><b>TOOLS</b></code> Experience with various software such as <em>Vim</em>, <em>Emacs</em>, <em>Git</em>, <em>Docker</em>, <em>Refinitiv</em>, <em>MATLAB</em>, <em>Wolfram Mathematica</em>, <em>LaTeX</em></li>
         <li><code><b>EXTRA</b></code> Knowledge of <em>SQL</em>, <em>HTML</em> and <em>CSS</em></li>
@@ -105,7 +121,7 @@
 
     <h2 id="relevant-experience">Relevant Experience</h2>
     <ul>
-        <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7321961774625218560/"><code><b>IMC-CHALLENGE</b></code></a> First Italian team and ranked 108<sup>th</sup> worldwide out of more than 12,000 participants in the <em>IMC Prosperity Trading Challenge 2025</em>, a 15-day international competition involving both manual and algorithmic trading. Together with other <em>University of Padua</em> graduates (two classmates from the MSc in Computational Finance and a master student in Statistics), we implemented robust Python-based trading algorithms and delivered a top national performance, culminating in a +155K profit during the final round.</li>
+        <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7321961774625218560/"><code><b>IMC-CHALLENGE</b></code></a> First Italian team and ranked 108<sup>th</sup> worldwide in the 2025 edition of <em>IMC Prosperity Challenge</em>, a 15-day international algorithmic trading competition with more than 12,000 participants. Teaming up with other three <em>University of Padua</em> graduates from Computational Finance and Statistics, we implemented robust <em>Python</em> algorithms, solve tricky probability brainteasers and delivered a top national performance, culminating in a +155K profit during the final round.</li>
         <li><a href="https://github.com/matteogiorgi/toody"><code><b>TOODY</b></code></a> <em>Python</em> web application for the detection of variability indicators in requirements documents of software systems, written for my BSc thesis. The application uses <em>Spacy</em> for <em>NLP</em> analysis and <em>Flask</em> for the web interface.</li>
         <li><a href="http://didawiki.di.unipi.it/doku.php/fisica/informatica/201617/start"><code><b>LAB-ASSISTANT</b></code></a> Worked, in support of Professor Pelagatti, as lab assistant for the <em>C</em> laboratory exam at BSc in Physics at the <em>University of Pisa</em>. The main task was to help students during the exercise sessions and to correct their assignments.</li>
         <li><code><b>CNR-PROJECT</b></code> Worked, together with a colleague of mine, as a <em>Python</em> programmer inside the <em>CNR</em> offices in Pisa, helping in the realization of a scale model for blind people. The project was under the supervision of Doctor Furfari from <em>CNR</em> and Professor Pelagatti from the <em>University of Pisa</em>.</li>
@@ -113,18 +129,19 @@
         <li><a href="https://github.com/matteogiorgi/asteroids"><code><b>ASTEROIDS</b></code></a> <em>JavaScript</em> implementation of the popular game <em>Asteroids</em>. The game is written using the <em>p5.js</em> library and is particularly useful to understand the basics of <em>Event Programming</em>.</li>
         <li><a href="https://github.com/matteogiorgi/wiener"><code><b>RSA-REPORT</b></code></a> Independent studies, under the supervision of Professor Romani from the <em>University of Pisa</em>, regarding the attacks that exploit the <em>RSA</em> cryptosystem vulnerabilities with a specific focus on the <em>Wiener Attack</em> and its use of <em>Continued Fractions</em> for the factorization of the <em>RSA</em> module.</li>
         <li><a href="http://contaminationlab.unipi.it/conthackt-foodmobilitydigital"><code><b>HACKATHON</b></code></a> First place in the 2021 edition of <em>ContHackt</em>, organized by the <em>University of Pisa</em> and <em>Contamination Lab Pisa</em>. As winner, our team had access to the 2021/2022 <em>EUAcceL</em> project organized by the <em>European Institute of Innovation and Technology</em> and won the final stage with a blockchain prototype for the tracking of food products.</li>
+        <li><code><b>TUTORING</b></code> <em>Mathematics</em>, <em>Statistics</em>, <em>Computer Science</em>, and <em>Physics</em> tutoring sessions to university students. This improved my ability to communicate and adapt to different learning styles, while strengthening foundational concepts.</li>
     </ul>
 
     <h2 id="languages">Languages</h2>
     <ul>
         <li><code><b>ENGLISH</b></code> Advanced proficiency in speaking and writing, <em>Cambridge C1 Advanced (IELTS 7.0)</em> certification</li>
         <li><code><b>FRENCH</b></code> Basic understanding in speaking and writing, <em>DELF A2</em> certification</li>
-        <li><code><b>ITALIAN</b></code> Mother tongue</li>
+        <li><code><b>ITALIAN</b></code> Native proficiency (mother tongue)</li>
     </ul>
 
     <h2 id="areas-of-interest">Areas of Interest</h2>
     <ul>
-        <li>Being a student of <em>Computational Finance</em>, I am particularly interested in <em>Numerical Approximation</em> and <em>Mathematical Programming</em>. Specifically <em>Stochastic Optimization</em> and its applications in the field of <em>Portfolio Management</em>.</li>
+        <li>Being an aspiring quant, I am particularly interested in <em>Numerical Approximation</em> and <em>Mathematical Programming</em>, specifically <em>Stochastic Optimization</em> and <em>Stochastic Differential Equations</em>, with applications in the field of <em>Portfolio Management</em>.</li>
         <li>I am very keen on programming languages and I often find myself playing with a new language trying to improve my skills; this has made me focused on <em>Functional Programming</em>, experimenting with languages such as <em>Ocaml</em> and <em>Haskell</em>.</li>
         <li><em>Cryptanalysis</em> is another field that I find fascinating. I spent some time studying <em>Lattice Theory</em> and its implications regarding <em>Elliptic Curve</em> and <em>Post Quantum Cryptography</em>.</li>
     </ul>
@@ -153,5 +170,93 @@
             <tt><a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></tt>
         </center>
     </nav>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#4D4D6B"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.2,  // 0.5
+                    random: true
+                },
+                size: {
+                    value: 10,  // 5
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#4D4D6B",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3.0,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    attract: {
+                        enable: false
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "window",
+                events: {
+                    onhover: {
+                        enable: false,  // true
+                        mode: ["grab", "bubble"]
+                    },
+                    onclick: {
+                        enable: false,  // true
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 150,
+                        line_linked: {
+                            opacity: 0.8
+                        }
+                    },
+                    bubble: {
+                        distance: 250,
+                        size: 8,
+                        duration: 2,
+                        opacity: 0.8
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            if (window.pJSDom && window.pJSDom.length) {
+                const particles = window.pJSDom[0].pJS;
+                particles.interactivity.events.onhover.enable = false;
+            }
+        });
+
+        document.addEventListener('mouseenter', () => {
+            if (window.pJSDom && window.pJSDom.length) {
+                const particles = window.pJSDom[0].pJS;
+                particles.interactivity.events.onhover.enable = true;
+            }
+        });
+    </script>
 </body>
 </html>
