@@ -1,3 +1,3 @@
 # Matteo Giorgi
 
-Source code for my personal site, take a look at [geoteo.net](https://www.geoteo.net).
+Source code for my personal site, take a look at [matteogiorgi.github.io](https://matteogiorgi.github.io/).
