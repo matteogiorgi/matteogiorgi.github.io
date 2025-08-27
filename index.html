@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="color-scheme" content="light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Geoteo</title>
+    <title>Geoteodotnet</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%237d6ee7%22></rect><path d=%22M32.27 77.81L32.27 77.81Q28.31 77.81 28.31 74.57L28.31 74.57L28.31 23.72Q29.93 22.10 33.17 22.10L33.17 22.10Q35.33 22.10 36.86 22.95Q38.39 23.81 39.65 26.06L39.65 26.06L56.84 54.86Q57.92 56.75 59.09 58.86Q60.26 60.98 61.34 63.09Q62.42 65.21 63.36 67.06Q64.31 68.90 64.94 70.16L64.94 70.16L65.30 70.07Q64.58 62.78 64.44 55.40Q64.31 48.02 64.31 41L64.31 41L64.31 22.82Q64.85 22.64 65.75 22.41Q66.65 22.19 67.73 22.19L67.73 22.19Q71.69 22.19 71.69 25.43L71.69 25.43L71.69 76.37Q70.88 77.09 69.62 77.50Q68.36 77.90 66.83 77.90L66.83 77.90Q64.67 77.90 63.14 77.05Q61.61 76.19 60.35 73.94L60.35 73.94L43.25 45.14Q42.17 43.34 40.95 41.18Q39.74 39.02 38.61 36.95Q37.49 34.88 36.55 32.99Q35.60 31.10 34.97 29.84L34.97 29.84L34.61 29.93Q35.06 34.25 35.33 39.79Q35.60 45.32 35.60 50.27L35.60 50.27L35.60 77.18Q35.15 77.36 34.20 77.58Q33.26 77.81 32.27 77.81Z%22 fill=%22%23fff%22></path></svg>" />
 </head>
 
@@ -12,8 +12,9 @@
 
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
     html, body {
         min-height: 100vh;
         display: flex;
@@ -27,9 +28,11 @@
 		margin:1em auto;
 		max-width:60em;
 		padding:0 .62em 3.24em;
-        font-family: "Ubuntu", serif;
+        font-family: "Spectral", sans-serif;
+        font-size: 1.1rem;
         font-weight: 400;
         font-style: normal;
+        line-height: 1.5;
         position: relative;
         pointer-events: none;
 	}
@@ -50,7 +53,8 @@
         text-decoration: underline;
     }
     code, pre, kbd, samp {
-        font-family: "Ubuntu Mono", serif;
+        font-family: "Cascadia Code", monospace;
+        font-size: 0.9rem;
         font-weight: 400;
         font-style: normal;
     }
@@ -128,8 +132,9 @@
         <li><a href="https://github.com/matteogiorgi/membox"><code><b>MEMBOX</b></code></a> Developed a concurrent <em>C</em> server for a virtual repository system, capable of handling non-null sequences of bytes with synchronization primitives to ensure safe access in multi-threaded environments. The focus was on implementing robust memory management and concurrent data structures under POSIX threads.</li>
         <li><a href="https://github.com/matteogiorgi/sparse"><code><b>SPARSE</b></code></a> Implemented a simple <em>C</em> library that allows to handle sparce matrices efficiently. The project was particularly valuable for practicing pointer management in <em>C</em>, improving both memory efficiency and low-level programming skills.</li>
         <li><a href="https://github.com/matteogiorgi/computability"><code><b>COMPUTABILITY</b></code></a> Attempted to write a comprehensive set of notes and examples on the theory of computability, covering topics such as Turing machines, recursive functions, and undecidability. While the project was not completed, it provided valuable exposure to theoretical computer science and its connections with formal language theory.</li>
-        <li><code><b>CNR-PROJECT</b></code> Worked, together with a colleague of mine, as a <em>Python</em> programmer inside the <em>CNR</em> offices in Pisa, helping in the realization of a scale model for blind people. The project was under the supervision of Doctor Furfari from <em>CNR</em> and Professor Pelagatti from the <em>University of Pisa</em>.</li>
         <li><a href="http://contaminationlab.unipi.it/conthackt-foodmobilitydigital"><code><b>HACKATHON</b></code></a> First place in the 2021 edition of <em>ContHackt</em>, organized by the <em>University of Pisa</em> and <em>Contamination Lab Pisa</em>. As winner, our team had access to the 2021/2022 <em>EUAcceL</em> project organized by the <em>European Institute of Innovation and Technology</em> and won the final stage with a blockchain prototype for the tracking of food products.</li>
+        <li><code><b>CNR-PROJECT</b></code> Worked, together with a colleague of mine, as a <em>Python</em> programmer inside the <em>CNR</em> offices in Pisa, helping in the realization of a scale model for blind people. The project was under the supervision of Doctor Furfari from <em>CNR</em> and Professor Pelagatti from the <em>University of Pisa</em>.</li>
+        <li><code><b>TUTORING</b></code> Provided support to university students in <em>Mathematics</em>, <em>Statistics</em>, <em>Computer Science</em>, and <em>Physics</em>, developing strong communication and adaptability skills while reinforcing foundational knowledge.
     </ul>
 
     <center>
