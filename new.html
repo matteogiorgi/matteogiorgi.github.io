@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Matthew — computational tinkerer studying Computational Finance at University of Padua. Projects, experiences, and contact links." />
+  <title>Martinmate</title>
+
+  <!-- Favicon (inline SVG) -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="#7d6ee7"></rect><path d="M32.27 77.81L32.27 77.81Q28.31 77.81 28.31 74.57L28.31 74.57L28.31 23.72Q29.93 22.10 33.17 22.10L33.17 22.10Q35.33 22.10 36.86 22.95Q38.39 23.81 39.65 26.06L39.65 26.06L56.84 54.86Q57.92 56.75 59.09 58.86Q60.26 60.98 61.34 63.09Q62.42 65.21 63.36 67.06Q64.31 68.90 64.94 70.16L64.94 70.16L65.30 70.07Q64.58 62.78 64.44 55.40Q64.31 48.02 64.31 41L64.31 41L64.31 22.82Q64.85 22.64 65.75 22.41Q66.65 22.19 67.73 22.19L67.73 22.19Q71.69 22.19 71.69 25.43L71.69 25.43L71.69 76.37Q70.88 77.09 69.62 77.50Q68.36 77.90 66.83 77.90L66.83 77.90Q64.67 77.90 63.14 77.05Q61.61 76.19 60.35 73.94L60.35 73.94L43.25 45.14Q42.17 43.34 40.95 41.18Q39.74 39.02 38.61 36.95Q37.49 34.88 36.55 32.99Q35.60 31.10 34.97 29.84L34.97 29.84L34.61 29.93Q35.06 34.25 35.33 39.79Q35.60 45.32 35.60 50.27L35.60 50.27L35.60 77.18Q35.15 77.36 34.20 77.58Q33.26 77.81 32.27 77.81Z" fill="#fff"></path></svg>'
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --fg: #000000;
+      --muted: #4D4D6B;
+      --link: #A80000;
+      --card: #f7f7fb;
+      --border: #e1e4e8;
+      --maxw: 60rem;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #000000;
+        --fg: #ffffff;
+        --card: #0e0e14;
+        --border: #20222a;
+      }
+    }
+
+    html, body { height: 100%; }
+    body{
+      margin: 1rem auto;
+      max-width: var(--maxw);
+      padding: 0 .62rem 3.24rem;
+      font-family: "Ubuntu", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    h1, h2, h3{ line-height: 1.2; margin: 0.6em 0 0.2em; }
+    p, ul, ol{ margin: 0.6em 0; }
+
+    code, pre, kbd, samp{ font-family: "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre{
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      overflow: auto;
+    }
+
+    ::selection{ background: var(--muted); color: #fff; }
+
+    /* Layout */
+    .wrap{ display: grid; gap: 1.25rem; }
+
+    header{ display: grid; justify-items: center; text-align: center; gap: .25rem; padding-top: 1rem; }
+    header .title{ font-size: clamp(2rem, 5vw, 3rem); }
+
+    main{ display: grid; gap: 1.25rem; }
+
+    .lead{ font-size: 1.05rem; }
+
+    .experiences{
+      list-style: none; padding: 0; margin: .5rem 0 0;
+      display: grid; gap: .75rem;
+    }
+    .experiences li{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; }
+    .experiences code b{ letter-spacing: .02em; }
+
+    footer{ margin-top: 2rem; }
+    .links{ display: flex; gap: .5rem; justify-content: center; align-items: center; font-size: .9rem; }
+
+    /* Skip link */
+    .skip-link{ position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus{ left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem .75rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+
+    /* Print */
+    @media print{
+      body{ max-width: none; }
+      .particle-layer{ display: none !important; }
+    }
+
+    /* Particle canvas under content */
+    .particle-layer{ position: fixed; inset: 0; z-index: -1; background: var(--bg); }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="particles-js" class="particle-layer" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <h1 class="title">Martinmate</h1>
+    </header>
+
+    <main id="main">
+      <h2>Hello World!</h2>
+      <p class="lead">
+        I'm Matthew, a <em>computational tinkerer</em> with a strong foundation in mathematics, computer science, and finance. Holding a BSc in <em>Computer Science</em> from the <a href="https://www.unipi.it/en/">University of Pisa</a>, I'm currently enrolled at the Department of Mathematics of the <a href="https://www.unipd.it/en">University of Padua</a>, pursuing an MSc in <em>Computational Finance</em>, as an aspiring quant.
+      </p>
+
+      <p>
+        My academic interests lie at the intersection of numerical methods and mathematical programming, with a particular focus on stochastic optimization and portfolio management. Additionally, I maintain a keen interest in cryptanalysis and, since the beginning of my studies, I have been passionate about programming languages and compiler construction.
+      </p>
+
+      <h2>Experiences</h2>
+      <ul class="experiences">
+        <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7321961774625218560/"><code><b>IMC-CHALLENGE</b></code></a> First Italian team and ranked 108<sup>th</sup> worldwide in the 2025 edition of <em>IMC Prosperity Challenge</em>, a 15-day international algorithmic trading competition with more than 12,000 participants. Teaming up with three other <em>University of Padua</em> graduates in Computational Finance and Statistics, we implemented robust <em>Python</em> algorithms, tackled probability brainteasers, and delivered a top national performance, culminating in a +155K profit during the final round.</li>
+
+        <li><a href="https://github.com/matteogiorgi/toody"><code><b>TOODY</b></code></a> Designed and developed a <em>Python</em> web application from scratch to analyze software requirements documents and detect variability indicators. Built as part of my BSc thesis, the project covers both backend and frontend, using <em>Flask</em> for the web interface and <em>spaCy</em> for natural language processing.</li>
+
+        <li><a href="http://didawiki.di.unipi.it/doku.php/fisica/informatica/201617/start"><code><b>LAB-ASSISTANT</b></code></a> Worked, in support of Professor Pelagatti, as lab assistant for the <em>C</em> laboratory exam at the BSc in Physics at the <em>University of Pisa</em>. Helped students during exercise sessions and graded assignments.</li>
+
+        <li><a href="https://github.com/matteogiorgi/podeen"><code><b>PODEEN</b></code></a> Public repository containing configuration files and installation scripts for a complete and efficient minimal <em>UNIX</em> work environment based on Debian or derivatives.</li>
+
+        <li><a href="https://github.com/matteogiorgi/asteroids"><code><b>ASTEROIDS</b></code></a> <em>JavaScript</em> implementation of the classic game <em>Asteroids</em> using <em>p5.js</em>. Useful to understand the basics of event-driven programming.</li>
+
+        <li><a href="https://github.com/matteogiorgi/wiener"><code><b>WIENER-REPORT</b></code></a> Independent studies, under the supervision of Professor Romani (University of Pisa), on attacks exploiting vulnerabilities of the <em>RSA</em> cryptosystem, with a focus on the <em>Wiener Attack</em> and its use of continued fractions for factoring the RSA modulus.</li>
+
+        <li><a href="https://github.com/matteogiorgi/funint"><code><b>FUNINT</b></code></a> Designed and implemented an <em>OCaml</em> interpreter for a toy language with static scoping and dynamic type checking that handles tuples of expressions and can invoke tuples of functions for composition.</li>
+
+        <li><a href="https://github.com/matteogiorgi/wordle"><code><b>WORDLE</b></code></a> Developed a <em>Java</em> implementation of the <em>New York Times</em> Wordle. Focused on efficient string comparison for word matching in a classic client–server structure.</li>
+
+        <li><a href="https://github.com/matteogiorgi/graph"><code><b>GRAPH</b></code></a> Implemented a <em>Java</em> undirected graph library for homogeneous generic objects. Strengthened object‑oriented design and modularity, emphasizing code reuse and separation of concerns.</li>
+
+        <li><a href="https://github.com/matteogiorgi/membox"><code><b>MEMBOX</b></code></a> Developed a concurrent <em>C</em> server for a virtual repository system, capable of handling non‑null byte sequences with synchronization primitives to ensure safe access in multi‑threaded environments. Focus on robust memory management and concurrent data structures (POSIX threads).</li>
+
+        <li><a href="https://github.com/matteogiorgi/sparse"><code><b>SPARSE</b></code></a> Implemented a simple <em>C</em> library to handle <em>sparse</em> matrices efficiently. Valuable practice in pointer management, improving memory efficiency and low‑level programming skills.</li>
+
+        <li><a href="https://github.com/matteogiorgi/computability"><code><b>COMPUTABILITY</b></code></a> Draft notes and examples on computability theory (Turing machines, recursive functions, undecidability). Though incomplete, it provided exposure to theoretical CS and formal languages.</li>
+
+        <li><code><b>CNR-PROJECT</b></code> Worked with a colleague as a <em>Python</em> developer at the <em>CNR</em> offices in Pisa on a scale model for blind people, supervised by Dr. Furfari (CNR) and Prof. Pelagatti (University of Pisa).</li>
+
+        <li><a href="http://contaminationlab.unipi.it/conthackt-foodmobilitydigital"><code><b>HACKATHON</b></code></a> First place at <em>ContHackt</em> 2021 (University of Pisa & Contamination Lab). Our team later joined the 2021/22 <em>EUAcceL</em> program and won the final stage with a blockchain prototype for food supply‑chain tracking.</li>
+      </ul>
+
+      <!-- <h2 id="links">Links</h2> -->
+      <p class="links">
+        <a href="https://github.com/matteogiorgi"><code><b>GITHUB</b></code></a>
+        ·
+        <a href="mailto:matteo.giorgi@protonmail.com"><code><b>MAIL</b></code></a>
+        ·
+        <a href="https://meet.google.com/msc-hnrq-efd"><code><b>MEET</b></code></a>
+      </p>
+
+      <nav class="site-nav" aria-label="License" style="font-size: .85rem;">
+        <center><tt><a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></tt></center>
+      </nav>
+    </main>
+
+    <footer></footer>
+  </div>
+
+  <!-- Particles: respect reduced-motion and only enable hover on focus/hover -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+  <script>
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return; // Skip particles for reduced motion
+
+      const init = () => {
+        if (!window.particlesJS) return;
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 90, density: { enable: true, value_area: 800 } },
+            color: { value: getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#4D4D6B' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.18, random: true },
+            size: { value: 8, random: true },
+            line_linked: { enable: true, distance: 150, color: getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#4D4D6B', opacity: 0.18, width: 1 },
+            move: { enable: true, speed: 2.6, random: true, straight: false, out_mode: 'out' }
+          },
+          interactivity: {
+            detect_on: 'window',
+            events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
+            modes: { grab: { distance: 150, line_linked: { opacity: 0.8 } }, bubble: { distance: 250, size: 8, duration: 2, opacity: 0.8 } }
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      // Toggle hover interactivity only when the window actually has focus/hover
+      const toggleHover = (enable) => {
+        if (window.pJSDom && window.pJSDom[0]) {
+          window.pJSDom[0].pJS.interactivity.events.onhover.enable = !!enable;
+        }
+      };
+      window.addEventListener('mouseenter', () => toggleHover(true));
+      window.addEventListener('mouseleave', () => toggleHover(false));
+      window.addEventListener('blur', () => toggleHover(false));
+    })();
+  </script>
+</body>
+</html>
