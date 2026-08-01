@@ -230,6 +230,7 @@
             (title ,(if (string-null? title)
                       (site-title site)
                       (string-append title " — " (site-title site))))
+            (link (@ (rel "icon") (type "image/svg+xml") (href "/static/favicon.svg")))
             (link (@ (rel "stylesheet") (href "/static/style.css"))))
           (body
             (main ,@body)))))
@@ -256,7 +257,7 @@
 ;;; Site
 ;;; --------------------------------------------------------------------
 
-(site #:title "Geoteodotnet"
+(site #:title "(cons geo teo)"
       #:domain "geoteo.net"
       #:build-directory "docs"        ; point GitHub Pages at /docs
       #:default-metadata '((author . "Matteo Giorgi"))
