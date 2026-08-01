@@ -170,7 +170,7 @@
     (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5")
     (make-repo "lapq"                   "learning augmented priority queues"           "C"                "#555555")
     (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5")
-    (make-repo "worlde"                 "Wordle implementation from NYT"               "Java"             "#b07219")
+    (make-repo "wordle"                 "Wordle implementation from NYT"               "Java"             "#b07219")
     (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
     (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
     (make-repo "slock"                  "patched fork of slock"                        "C"                "#555555")
