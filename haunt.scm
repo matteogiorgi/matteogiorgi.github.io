@@ -146,10 +146,10 @@
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
        "mathematics, computer science, and finance. Holding a BSc in "
        (em "Computer Science") " from the "
-       (a (@ (href "https://www.unipi.it/en/")) "University of Pisa")
-       ", I'm currently enrolled at the Department of Mathematics of the "
-       (a (@ (href "https://www.unipd.it/en")) "University of Padua")
-       ", pursuing an MSc in " (em "Computational Finance") ", as an aspiring quant.")
+       (a (@ (href "https://di.unipi.it/en/")) "University of Pisa")
+       ", I'm currently enrolled at the "
+       (a (@ (href "https://stat.unibo.it/en/")) "University of Bologna")
+       ", Department of Statistical Sciences, pursuing an MSc in " (em "Statistical, Financial and Actuarial Sciences") ", as an aspiring quant.")
     (p "My academic interests lie at the intersection of numerical methods and "
        "mathematical programming, with a particular focus on stochastic optimization "
        "and portfolio management. Additionally, I maintain a keen interest in "
@@ -158,9 +158,9 @@
     (p "I'm also a passionate " (em "Linux") " enthusiast and a long-time "
        (em "Vim") " user. Over the years, I have refined a minimal yet powerful setup "
        "that reflects my preference for efficiency, simplicity and full control of the "
-       "development environment. Eventually this inspired "
-       (a (@ (href "#podeen")) (code "PODEEN"))
-       ", my personal project for a streamlined " (em "UNIX") " workspace.")))
+       "development environment; eventually this inspired "
+       (a (@ (href "#ulpe")) (code "ULPE"))
+       " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
   `(h4 (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
