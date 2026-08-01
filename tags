@@ -1,0 +1,109 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	number	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/matteo/doc/geoteo-haunt/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+*	/home/matteo/doc/geoteo-haunt/docs/static/style.css	16;"	s
+*	/home/matteo/doc/geoteo-haunt/static/style.css	16;"	s
+.colophon	/home/matteo/doc/geoteo-haunt/docs/static/style.css	82;"	c
+.colophon	/home/matteo/doc/geoteo-haunt/static/style.css	82;"	c
+.license	/home/matteo/doc/geoteo-haunt/docs/static/style.css	74;"	c
+.license	/home/matteo/doc/geoteo-haunt/static/style.css	74;"	c
+:root	/home/matteo/doc/geoteo-haunt/docs/static/style.css	6;"	s
+:root	/home/matteo/doc/geoteo-haunt/static/style.css	6;"	s
+<xp>	/home/matteo/doc/geoteo-haunt/haunt.scm	23;"	f
+Experiences	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	i
+Experiences	/home/matteo/doc/geoteo-haunt/old_index.html	125;"	i
+Geoteo	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	h
+Geoteo	/home/matteo/doc/geoteo-haunt/old_index.html	109;"	h
+Hello World!	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	i
+Hello World!	/home/matteo/doc/geoteo-haunt/old_index.html	112;"	i
+a	/home/matteo/doc/geoteo-haunt/docs/static/style.css	55;"	s
+a	/home/matteo/doc/geoteo-haunt/static/style.css	55;"	s
+a:hover	/home/matteo/doc/geoteo-haunt/docs/static/style.css	56;"	s
+a:hover	/home/matteo/doc/geoteo-haunt/static/style.css	56;"	s
+asteroids	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+asteroids	/home/matteo/doc/geoteo-haunt/old_index.html	131;"	I
+body	/home/matteo/doc/geoteo-haunt/docs/static/style.css	20;"	s
+body	/home/matteo/doc/geoteo-haunt/static/style.css	20;"	s
+cnr-project	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+cnr-project	/home/matteo/doc/geoteo-haunt/old_index.html	140;"	I
+code	/home/matteo/doc/geoteo-haunt/docs/static/style.css	60;"	s
+code	/home/matteo/doc/geoteo-haunt/static/style.css	60;"	s
+computability	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+computability	/home/matteo/doc/geoteo-haunt/old_index.html	138;"	I
+contact	/home/matteo/doc/geoteo-haunt/haunt.scm	165;"	f
+em	/home/matteo/doc/geoteo-haunt/docs/static/style.css	58;"	s
+em	/home/matteo/doc/geoteo-haunt/static/style.css	58;"	s
+experiences	/home/matteo/doc/geoteo-haunt/haunt.scm	39;"	f
+experiences	/home/matteo/doc/geoteo-haunt/old_index.html	125;"	I
+funint	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+funint	/home/matteo/doc/geoteo-haunt/old_index.html	133;"	I
+geoteo	/home/matteo/doc/geoteo-haunt/old_index.html	109;"	I
+graph	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+grph	/home/matteo/doc/geoteo-haunt/old_index.html	135;"	I
+h1	/home/matteo/doc/geoteo-haunt/docs/static/style.css	35;"	s
+h1	/home/matteo/doc/geoteo-haunt/docs/static/style.css	40;"	s
+h1	/home/matteo/doc/geoteo-haunt/static/style.css	35;"	s
+h1	/home/matteo/doc/geoteo-haunt/static/style.css	40;"	s
+h2	/home/matteo/doc/geoteo-haunt/docs/static/style.css	35;"	s
+h2	/home/matteo/doc/geoteo-haunt/docs/static/style.css	42;"	s
+h2	/home/matteo/doc/geoteo-haunt/static/style.css	35;"	s
+h2	/home/matteo/doc/geoteo-haunt/static/style.css	42;"	s
+h4	/home/matteo/doc/geoteo-haunt/docs/static/style.css	35;"	s
+h4	/home/matteo/doc/geoteo-haunt/docs/static/style.css	49;"	s
+h4	/home/matteo/doc/geoteo-haunt/static/style.css	35;"	s
+h4	/home/matteo/doc/geoteo-haunt/static/style.css	49;"	s
+hackathon	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+hackathon	/home/matteo/doc/geoteo-haunt/old_index.html	139;"	I
+helloworld	/home/matteo/doc/geoteo-haunt/old_index.html	112;"	I
+home	/home/matteo/doc/geoteo-haunt/haunt.scm	170;"	f
+home-page	/home/matteo/doc/geoteo-haunt/haunt.scm	204;"	f
+html	/home/matteo/doc/geoteo-haunt/docs/static/style.css	18;"	s
+html	/home/matteo/doc/geoteo-haunt/static/style.css	18;"	s
+imc-challenge	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+imc-challenge	/home/matteo/doc/geoteo-haunt/old_index.html	127;"	I
+intro	/home/matteo/doc/geoteo-haunt/haunt.scm	140;"	f
+lab-assistant	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+lab-assistant	/home/matteo/doc/geoteo-haunt/old_index.html	129;"	I
+layout	/home/matteo/doc/geoteo-haunt/haunt.scm	183;"	f
+li	/home/matteo/doc/geoteo-haunt/docs/static/style.css	67;"	s
+li	/home/matteo/doc/geoteo-haunt/static/style.css	67;"	s
+li:target	/home/matteo/doc/geoteo-haunt/docs/static/style.css	72;"	s
+li:target	/home/matteo/doc/geoteo-haunt/static/style.css	72;"	s
+links	/home/matteo/doc/geoteo-haunt/old_index.html	145;"	I
+main	/home/matteo/doc/geoteo-haunt/docs/static/style.css	29;"	s
+main	/home/matteo/doc/geoteo-haunt/static/style.css	29;"	s
+membox	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+membox	/home/matteo/doc/geoteo-haunt/old_index.html	136;"	I
+nojekyll	/home/matteo/doc/geoteo-haunt/haunt.scm	210;"	f
+ol	/home/matteo/doc/geoteo-haunt/docs/static/style.css	51;"	s
+ol	/home/matteo/doc/geoteo-haunt/static/style.css	51;"	s
+p	/home/matteo/doc/geoteo-haunt/docs/static/style.css	51;"	s
+p	/home/matteo/doc/geoteo-haunt/docs/static/style.css	53;"	s
+p	/home/matteo/doc/geoteo-haunt/static/style.css	51;"	s
+p	/home/matteo/doc/geoteo-haunt/static/style.css	53;"	s
+particles-js	/home/matteo/doc/geoteo-haunt/old_index.html	107;"	I
+podeen	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+podeen	/home/matteo/doc/geoteo-haunt/old_index.html	130;"	I
+sparse	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+sparse	/home/matteo/doc/geoteo-haunt/old_index.html	137;"	I
+toody	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+toody	/home/matteo/doc/geoteo-haunt/old_index.html	128;"	I
+tutoring	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+tutoring	/home/matteo/doc/geoteo-haunt/old_index.html	141;"	I
+ul	/home/matteo/doc/geoteo-haunt/docs/static/style.css	51;"	s
+ul	/home/matteo/doc/geoteo-haunt/docs/static/style.css	65;"	s
+ul	/home/matteo/doc/geoteo-haunt/static/style.css	51;"	s
+ul	/home/matteo/doc/geoteo-haunt/static/style.css	65;"	s
+wiener-report	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+wiener-report	/home/matteo/doc/geoteo-haunt/old_index.html	132;"	I
+wordle	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
+wordle	/home/matteo/doc/geoteo-haunt/old_index.html	134;"	I
+xp->sxml	/home/matteo/doc/geoteo-haunt/haunt.scm	32;"	f

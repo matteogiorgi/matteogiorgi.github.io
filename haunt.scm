@@ -139,6 +139,9 @@
 
 (define (intro)
   `((h1 "Geoteo")
+    (p (@ (class "colophon"))
+       "Built with " (a (@ (href "https://www.gnu.org/software/guile/")) "Guile")
+       " and " (a (@ (href "https://dthompson.us/projects/haunt.html")) "Haunt") ".")
     (h2 "Hello World!")
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
        "mathematics, computer science, and finance. Holding a BSc in "
