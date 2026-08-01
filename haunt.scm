@@ -252,6 +252,14 @@
     (list (make-page ".nojekyll" ""
                      (lambda (contents port) (display contents port))))))
 
+;; Emit the CNAME file at the build root so GitHub Pages keeps serving
+;; the custom domain. Must live at the root, not under static/, so it
+;; can't just be dropped in static/ like style.css and favicon.svg.
+(define (cname)
+  (lambda (site posts)
+    (list (make-page "CNAME" (site-domain site)
+                     (lambda (contents port) (display contents port))))))
+
 
 ;;; --------------------------------------------------------------------
 ;;; Site
@@ -263,4 +271,5 @@
       #:default-metadata '((author . "Matteo Giorgi"))
       #:builders (list (home-page)
                        (nojekyll)
+                       (cname)
                        (static-directory "static")))
