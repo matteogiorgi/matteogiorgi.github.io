@@ -35,10 +35,14 @@
 :root	/home/matteo/doc/geoteo-haunt/static/style.css	6;"	s
 <repo>	/home/matteo/doc/geoteo-haunt/haunt.scm	140;"	f
 <xp>	/home/matteo/doc/geoteo-haunt/haunt.scm	23;"	f
+Build	/home/matteo/doc/geoteo-haunt/README.md	17;"	s	chapter:Geoteo
 Experiences	/home/matteo/doc/geoteo-haunt/old_index.html	125;"	i
+Geoteo	/home/matteo/doc/geoteo-haunt/README.md	1;"	c
 Geoteo	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	h
 Geoteo	/home/matteo/doc/geoteo-haunt/old_index.html	109;"	h
 Hello World!	/home/matteo/doc/geoteo-haunt/old_index.html	112;"	i
+Layout	/home/matteo/doc/geoteo-haunt/README.md	8;"	s	chapter:Geoteo
+License	/home/matteo/doc/geoteo-haunt/README.md	29;"	s	chapter:Geoteo
 a	/home/matteo/doc/geoteo-haunt/docs/static/style.css	56;"	s
 a	/home/matteo/doc/geoteo-haunt/static/style.css	56;"	s
 a:hover	/home/matteo/doc/geoteo-haunt/docs/static/style.css	57;"	s
@@ -74,7 +78,7 @@ hackathon	/home/matteo/doc/geoteo-haunt/old_index.html	139;"	I
 heapx	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
 helloworld	/home/matteo/doc/geoteo-haunt/old_index.html	112;"	I
 home	/home/matteo/doc/geoteo-haunt/haunt.scm	206;"	f
-home-page	/home/matteo/doc/geoteo-haunt/haunt.scm	243;"	f
+home-page	/home/matteo/doc/geoteo-haunt/haunt.scm	244;"	f
 html	/home/matteo/doc/geoteo-haunt/docs/static/style.css	19;"	s
 html	/home/matteo/doc/geoteo-haunt/static/style.css	19;"	s
 imc-challenge	/home/matteo/doc/geoteo-haunt/old_index.html	127;"	I
@@ -91,7 +95,9 @@ main	/home/matteo/doc/geoteo-haunt/static/style.css	30;"	s
 matescm	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
 membox	/home/matteo/doc/geoteo-haunt/old_index.html	136;"	I
 minilispr	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
-nojekyll	/home/matteo/doc/geoteo-haunt/haunt.scm	249;"	f
+nojekyll	/home/matteo/doc/geoteo-haunt/haunt.scm	250;"	f
+ns422c04c40101	/home/matteo/doc/geoteo-haunt/static/favicon.svg	1;"	n	uri:http://www.w3.org/2000/svg
+nsf68504fc0101	/home/matteo/doc/geoteo-haunt/docs/static/favicon.svg	1;"	n	uri:http://www.w3.org/2000/svg
 octet	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
 octfmt	/home/matteo/doc/geoteo-haunt/docs/index.html	1;"	I
 ol	/home/matteo/doc/geoteo-haunt/docs/static/style.css	52;"	s
