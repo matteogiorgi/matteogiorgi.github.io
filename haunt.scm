@@ -161,12 +161,28 @@
 
 (define pinned-repos
   (list
-    (make-repo "matescm"   "tiny implementation of scheme"     "Scheme" "#1e4aec")
-    (make-repo "octet"     "brainfuck interpreter"              "Scheme" "#1e4aec")
-    (make-repo "minilispr" "minimal lisp-to-R compiler"         "R"      "#198ce7")
-    (make-repo "octfmt"    "GNU-Octave formatter"                "Go"     "#00add8")
-    (make-repo "heapx"     "experimental C library for heaps"   "C"      "#555555")
-    (make-repo "ulpe"      "work environment"                   "Shell"  "#89e051")))
+    (make-repo "matescm"                "tiny implementation of scheme"                "Scheme"           "#1e4aec")
+    (make-repo "octet"                  "brainfuck interpreter"                        "Scheme"           "#1e4aec")
+    (make-repo "minilispr"              "minimal lisp-to-R compiler"                   "R"                "#198ce7")
+    (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8")
+    (make-repo "heapx"                  "experimental C library for heaps"             "C"                "#555555")
+    (make-repo "ulpe"                   "work environment"                             "Shell"            "#89e051")
+    (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5")
+    (make-repo "lapq"                   "learning augmented priority queues"           "C"                "#555555")
+    (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5")
+    (make-repo "worlde"                 "Wordle implementation from NYT"               "Java"             "#b07219")
+    (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
+    (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
+    (make-repo "slock"                  "patched fork of slock"                        "C"                "#555555")
+    (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
+    (make-repo "vim-notewiki"           "vim plugin for note-taking"                   "Vim Script"       "#199f4b")
+    (make-repo "vim-startscreen"        "vim plugin for splash-screen"                 "Vim Script"       "#199f4b")
+    (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a")
+    (make-repo "funint"                 "functional interpreter"                       "OCaml"            "#ef7a08")
+    (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
+    (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
+    (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
+    (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
 ;;; --------------------------------------------------------------------
