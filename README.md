@@ -1,6 +1,6 @@
 # Geoteo
 
-Source for my personal website, [geoteo.net](https://geoteo.net). The site is a single Scheme program (`haunt.scm`) built with Haunt, the static site generator for GNU Guile: content — bio, pinned repos, contact links — lives as Scheme data, and the page is generated from it as SXML, with no client-side JavaScript.
+Source for my personal website, [geoteo.net](https://geoteo.net), built with *Haunt*, the static site generator for *GNU Guile*. The whole site is a single Scheme program (`haunt.scm`): content lives as data, and the page is generated from it as SXML, with no client-side JavaScript.
 
 
 
