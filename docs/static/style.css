@@ -9,8 +9,9 @@
     --muted:  #6a6a6a;
     --link:   #A80000;
     --code-bg:#f0f0ee;
+    --card-bg:#f4f4f2;
     --rule:   #e3e3e0;
-    --measure: 66rem;
+    --measure: 58rem;
 }
 
 * { box-sizing: border-box; }
@@ -71,6 +72,59 @@ li {
 }
 li:target { border-left-color: var(--link); }
 
+.repos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 1rem;
+}
+
+@media (max-width: 40rem) {
+    .repos { grid-template-columns: 1fr; }
+}
+
+.repo-card {
+    margin: 0;
+    padding: 1rem 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+}
+
+.repo-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .5rem;
+}
+
+.badge {
+    font-size: .72rem;
+    padding: .05rem .55rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--muted);
+}
+
+.repo-desc { margin: 0 0 .7rem; font-size: .95rem; }
+
+.repo-lang {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: .4rem;
+    font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    font-size: .78rem;
+    color: var(--muted);
+}
+
+.lang-dot {
+    width: .65rem;
+    height: .65rem;
+    border-radius: 50%;
+    transform: translateY(-1px);  /* correzione verticale */
+}
+
 .license {
     margin-top: .3rem;
     font-family: monospace;
@@ -92,7 +146,7 @@ li:target { border-left-color: var(--link); }
 @media (prefers-color-scheme: dark) {
 :root {
 --fg: #e6e6e6; --bg: #16161a; --muted: #9a9a9a;
---link: #8ab4f8; --code-bg: #24242a; --rule: #33333a;
+--link: #8ab4f8; --code-bg: #24242a; --card-bg: #1c1c22; --rule: #33333a;
 }
 }
  */

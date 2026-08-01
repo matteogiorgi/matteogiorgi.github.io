@@ -134,6 +134,42 @@
 
 
 ;;; --------------------------------------------------------------------
+;;; Data model: one pinned repo = name + description + language + color
+;;; --------------------------------------------------------------------
+
+(define-record-type <repo>
+  (make-repo name description language color)
+  repo?
+  (name        repo-name)         ; string, also the github.com/matteogiorgi/<name> slug
+  (description repo-description)  ; string
+  (language    repo-language)     ; string, GitHub's detected primary language
+  (color       repo-color))       ; string, hex color for the language dot
+
+;; Render a single pinned repo as a card, GitHub-style: name + "Public"
+;; badge, description, language dot and name.
+(define (repo->sxml r)
+  (let ((url (string-append "https://github.com/matteogiorgi/" (repo-name r))))
+    `(li (@ (class "repo-card") (id ,(repo-name r)))
+         (div (@ (class "repo-head"))
+              (code (a (@ (href ,url)) ,(repo-name r)))
+              (span (@ (class "badge")) "Public"))
+         (p (@ (class "repo-desc")) ,(repo-description r))
+         (div (@ (class "repo-lang"))
+              (span (@ (class "lang-dot")
+                       (style ,(string-append "background:" (repo-color r)))))
+              ,(repo-language r)))))
+
+(define pinned-repos
+  (list
+    (make-repo "matescm"   "tiny implementation of scheme"     "Scheme" "#1e4aec")
+    (make-repo "octet"     "brainfuck interpreter"              "Scheme" "#1e4aec")
+    (make-repo "minilispr" "minimal lisp-to-R compiler"         "R"      "#198ce7")
+    (make-repo "octfmt"    "GNU-Octave formatter"                "Go"     "#00add8")
+    (make-repo "heapx"     "experimental C library for heaps"   "C"      "#555555")
+    (make-repo "ulpe"      "work environment"                   "Shell"  "#89e051")))
+
+
+;;; --------------------------------------------------------------------
 ;;; Page content
 ;;; --------------------------------------------------------------------
 
@@ -142,14 +178,13 @@
     (p (@ (class "colophon"))
        "Built with " (a (@ (href "https://www.gnu.org/software/guile/")) "Guile")
        " and " (a (@ (href "https://dthompson.us/projects/haunt.html")) "Haunt") ".")
-    (h2 "Hello World!")
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
        "mathematics, computer science, and finance. Holding a BSc in "
        (em "Computer Science") " from the "
        (a (@ (href "https://di.unipi.it/en/")) "University of Pisa")
        ", I'm currently enrolled at the "
        (a (@ (href "https://stat.unibo.it/en/")) "University of Bologna")
-       ", Department of Statistical Sciences, pursuing an MSc in " (em "Statistical, Financial and Actuarial Sciences") ", as an aspiring quant.")
+       ", Department of Statistical Sciences, pursuing an MSc in " (em "Statistical, Financial and Actuarial Sciences") ".")
     (p "My academic interests lie at the intersection of numerical methods and "
        "mathematical programming, with a particular focus on stochastic optimization "
        "and portfolio management. Additionally, I maintain a keen interest in "
@@ -163,14 +198,18 @@
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
-  `(h4 (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
+  `(h4 (code (a (@ (href "https://geoteo.net/cv/src/cv.pdf")) "CV")) " · "
+       (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
        (code (a (@ (href "mailto:matteo.giorgi@protonmail.com")) "MAIL")) " · "
        (code (a (@ (href "https://meet.google.com/msc-hnrq-efd")) "MEET"))))
 
 (define (home)
   `(,@(intro)
+     #|
      (h2 "Experiences")
      (ul ,@(map xp->sxml experiences))
+     |#
+     (ul (@ (class "repos")) ,@(map repo->sxml pinned-repos))
      ,(contact)
      (p (@ (class "license"))
         (a (@ (href "https://creativecommons.org/licenses/by-sa/4.0")) "CC BY-SA 4.0"))))
