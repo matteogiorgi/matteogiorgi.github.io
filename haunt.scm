@@ -5,8 +5,8 @@
 ;;;   haunt build            build into ./docs
 ;;;   haunt serve --watch    live preview on http://localhost:8080
 ;;;
-;;; The site is a Scheme program: the "Experiences" section is generated
-;;; from the `experiences' data list below, so adding/reordering a project
+;;; The site is a Scheme program: the pinned-repos section is generated
+;;; from the `pinned-repos' data list below, so adding/reordering a project
 ;;; means editing data, not markup.
 
 (use-modules (haunt site)
@@ -14,123 +14,6 @@
              (haunt html)
              (haunt builder assets)
              (srfi srfi-9))          ; define-record-type
-
-
-;;; --------------------------------------------------------------------
-;;; Data model: one experience = name + optional url + SXML body
-;;; --------------------------------------------------------------------
-
-(define-record-type <xp>
-  (make-xp name url body)
-  xp?
-  (name xp-name)          ; string, rendered in monospace
-  (url  xp-url)           ; string or #f
-  (body xp-body))         ; SXML fragment (list of inline nodes)
-
-;; Render a single experience as an <li>. The id (derived from the name)
-;; makes every item linkable, e.g. the #podeen anchor in the intro.
-(define (xp->sxml x)
-  (let* ((name (xp-name x))
-         (url  (xp-url x))
-         (tag  (if url `(a (@ (href ,url)) ,name) name)))
-    `(li (@ (id ,(string-downcase name)))
-         (code ,tag) " " ,@(xp-body x))))
-
-(define experiences
-  (list
-    (make-xp "IMC-CHALLENGE"
-             "https://www.linkedin.com/feed/update/urn:li:activity:7321961774625218560/"
-             '("First italian team and ranked 108th worldwide in the 2025 edition of "
-               (em "IMC Prosperity Challenge") ", a 15-day international algorithmic "
-               "trading competition with more than 12,000 participants. Teaming up with "
-               "other three " (em "University of Padua") " graduates from Computational "
-               "Finance and Statistics, we implemented robust " (em "Python") " algorithms, "
-               "tackled tricky probability brainteasers, and delivered a top national "
-               "performance, culminating in a +155K profit during the final round."))
-    (make-xp "TOODY"
-             "https://github.com/matteogiorgi/toody"
-             '("Designed and developed a " (em "Python") " web application from scratch to "
-               "analyze software requirements documents and detect variability indicators. "
-               "Built as part of my BSc thesis, the project covers both backend and frontend, "
-               "using " (em "Flask") " for the web interface and " (em "spaCy")
-               " for natural language processing."))
-    (make-xp "LAB-ASSISTANT"
-             "http://didawiki.di.unipi.it/doku.php/fisica/informatica/201617/start"
-             '("Worked, in support of Professor Pelagatti, as lab assistant for the "
-               (em "C") " laboratory exam at BSc in Physics at the "
-               (em "University of Pisa") ". The main task was to help students during "
-               "the exercise sessions and to correct their assignments."))
-    (make-xp "PODEEN"
-             "https://github.com/matteogiorgi/podeen"
-             '("Public repository containing a collection of configuration files and "
-               "installation scripts for a complete and efficient minimal " (em "UNIX")
-               " work environment based on any " (em "Debian") " distribution."))
-    (make-xp "ASTEROIDS"
-             "https://github.com/matteogiorgi/asteroids"
-             '((em "JavaScript") " implementation of the popular game " (em "Asteroids")
-                                 ". The game is written using the " (em "p5.js") " library and is "
-                                 "particularly useful to understand the basics of event programming."))
-    (make-xp "WIENER-REPORT"
-             "https://github.com/matteogiorgi/wiener"
-             '("Independent studies, under the supervision of Professor Romani from the "
-               (em "University of Pisa") ", regarding the attacks that exploit the "
-               (em "RSA") " cryptosystem vulnerabilities with a specific focus on the "
-               (em "Wiener Attack") " and its use of " (em "Continued Fractions")
-               " for the factorization of the " (em "RSA") " module."))
-    (make-xp "FUNINT"
-             "https://github.com/matteogiorgi/funint"
-             '("Designed and implemented an " (em "Ocaml") " interpreter for a toy "
-               "language with static scoping and dynamic type checking that is able to "
-               "handle tuple of expressions and combine functions."))
-    (make-xp "WORDLE"
-             "https://github.com/matteogiorgi/wordle"
-             '("Developed a " (em "Java") " implementation of the popular game Wordle "
-               "from the New York Times. The project focused on handling efficient string "
-               "comparison algorithms for word matching in a classic client-server structure."))
-    (make-xp "GRAPH"
-             "https://github.com/matteogiorgi/graph"
-             '("Implemented a " (em "Java") " undirected graph library for homogeneous "
-               "generic objects. The project was particularly useful for strengthening "
-               "skills in object-oriented design and modularity, emphasizing code "
-               "reusability and clean separation of concerns."))
-    (make-xp "MEMBOX"
-             "https://github.com/matteogiorgi/membox"
-             '("Developed a concurrent " (em "C") " server for a virtual repository "
-               "system, capable of handling non-null sequences of bytes with "
-               "synchronization primitives to ensure safe access in multi-threaded "
-               "environments. The focus was on implementing robust memory management "
-               "and concurrent data structures under " (em "POSIX") " threads."))
-    (make-xp "SPARSE"
-             "https://github.com/matteogiorgi/sparse"
-             '("Implemented a simple " (em "C") " library that allows to handle sparce "
-               "matrices efficiently. The project was particularly valuable for practicing "
-               "pointer management in " (em "C") ", improving both memory efficiency and "
-               "low-level programming skills."))
-    (make-xp "COMPUTABILITY"
-             "https://github.com/matteogiorgi/computability"
-             '("Attempted to write a comprehensive set of notes and examples on the theory "
-               "of computability, covering topics such as Turing machines, recursive "
-               "functions, and undecidability. While the project was not completed, it "
-               "provided valuable exposure to theoretical computer science and its "
-               "connections with formal language theory."))
-    (make-xp "HACKATHON"
-             "http://contaminationlab.unipi.it/conthackt-foodmobilitydigital"
-             '("First place in the 2021 edition of " (em "ContHackt") ", organized by the "
-               (em "University of Pisa") " and " (em "Contamination Lab Pisa") ". As winner, "
-               "our team had access to the 2021/2022 " (em "EUAcceL") " project organized by "
-               "the " (em "European Institute of Innovation and Technology") " and won the "
-               "final stage with a blockchain prototype for the tracking of food products."))
-    (make-xp "CNR-PROJECT" #f
-             '("Worked, together with a colleague of mine, as a " (em "Python")
-               " programmer inside the " (em "CNR") " offices in Pisa, helping in the "
-               "realization of a scale model for blind people. The project was under the "
-               "supervision of Doctor Furfari from " (em "CNR") " and Professor Pelagatti "
-               "from the " (em "University of Pisa") "."))
-    (make-xp "TUTORING" #f
-             '("Provided support to university students in " (em "Mathematics") ", "
-               (em "Statistics") ", " (em "Computer Science") ", and " (em "Physics")
-               ", developing strong communication and adaptability skills while "
-               "reinforcing foundational knowledge."))))
 
 
 ;;; --------------------------------------------------------------------
@@ -212,7 +95,7 @@
        (em "Vim") " user. Over the years, I have refined a minimal yet powerful setup "
        "that reflects my preference for efficiency, simplicity and full control of the "
        "development environment; eventually this inspired "
-       (a (@ (href "#ulpe")) (code "ULPE"))
+       (a (@ (href "https://geoteo.net/ulpe/")) (code "ULPE"))
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
@@ -223,10 +106,6 @@
 
 (define (home)
   `(,@(intro)
-     #|
-     (h2 "Experiences")
-     (ul ,@(map xp->sxml experiences))
-     |#
      (ul (@ (class "repos")) ,@(map repo->sxml pinned-repos))
      ,(contact)
      (p (@ (class "license"))
