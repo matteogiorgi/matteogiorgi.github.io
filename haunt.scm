@@ -58,15 +58,16 @@
     (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
     (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
     (make-repo "slock"                  "patched fork of slock"                        "C"                "#555555")
+    (make-repo "nine"                   "Plan9 work environment"                       "Shell"            "#89e051")
     (make-repo "cobe"                   "simple GUI work environment"                  "Shell"            "#89e051")
-    (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
     (make-repo "vim-notewiki"           "vim plugin for note-taking"                   "Vim Script"       "#199f4b")
     (make-repo "vim-startscreen"        "vim plugin for splash-screen"                 "Vim Script"       "#199f4b")
+    (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
     (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a")
     (make-repo "funint"                 "functional interpreter"                       "OCaml"            "#ef7a08")
+    (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
-    (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
