@@ -127,22 +127,44 @@
   if (t) document.documentElement.setAttribute('data-theme', t);
 })();")
 
-;; Wires up the toggle button: flips data-theme, remembers the choice,
-;; and swaps the icon. The only client-side JavaScript on the site.
+;; Wires up the toggle button: just flips data-theme and remembers the
+;; choice. Which of the two SVG icons is visible is handled by CSS, not
+;; JS. The only client-side JavaScript on the site.
 (define theme-toggle-script
   "(function () {
   var btn = document.getElementById('theme-toggle');
-  function current() {
-    return document.documentElement.getAttribute('data-theme') || 'light';
-  }
-  btn.textContent = current() === 'dark' ? '☀' : '☾';
   btn.addEventListener('click', function () {
-    var next = current() === 'dark' ? 'light' : 'dark';
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-    btn.textContent = next === 'dark' ? '☀' : '☾';
   });
 })();")
+
+;; Moon/sun icons for the theme toggle, drawn as inline SVG instead of
+;; Unicode glyphs (☾/☀) so they look the same in every browser instead
+;; of falling back to whatever emoji font happens to be installed.
+;; CSS shows only the one matching the current theme.
+(define (moon-icon)
+  `(svg (@ (class "icon-moon") (viewBox "0 0 24 24") (width "16") (height "16")
+           (aria-hidden "true"))
+        (mask (@ (id "moon-mask"))
+              (rect (@ (width "24") (height "24") (fill "white")))
+              (circle (@ (cx "15") (cy "9") (r "7") (fill "black"))))
+        (circle (@ (cx "12") (cy "12") (r "9") (fill "currentColor") (mask "url(#moon-mask)")))))
+
+(define (sun-icon)
+  `(svg (@ (class "icon-sun") (viewBox "0 0 24 24") (width "16") (height "16")
+           (fill "none") (stroke "currentColor") (stroke-width "2")
+           (stroke-linecap "round") (aria-hidden "true"))
+        (circle (@ (cx "12") (cy "12") (r "5") (fill "currentColor") (stroke "none")))
+        (line (@ (x1 "12") (y1 "2") (x2 "12") (y2 "4")))
+        (line (@ (x1 "12") (y1 "20") (x2 "12") (y2 "22")))
+        (line (@ (x1 "4") (y1 "12") (x2 "2") (y2 "12")))
+        (line (@ (x1 "22") (y1 "12") (x2 "20") (y2 "12")))
+        (line (@ (x1 "5.6") (y1 "5.6") (x2 "4.2") (y2 "4.2")))
+        (line (@ (x1 "19.8") (y1 "19.8") (x2 "18.4") (y2 "18.4")))
+        (line (@ (x1 "5.6") (y1 "18.4") (x2 "4.2") (y2 "19.8")))
+        (line (@ (x1 "19.8") (y1 "4.2") (x2 "18.4") (y2 "5.6")))))
 
 (define (layout site title body)
   `((doctype "html")
@@ -160,7 +182,8 @@
             (link (@ (rel "stylesheet") (href "/static/style.css"))))
           (body
             (button (@ (id "theme-toggle") (type "button")
-                       (class "theme-toggle") (aria-label "Toggle dark mode")) "☾")
+                       (class "theme-toggle") (aria-label "Toggle dark mode"))
+                    ,(moon-icon) ,(sun-icon))
             (main ,@body)
             (script ,theme-toggle-script)))))
 

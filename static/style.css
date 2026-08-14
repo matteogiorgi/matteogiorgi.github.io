@@ -170,3 +170,8 @@ li:target { border-left-color: var(--link); }
     cursor: pointer;
 }
 .theme-toggle:hover { border-color: var(--link); }
+
+.theme-toggle svg { display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
