@@ -44,22 +44,22 @@
 
 (define pinned-repos
   (list
+    (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8")
+    (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8")
     (make-repo "matescm"                "tiny implementation of scheme"                "Scheme"           "#1e4aec")
     (make-repo "octet"                  "brainfuck interpreter"                        "Scheme"           "#1e4aec")
     (make-repo "minilispr"              "minimal lisp-to-R compiler"                   "R"                "#198ce7")
-    (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8")
+    (make-repo "awkltb"                 "AWK life-table toolkit"                       "Awk"              "#c30e9b")
     (make-repo "heapx"                  "experimental C library for heaps"             "C"                "#555555")
     (make-repo "lapq"                   "learning-augmented priority queues"           "C"                "#555555")
     (make-repo "ulpe"                   "UNIX-like work environment"                   "Shell"            "#89e051")
-    (make-repo "awkltb"                 "AWK life-table toolkit"                       "Awk"              "#c30e9b")
+    (make-repo "nine"                   "plan9port zero-config setup"                  "Shell"            "#89e051")
     (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5")
     (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5")
     (make-repo "wordle"                 "Wordle implementation from NYT"               "Java"             "#b07219")
     (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
     (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
     (make-repo "slock"                  "patched fork of slock"                        "C"                "#555555")
-    (make-repo "cobe"                   "simple GUI work environment"                  "Shell"            "#89e051")
-    (make-repo "nine"                   "Plan9 work environment"                       "Shell"            "#89e051")
     (make-repo "vim-notewiki"           "vim plugin for note-taking"                   "Vim Script"       "#199f4b")
     (make-repo "vim-startscreen"        "vim plugin for splash-screen"                 "Vim Script"       "#199f4b")
     (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
@@ -68,6 +68,7 @@
     (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
+    (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051")
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
@@ -117,21 +118,51 @@
 ;;; Layout (the HTML shell, as SXML)
 ;;; --------------------------------------------------------------------
 
+;; Applied in <head>, before first paint, so a stored preference sticks
+;; without a flash of the wrong theme. Light is the default (set in CSS);
+;; nothing is applied here until the visitor explicitly picks a theme.
+(define theme-init-script
+  "(function () {
+  var t = localStorage.getItem('theme');
+  if (t) document.documentElement.setAttribute('data-theme', t);
+})();")
+
+;; Wires up the toggle button: flips data-theme, remembers the choice,
+;; and swaps the icon. The only client-side JavaScript on the site.
+(define theme-toggle-script
+  "(function () {
+  var btn = document.getElementById('theme-toggle');
+  function current() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+  }
+  btn.textContent = current() === 'dark' ? '☀' : '☾';
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.textContent = next === 'dark' ? '☀' : '☾';
+  });
+})();")
+
 (define (layout site title body)
   `((doctype "html")
     (html (@ (lang "en"))
           (head
             (meta (@ (charset "utf-8")))
+            (script ,theme-init-script)
             (meta (@ (name "viewport")
                      (content "width=device-width, initial-scale=1.0, user-scalable=yes")))
-            (meta (@ (name "color-scheme") (content "light")))
+            (meta (@ (name "color-scheme") (content "light dark")))
             (title ,(if (string-null? title)
                       (site-title site)
                       (string-append title " — " (site-title site))))
             (link (@ (rel "icon") (type "image/svg+xml") (href "/static/favicon.svg")))
             (link (@ (rel "stylesheet") (href "/static/style.css"))))
           (body
-            (main ,@body)))))
+            (button (@ (id "theme-toggle") (type "button")
+                       (class "theme-toggle") (aria-label "Toggle dark mode")) "☾")
+            (main ,@body)
+            (script ,theme-toggle-script)))))
 
 
 ;;; --------------------------------------------------------------------
