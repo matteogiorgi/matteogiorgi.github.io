@@ -83,9 +83,9 @@
        " and " (a (@ (href "https://dthompson.us/projects/haunt.html")) "Haunt") ".")
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
        "mathematics, computer science, and finance. Holding a BSc in "
-       (em "Computer Science") " from the "
+       (em "Computer Science") " from the Department of Computer Science, "
        (a (@ (href "https://di.unipi.it/en/")) "University of Pisa")
-       ", I'm currently enrolled at the "
+       ", I'm currently enrolled full-time at the "
        (a (@ (href "https://stat.unibo.it/en/")) "University of Bologna")
        ", Department of Statistical Sciences, pursuing an MSc in " (em "Statistical, Financial and Actuarial Sciences") ".")
     (p "My academic interests lie at the intersection of numerical methods and "
