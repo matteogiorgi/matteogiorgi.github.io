@@ -197,7 +197,7 @@ li:target { border-left-color: var(--link); }
  * touch the plain `code` used for nav/repo links on the home page.
  * -------------------------------------------------------------------- */
 
-.markdown-body h1 { margin-bottom: 2.5rem; }
+.markdown-body h1 { margin-bottom: 2.0rem; }
 
 /* The home page's `main` has generous bottom padding meant as page-end
  * breathing room. Here .gh-footer sits right after </main>, so that
