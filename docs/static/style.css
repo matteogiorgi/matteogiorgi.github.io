@@ -199,6 +199,12 @@ li:target { border-left-color: var(--link); }
 
 .markdown-body h1 { margin-bottom: 1.5rem; }
 
+/* The home page's `main` has generous bottom padding meant as page-end
+ * breathing room. Here .gh-footer sits right after </main>, so that
+ * padding would stack with its own margin-top; drop it and let the
+ * footer's margin be the only gap. */
+.markdown-body main { padding-bottom: 0; }
+
 .markdown-body table {
     width: 100%;
     border-collapse: collapse;
