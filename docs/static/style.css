@@ -205,6 +205,21 @@ li:target { border-left-color: var(--link); }
  * footer's margin be the only gap. */
 .markdown-body main { padding-bottom: 0; }
 
+/* The home page's `ul`/`li` reset (no bullets, left-border accent) is
+ * built for the .repos grid. Restore normal list styling here. */
+.markdown-body ul,
+.markdown-body ol {
+    list-style: revert;
+    padding-left: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+.markdown-body li {
+    margin: 0 0 .35rem;
+    padding-left: 0;
+    border-left: none;
+}
+
 .markdown-body table {
     width: 100%;
     border-collapse: collapse;
