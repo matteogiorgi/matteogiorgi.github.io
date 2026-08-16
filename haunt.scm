@@ -21,21 +21,31 @@
 ;;; --------------------------------------------------------------------
 
 (define-record-type <repo>
-  (make-repo name description language color)
+  (make-repo* name description language color pages?)
   repo?
   (name        repo-name)         ; string, also the github.com/matteogiorgi/<name> slug
   (description repo-description)  ; string
   (language    repo-language)     ; string, GitHub's detected primary language
-  (color       repo-color))       ; string, hex color for the language dot
+  (color       repo-color)        ; string, hex color for the language dot
+  (pages?      repo-pages?))      ; boolean, has a GitHub Pages site at geoteo.net/<name>/
+
+;; Most repos don't have a Pages site, so make that argument optional.
+(define* (make-repo name description language color #:optional (pages? #f))
+  (make-repo* name description language color pages?))
 
 ;; Render a single pinned repo as a card, GitHub-style: name + "Public"
-;; badge, description, language dot and name.
+;; badge, description, language dot and name. The badge becomes a link to
+;; the repo's GitHub Pages site when it has one, plain text otherwise.
 (define (repo->sxml r)
   (let ((url (string-append "https://github.com/matteogiorgi/" (repo-name r))))
     `(li (@ (class "repo-card") (id ,(repo-name r)))
          (div (@ (class "repo-head"))
               (code (a (@ (href ,url)) ,(repo-name r)))
-              (span (@ (class "badge")) "Public"))
+              ,(if (repo-pages? r)
+                 `(a (@ (class "badge badge-link")
+                        (href ,(string-append "https://geoteo.net/" (repo-name r) "/")))
+                     "Public")
+                 `(span (@ (class "badge")) "Public")))
          (p (@ (class "repo-desc")) ,(repo-description r))
          (div (@ (class "repo-lang"))
               (span (@ (class "lang-dot")
@@ -44,7 +54,7 @@
 
 (define pinned-repos
   (list
-    (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8")
+    (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8" #t)
     (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8")
     (make-repo "matescm"                "tiny implementation of scheme"                "Scheme"           "#1e4aec")
     (make-repo "octet"                  "brainfuck interpreter"                        "Scheme"           "#1e4aec")
@@ -52,23 +62,23 @@
     (make-repo "awkltb"                 "AWK life-table toolkit"                       "Awk"              "#c30e9b")
     (make-repo "heapx"                  "experimental C library for heaps"             "C"                "#555555")
     (make-repo "lapq"                   "learning-augmented priority queues"           "C"                "#555555")
-    (make-repo "ulpe"                   "UNIX-like work environment"                   "Shell"            "#89e051")
-    (make-repo "nine"                   "plan9port zero-config setup"                  "Shell"            "#89e051")
-    (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5")
+    (make-repo "ulpe"                   "UNIX-like work environment"                   "Shell"            "#89e051" #t)
+    (make-repo "nine"                   "plan9port zero-config setup"                  "Shell"            "#89e051" #t)
+    (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5" #t)
     (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5")
-    (make-repo "wordle"                 "Wordle implementation from NYT"               "Java"             "#b07219")
+    (make-repo "wordle"                 "Wordle implementation from NYT"               "Java"             "#b07219" #t)
     (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
     (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
     (make-repo "slock"                  "patched fork of slock"                        "C"                "#555555")
     (make-repo "vim-notewiki"           "vim plugin for note-taking"                   "Vim Script"       "#199f4b")
     (make-repo "vim-startscreen"        "vim plugin for splash-screen"                 "Vim Script"       "#199f4b")
     (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
-    (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a")
+    (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a" #t)
     (make-repo "funint"                 "functional interpreter"                       "OCaml"            "#ef7a08")
     (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
-    (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051")
+    (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 

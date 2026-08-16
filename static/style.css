@@ -10,6 +10,7 @@
     --bg:     #fdfdfc;
     --muted:  #6a6a6a;
     --link:   #A80000;
+    --link-bg:rgba(168, 0, 0, .1);
     --card-bg:#f4f4f2;
     --rule:   #e3e3e0;
     --measure: 58rem;
@@ -30,6 +31,7 @@
     --bg:     #16161a;
     --muted:  #9a9a9a;
     --link:   #8ab4f8;
+    --link-bg:rgba(138, 180, 248, .15);
     --card-bg:#1c1c22;
     --rule:   #33333a;
 
@@ -132,6 +134,8 @@ li:target { border-left-color: var(--link); }
     border-radius: 999px;
     color: var(--muted);
 }
+
+.badge-link { color: var(--link); border-color: var(--link); background: var(--link-bg); }
 
 .repo-desc { margin: 0 0 .7rem; font-size: .95rem; }
 
