@@ -297,5 +297,5 @@ li:target { border-left-color: var(--link); }
     border-top: 1px solid var(--rule);
     font-size: .8rem;
     color: var(--muted);
-    text-align: right;
+    text-align: center;
 }
