@@ -299,8 +299,8 @@ li:target { border-left-color: var(--link); }
 
 .gh-footer {
     max-width: var(--measure);
-    margin: 2.5rem auto 0;
-    padding: .8rem 1.25rem 0;
+    margin: 4rem auto 0;
+    padding: .8rem 1.25rem 3rem;
     border-top: 1px solid var(--rule);
     color: var(--muted);
     text-align: right;
