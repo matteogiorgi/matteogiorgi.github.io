@@ -292,7 +292,7 @@ li:target { border-left-color: var(--link); }
 .markdown-body .highlight .err { color: var(--code-keyword); text-decoration: underline wavy; }
 
 .gh-footer {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     color: var(--muted);
     text-align: center;
 }
