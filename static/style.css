@@ -298,7 +298,7 @@ li:target { border-left-color: var(--link); }
 .markdown-body .highlight .err { color: var(--code-keyword); text-decoration: underline wavy; }
 
 .gh-footer {
-    margin-top: 2.0rem;
+    margin-top: 3.0rem;
     color: var(--muted);
     text-align: center;
 }
