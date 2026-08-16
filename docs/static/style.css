@@ -299,6 +299,8 @@ li:target { border-left-color: var(--link); }
 
 .gh-footer {
     margin-top: 2.5rem;
+    padding-top: .8rem;
+    border-top: 1px solid var(--rule);
     color: var(--muted);
-    text-align: center;
+    text-align: right;
 }
