@@ -298,9 +298,10 @@ li:target { border-left-color: var(--link); }
 .markdown-body .highlight .err { color: var(--code-keyword); text-decoration: underline wavy; }
 
 .gh-footer {
-    max-width: var(--measure);
+    width: calc(100% - 2.5rem);
+    max-width: calc(var(--measure) - 2.5rem);
     margin: 4rem auto 0;
-    padding: .8rem 1.25rem 3rem;
+    padding: .8rem 0 3rem;
     border-top: 1px solid var(--rule);
     color: var(--muted);
     text-align: right;
