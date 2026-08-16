@@ -214,6 +214,8 @@ li:target { border-left-color: var(--link); }
     margin: 0 0 1rem;
 }
 
+.markdown-body ol li::marker { font-weight: 700; }
+
 .markdown-body li {
     margin: 0 0 .35rem;
     padding-left: 0;
@@ -248,9 +250,9 @@ li:target { border-left-color: var(--link); }
 
 .markdown-body code {
     background: var(--card-bg);
-    padding: .15rem .4rem;
+    padding: .15em .4em;
     border-radius: 4px;
-    font-size: .85rem;
+    font-size: .85em;
 }
 
 .markdown-body pre code {
