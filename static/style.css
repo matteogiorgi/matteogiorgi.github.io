@@ -339,6 +339,6 @@ li:target { border-left-color: var(--link); }
 .gh-footer img {
     width: 1em;
     height: 1em;
-    vertical-align: -.15em;
-    margin-right: .05em;
+    vertical-align: -.25em;
+    margin-right: .12em;
 }
