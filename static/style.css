@@ -340,5 +340,5 @@ li:target { border-left-color: var(--link); }
     width: 1em;
     height: 1em;
     vertical-align: -.15em;
-    margin-right: .3em;
+    margin-right: .05em;
 }
