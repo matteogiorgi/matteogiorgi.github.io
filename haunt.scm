@@ -208,9 +208,11 @@
     (html (@ (lang "en"))
           (head
             (meta (@ (charset "utf-8")))
-            ;; Must precede theme-init-script below: that script looks
-            ;; this element up by id, so it needs to already be parsed.
-            (link (@ (rel "icon") (id "favicon") (type "image/svg+xml") (href "/static/favicon.svg")))
+            ;; No static <link rel="icon"> here on purpose: some browsers
+            ;; latch onto whichever icon they see first while parsing and
+            ;; ignore later DOM changes to it on reload, so theme-init-script
+            ;; (the first thing in <head>) must be the only thing that ever
+            ;; creates that link.
             (script ,theme-init-script)
             (meta (@ (name "viewport")
                      (content "width=device-width, initial-scale=1.0, user-scalable=yes")))
