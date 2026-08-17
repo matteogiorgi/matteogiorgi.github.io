@@ -55,10 +55,10 @@
 (define pinned-repos
   (list
     (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8" #t)
-    (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8")
+    (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8" #t)
     (make-repo "matescm"                "tiny implementation of scheme"                "Scheme"           "#1e4aec")
     (make-repo "octet"                  "brainfuck interpreter"                        "Scheme"           "#1e4aec")
-    (make-repo "minilispr"              "minimal lisp-to-R compiler"                   "R"                "#198ce7")
+    (make-repo "minilispr"              "minimal lisp-to-R compiler"                   "R"                "#198ce7" #t)
     (make-repo "awkltb"                 "AWK life-table toolkit"                       "Awk"              "#c30e9b")
     (make-repo "heapx"                  "experimental C library for heaps"             "C"                "#555555")
     (make-repo "lapq"                   "learning-augmented priority queues"           "C"                "#555555")
@@ -73,7 +73,7 @@
     (make-repo "vim-notewiki"           "vim plugin for note-taking"                   "Vim Script"       "#199f4b")
     (make-repo "vim-startscreen"        "vim plugin for splash-screen"                 "Vim Script"       "#199f4b")
     (make-repo "wiener"                 "Wiener's attack on RSA"                       "Wolfram Language" "#dd1100")
-    (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a" #t)
+    (make-repo "asteroids"              "modern implementation of Asteroids"           "JavaScript"       "#f1e05a")
     (make-repo "funint"                 "functional interpreter"                       "OCaml"            "#ef7a08")
     (make-repo "graph"                  "generic objects graph library"                "Java"             "#b07219")
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
