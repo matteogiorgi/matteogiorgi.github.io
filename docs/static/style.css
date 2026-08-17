@@ -332,5 +332,13 @@ li:target { border-left-color: var(--link); }
     padding: .8rem 0 3rem;
     border-top: 1px solid var(--rule);
     color: var(--muted);
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gh-footer img {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.15em;
+    margin-right: .3em;
 }
