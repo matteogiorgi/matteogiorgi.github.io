@@ -142,11 +142,16 @@
   window.applyTheme = function () {
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
-    var icon = document.getElementById('favicon');
-    if (icon) {
-      icon.href = document.documentElement.getAttribute('data-theme') === 'dark'
-        ? '/static/favicon-dark.svg' : '/static/favicon.svg';
-    }
+    var src = document.documentElement.getAttribute('data-theme') === 'dark'
+      ? '/static/favicon-dark.svg' : '/static/favicon.svg';
+    var old = document.getElementById('favicon');
+    if (old) old.remove();
+    var icon = document.createElement('link');
+    icon.id = 'favicon';
+    icon.rel = 'icon';
+    icon.type = 'image/svg+xml';
+    icon.href = src;
+    document.head.appendChild(icon);
   };
   applyTheme();
   window.addEventListener('pageshow', function (e) {
