@@ -131,24 +131,32 @@
 ;; Applied in <head>, before first paint, so a stored preference sticks
 ;; without a flash of the wrong theme. Light is the default (set in CSS);
 ;; nothing is applied here until the visitor explicitly picks a theme.
-;; Re-applied on `pageshow` too: a bfcache-restored page (browser back/
-;; forward) skips this script on the way back, so it can show a theme
-;; that's stale relative to what was picked on another geoteo.net page.
+;; Also swaps the favicon to match, since that's a per-file <link>, not
+;; something CSS can theme. Exposed on window so the toggle script below
+;; can reuse it instead of duplicating the favicon logic. Re-applied on
+;; `pageshow` too: a bfcache-restored page (browser back/forward) skips
+;; this script on the way back, so it can show a theme that's stale
+;; relative to what was picked on another geoteo.net page.
 (define theme-init-script
   "(function () {
-  function applyTheme() {
+  window.applyTheme = function () {
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
-  }
+    var icon = document.getElementById('favicon');
+    if (icon) {
+      icon.href = document.documentElement.getAttribute('data-theme') === 'dark'
+        ? '/static/favicon-dark.svg' : '/static/favicon.svg';
+    }
+  };
   applyTheme();
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) applyTheme();
   });
 })();")
 
-;; Wires up the toggle button: just flips data-theme and remembers the
-;; choice. Which of the two SVG icons is visible is handled by CSS, not
-;; JS. The only client-side JavaScript on the site.
+;; Wires up the toggle button: flips data-theme, remembers the choice,
+;; then reruns applyTheme so the favicon follows. Which of the two SVG
+;; icons is visible is handled by CSS, not JS.
 (define theme-toggle-script
   "(function () {
   var btn = document.getElementById('theme-toggle');
@@ -156,6 +164,7 @@
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+    window.applyTheme();
   });
 })();")
 
@@ -190,6 +199,9 @@
     (html (@ (lang "en"))
           (head
             (meta (@ (charset "utf-8")))
+            ;; Must precede theme-init-script below: that script looks
+            ;; this element up by id, so it needs to already be parsed.
+            (link (@ (rel "icon") (id "favicon") (type "image/svg+xml") (href "/static/favicon.svg")))
             (script ,theme-init-script)
             (meta (@ (name "viewport")
                      (content "width=device-width, initial-scale=1.0, user-scalable=yes")))
@@ -197,7 +209,6 @@
             (title ,(if (string-null? title)
                       (site-title site)
                       (string-append title " — " (site-title site))))
-            (link (@ (rel "icon") (type "image/svg+xml") (href "/static/favicon.svg")))
             (link (@ (rel "stylesheet") (href "/static/style.css"))))
           (body
             (button (@ (id "theme-toggle") (type "button")
