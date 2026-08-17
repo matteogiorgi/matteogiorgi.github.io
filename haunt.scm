@@ -131,10 +131,19 @@
 ;; Applied in <head>, before first paint, so a stored preference sticks
 ;; without a flash of the wrong theme. Light is the default (set in CSS);
 ;; nothing is applied here until the visitor explicitly picks a theme.
+;; Re-applied on `pageshow` too: a bfcache-restored page (browser back/
+;; forward) skips this script on the way back, so it can show a theme
+;; that's stale relative to what was picked on another geoteo.net page.
 (define theme-init-script
   "(function () {
-  var t = localStorage.getItem('theme');
-  if (t) document.documentElement.setAttribute('data-theme', t);
+  function applyTheme() {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  }
+  applyTheme();
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) applyTheme();
+  });
 })();")
 
 ;; Wires up the toggle button: just flips data-theme and remembers the
