@@ -334,10 +334,3 @@ li:target { border-left-color: var(--link); }
     color: var(--muted);
     text-align: right;
 }
-
-.gh-footer img {
-    width: 1em;
-    height: 1em;
-    vertical-align: -.15em;
-    margin-left: .15em;
-}
