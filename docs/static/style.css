@@ -335,10 +335,3 @@ li:target { border-left-color: var(--link); }
     display: flex;
     justify-content: space-between;
 }
-
-.gh-footer img {
-    width: 1em;
-    height: 1em;
-    vertical-align: -.25em;
-    margin-right: .12em;
-}
