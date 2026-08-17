@@ -3,7 +3,7 @@
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
     var src = document.documentElement.getAttribute('data-theme') === 'dark'
-      ? '/static/favicon-dark.svg' : '/static/favicon.svg';
+      ? '/static/favicon-dark.svg?theme=dark' : '/static/favicon.svg?theme=light';
     var old = document.getElementById('favicon');
     if (old) old.remove();
     var icon = document.createElement('link');

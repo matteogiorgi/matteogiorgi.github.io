@@ -136,14 +136,18 @@
 ;; can reuse it instead of duplicating the favicon logic. Re-applied on
 ;; `pageshow` too: a bfcache-restored page (browser back/forward) skips
 ;; this script on the way back, so it can show a theme that's stale
-;; relative to what was picked on another geoteo.net page.
+;; relative to what was picked on another geoteo.net page. The favicon
+;; URLs carry a `?theme=` query string because browsers cache the tab
+;; icon per page URL and often won't re-fetch it on reload just because
+;; the <link>'s href changed — each theme needs a genuinely distinct
+;; URL to force a fresh icon.
 (define theme-init-script
   "(function () {
   window.applyTheme = function () {
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
     var src = document.documentElement.getAttribute('data-theme') === 'dark'
-      ? '/static/favicon-dark.svg' : '/static/favicon.svg';
+      ? '/static/favicon-dark.svg?theme=dark' : '/static/favicon.svg?theme=light';
     var old = document.getElementById('favicon');
     if (old) old.remove();
     var icon = document.createElement('link');
