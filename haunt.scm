@@ -112,6 +112,7 @@
 
 (define (contact)
   `(h4 (code (a (@ (href "https://geoteo.net/cv/src/cv.pdf")) "CV")) " · "
+       (code (a (@ (href "https://geoteo.net/geonote")) "NOTES")) " · "
        (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
        (code (a (@ (href "mailto:matteo.giorgi@protonmail.com")) "MAIL")) " · "
        (code (a (@ (href "https://meet.google.com/msc-hnrq-efd")) "MEET"))))
