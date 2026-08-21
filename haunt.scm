@@ -34,8 +34,8 @@
   (make-repo* name description language color pages?))
 
 ;; Render a single pinned repo as a card, GitHub-style: name, description,
-;; language dot and name. Repos with a GitHub Pages site also get a "Page"
-;; badge linking to it; repos without one get no badge at all.
+;; language dot and name. Repos with a GitHub Pages site also get a
+;; "Geopage" badge linking to it; repos without one get no badge at all.
 (define (repo->sxml r)
   (let ((url (string-append "https://github.com/matteogiorgi/" (repo-name r))))
     `(li (@ (class "repo-card") (id ,(repo-name r)))
@@ -44,7 +44,7 @@
               ,@(if (repo-pages? r)
                   `((a (@ (class "badge badge-link")
                           (href ,(string-append "https://geoteo.net/" (repo-name r) "/")))
-                       "Page"))
+                       "Geopage"))
                   '()))
          (p (@ (class "repo-desc")) ,(repo-description r))
          (div (@ (class "repo-lang"))
