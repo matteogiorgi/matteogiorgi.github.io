@@ -191,6 +191,18 @@ li:target { border-left-color: var(--link); }
 }
 .theme-toggle:hover { border-color: var(--link); }
 
+/* Below this width .code-toolbar (top-right corner of a code block,
+ * sticky) starts colliding with this fixed button — measured the actual
+ * crossover around 990px/62rem, so 64rem leaves a safety margin for
+ * scrollbar-width differences across browsers/OSes. Move the button to
+ * the opposite corner instead of touching the toolbar's own positioning. */
+@media (max-width: 64rem) {
+    .theme-toggle {
+        left: 1.25rem;
+        right: auto;
+    }
+}
+
 .theme-toggle svg { display: block; }
 .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
@@ -294,16 +306,6 @@ li:target { border-left-color: var(--link); }
     align-items: center;
     gap: .5rem;
     z-index: 1;
-}
-
-/* Below this width the content column runs edge-to-edge, so the toolbar
- * would sit right under .theme-toggle (fixed, top: 1.25rem, height:
- * 2.2rem ≈ 3.45rem from the top). Park it below that instead of behind it. */
-@media (max-width: 40rem) {
-    .markdown-body .code-toolbar {
-        top: 3.8rem;
-        margin-top: 3.8rem;
-    }
 }
 
 .markdown-body .code-lang {
