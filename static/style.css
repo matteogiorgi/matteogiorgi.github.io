@@ -296,6 +296,16 @@ li:target { border-left-color: var(--link); }
     z-index: 1;
 }
 
+/* Below this width the content column runs edge-to-edge, so the toolbar
+ * would sit right under .theme-toggle (fixed, top: 1.25rem, height:
+ * 2.2rem ≈ 3.45rem from the top). Park it below that instead of behind it. */
+@media (max-width: 40rem) {
+    .markdown-body .code-toolbar {
+        top: 3.8rem;
+        margin-top: 3.8rem;
+    }
+}
+
 .markdown-body .code-lang {
     display: flex;
     align-items: center;
