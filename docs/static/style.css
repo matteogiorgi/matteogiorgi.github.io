@@ -129,15 +129,10 @@ li:target { border-left-color: var(--link); }
 
 .badge {
     font-size: .72rem;
-    color: var(--muted);
-}
-
-/* Only linked badges (repos with a Pages site) get the pill shape, so
- * the shape itself signals "clickable" without relying on hover/color. */
-.badge-link {
     padding: .05rem .55rem;
     border: 1px solid var(--rule);
     border-radius: 999px;
+    color: var(--muted);
 }
 
 .badge-link:hover {
