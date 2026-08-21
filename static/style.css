@@ -129,8 +129,6 @@ li:target { border-left-color: var(--link); }
 
 .badge {
     font-size: .72rem;
-    text-transform: uppercase;
-    letter-spacing: .03em;
     padding: .05rem .55rem;
     border: 1px solid var(--rule);
     border-radius: 999px;
