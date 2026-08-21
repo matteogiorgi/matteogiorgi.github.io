@@ -7,9 +7,9 @@ Source for my personal website, [geoteo.net](https://geoteo.net), built with *Ha
 
 ## Layout
 
-- `haunt.scm` — site content, page layout, and build configuration
-- `static/` — stylesheet and favicon, copied as-is into the build
-- `docs/` — generated output, served directly by GitHub Pages
+- [`haunt.scm`](https://github.com/matteogiorgi/matteogiorgi.github.io/blob/main/haunt.scm) — site content, page layout, and build configuration
+- [`static/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/static) — stylesheet and favicon, copied as-is into the build
+- [`docs/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/docs) — generated output, served directly by GitHub Pages
 
 
 
