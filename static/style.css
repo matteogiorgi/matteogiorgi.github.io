@@ -234,6 +234,8 @@ li:target { border-left-color: var(--link); }
 }
 
 .markdown-body table {
+    display: block;
+    overflow-x: auto;
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
