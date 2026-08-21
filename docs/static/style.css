@@ -130,6 +130,7 @@ li:target { border-left-color: var(--link); }
 .badge {
     font-size: .72rem;
     padding: .05rem .55rem;
+    background: var(--rule);
     border: 1px solid var(--rule);
     border-radius: 999px;
     color: var(--muted);
