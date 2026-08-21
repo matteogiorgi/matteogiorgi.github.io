@@ -129,13 +129,23 @@ li:target { border-left-color: var(--link); }
 
 .badge {
     font-size: .72rem;
-    padding: .05rem .55rem;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
     color: var(--muted);
 }
 
-.badge-link:hover { color: var(--link); border-color: var(--link); background: var(--link-bg); }
+/* Only linked badges (repos with a Pages site) get the pill shape, so
+ * the shape itself signals "clickable" without relying on hover/color. */
+.badge-link {
+    padding: .05rem .55rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+}
+
+.badge-link:hover {
+    color: var(--link);
+    border-color: var(--link);
+    background: var(--link-bg);
+    text-decoration: none;
+}
 
 .repo-desc { margin: 0 0 .7rem; font-size: .95rem; }
 
