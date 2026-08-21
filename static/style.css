@@ -262,16 +262,22 @@ li:target { border-left-color: var(--link); }
     background: var(--card-bg);
     border: 1px solid var(--rule);
     border-radius: 8px;
-    padding: 2.5rem 1.2rem 1rem;
+    padding: 1rem 1.2rem;
     margin: 1.5rem 0;
     overflow-x: auto;
     line-height: 1.5;
 }
 
-.markdown-body .code-lang {
+.markdown-body .code-toolbar {
     position: absolute;
-    top: .7rem;
-    left: 1.2rem;
+    top: .6rem;
+    right: .6rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.markdown-body .code-lang {
     font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
     font-size: .72rem;
     text-transform: uppercase;
@@ -280,9 +286,6 @@ li:target { border-left-color: var(--link); }
 }
 
 .markdown-body .copy-btn {
-    position: absolute;
-    top: .6rem;
-    right: .6rem;
     display: flex;
     align-items: center;
     justify-content: center;
