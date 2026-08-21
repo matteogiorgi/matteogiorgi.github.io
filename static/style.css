@@ -297,6 +297,13 @@ li:target { border-left-color: var(--link); }
 }
 
 .markdown-body .code-lang {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+    padding: 0 .5rem;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
     font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
     font-size: .72rem;
     text-transform: uppercase;
