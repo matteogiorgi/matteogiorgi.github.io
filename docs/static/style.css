@@ -257,13 +257,21 @@ li:target { border-left-color: var(--link); }
 .markdown-body th { border-bottom: 2px solid var(--rule); }
 .markdown-body tr:last-child td { border-bottom: none; }
 
-.markdown-body pre {
+/* pre is the horizontally-scrolling element; .code-block-wrap is the
+ * non-scrolling positioning context for .code-toolbar, so the button
+ * and language label stay pinned to the corner instead of scrolling
+ * away with long code lines. */
+.markdown-body .code-block-wrap {
     position: relative;
     background: var(--card-bg);
     border: 1px solid var(--rule);
     border-radius: 8px;
-    padding: 1rem 1.2rem;
     margin: 1.5rem 0;
+}
+
+.markdown-body pre {
+    padding: 1rem 1.2rem;
+    margin: 0;
     overflow-x: auto;
     line-height: 1.5;
 }
