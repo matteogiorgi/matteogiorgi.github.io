@@ -257,16 +257,22 @@ li:target { border-left-color: var(--link); }
 .markdown-body th { border-bottom: 2px solid var(--rule); }
 .markdown-body tr:last-child td { border-bottom: none; }
 
-/* pre is the horizontally-scrolling element; .code-block-wrap is the
- * non-scrolling positioning context for .code-toolbar, so the button
- * and language label stay pinned to the corner instead of scrolling
- * away with long code lines. */
+/* pre is the horizontally-scrolling element; .code-block-wrap stacks it
+ * with .code-toolbar in the same grid cell so the toolbar overlays the
+ * top-right corner without reserving its own row. Combined with
+ * position: sticky on the toolbar, that overlay then tracks vertical
+ * page scroll too, staying visible while any part of a tall code block
+ * is on screen, without ever leaving that block's own bounds. */
 .markdown-body .code-block-wrap {
-    position: relative;
+    display: grid;
     background: var(--card-bg);
     border: 1px solid var(--rule);
     border-radius: 8px;
     margin: 1.5rem 0;
+}
+
+.markdown-body .code-block-wrap pre {
+    grid-area: 1 / 1;
 }
 
 .markdown-body pre {
@@ -277,12 +283,16 @@ li:target { border-left-color: var(--link); }
 }
 
 .markdown-body .code-toolbar {
-    position: absolute;
+    grid-area: 1 / 1;
+    position: sticky;
     top: .6rem;
-    right: .6rem;
+    align-self: start;
+    justify-self: end;
+    margin-right: .6rem;
     display: flex;
     align-items: center;
     gap: .5rem;
+    z-index: 1;
 }
 
 .markdown-body .code-lang {
