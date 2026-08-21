@@ -233,6 +233,9 @@ li:target { border-left-color: var(--link); }
     color: var(--muted);
 }
 
+/* MathJax display equations, same overflow problem as wide tables. */
+.markdown-body mjx-container[display="true"] { overflow-x: auto; }
+
 .markdown-body table {
     display: block;
     overflow-x: auto;
