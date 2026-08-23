@@ -299,6 +299,8 @@ li:target { border-left-color: var(--link); }
     margin: 0;
     overflow-x: auto;
     line-height: 1.5;
+    tab-size: 4;
+    -moz-tab-size: 4;
 }
 
 .markdown-body .code-toolbar {
