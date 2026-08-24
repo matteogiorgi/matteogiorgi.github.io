@@ -254,8 +254,10 @@ li:target { border-left-color: var(--link); }
 
 /* MathJax display equations, same overflow problem as wide tables.
  * overflow-y is explicit: setting only overflow-x computes overflow-y
- * to auto too (per spec), which shows an unwanted vertical scrollbar. */
-.markdown-body mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+ * to auto too (per spec), which shows an unwanted vertical scrollbar.
+ * The vertical padding gives tall glyphs (sum/hat accents, stacked
+ * sub/superscripts) clearance so overflow-y: hidden doesn't clip them. */
+.markdown-body mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: .35rem 0; }
 
 .markdown-body table {
     display: block;
