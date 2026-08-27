@@ -259,6 +259,28 @@ li:target { border-left-color: var(--link); }
  * sub/superscripts) clearance so overflow-y: hidden doesn't clip them. */
 .markdown-body mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: .35rem 0; }
 
+/* mermaid-render.js drops the rendered SVG into div.mermaid; small
+ * diagrams don't fill the container width, so without this they sit
+ * flush left instead of centered. */
+.markdown-body .mermaid {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+/* Mermaid sets width="100%" plus an inline max-width equal to the
+ * diagram's natural pixel size, so a diagram wider than the block
+ * shrinks to fit while a smaller one renders at full size -- same
+ * node/font detail ends up at different visual scales depending on
+ * diagram size. Force natural size everywhere and let oversized
+ * diagrams scroll instead, matching how tables/code/MathJax are
+ * handled above. !important is needed to beat Mermaid's inline style. */
+.markdown-body .mermaid svg {
+    width: auto !important;
+    max-width: none !important;
+}
+
 .markdown-body table {
     display: block;
     overflow-x: auto;
