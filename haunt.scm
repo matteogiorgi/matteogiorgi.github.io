@@ -111,7 +111,7 @@
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
-  `(h4 (code (a (@ (href "https://geoteo.net/cv/src/cv.pdf")) "CV")) " · "
+  `(h4 (code (a (@ (href "https://geoteo.net/cv")) "CV")) " · "
        (code (a (@ (href "https://geoteo.net/geonote")) "NOTES")) " · "
        (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
        (code (a (@ (href "mailto:matteo.giorgi@protonmail.com")) "MAIL")) " · "
