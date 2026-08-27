@@ -264,21 +264,21 @@ li:target { border-left-color: var(--link); }
  * flush left instead of centered. */
 .markdown-body .mermaid {
     display: flex;
-    justify-content: center;
+    /* Plain `center` splits overflow evenly on both sides, but scrolling
+     * can only reach the right side -- the left portion of an oversized
+     * diagram would be cut off and unreachable. `safe` falls back to
+     * left-aligned once content no longer fits, keeping all of it
+     * scrollable, while still centering diagrams that do fit. */
+    justify-content: safe center;
     overflow-x: auto;
     margin: 1.5rem 0;
 }
 
-/* Mermaid sets width="100%" plus an inline max-width equal to the
- * diagram's natural pixel size, so a diagram wider than the block
- * shrinks to fit while a smaller one renders at full size -- same
- * node/font detail ends up at different visual scales depending on
- * diagram size. Force natural size everywhere and let oversized
- * diagrams scroll instead, matching how tables/code/MathJax are
- * handled above. !important is needed to beat Mermaid's inline style. */
+/* mermaid-render.js pins the svg to its natural pixel size, but a flex
+ * item can still shrink below that (flex-shrink defaults to 1) to fit the
+ * container -- which is exactly the shrinking we're trying to avoid. */
 .markdown-body .mermaid svg {
-    width: auto !important;
-    max-width: none !important;
+    flex-shrink: 0;
 }
 
 .markdown-body table {

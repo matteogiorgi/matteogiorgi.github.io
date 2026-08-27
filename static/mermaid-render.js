@@ -5,28 +5,34 @@ import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
  * which has poor contrast against the dark background. Kept as literal hex values
  * rather than var(--x) references: Mermaid derives several colors (secondary/tertiary
  * shades, note colors, etc.) from these via real color math at render time, which
- * breaks if handed a CSS variable it can't parse as a color. */
+ * breaks if handed a CSS variable it can't parse as a color.
+ *
+ * primaryColor/clusterBkg are --link blended over --bg at the same opacity as
+ * --link-bg (10% light / 15% dark, 5% for the fainter cluster tint) -- pre-computed
+ * here since fill/lineColor need solid colors, not the rgba() --link-bg itself.
+ * primaryBorderColor/lineColor use --link at full strength so nodes and arrows
+ * pick up the site's accent color instead of reading flat grayscale. */
 const THEME_VARS = {
     light: {
         background:          "#fdfdfc",
-        primaryColor:        "#f4f4f2",
-        primaryBorderColor:  "#6a6a6a",
+        primaryColor:        "#f5e4e3",
+        primaryBorderColor:  "#a80000",
         primaryTextColor:    "#1a1a1a",
-        lineColor:           "#6a6a6a",
+        lineColor:           "#a80000",
         textColor:           "#1a1a1a",
         edgeLabelBackground: "#fdfdfc",
-        clusterBkg:          "#f4f4f2",
+        clusterBkg:          "#f9f0ef",
         clusterBorder:       "#e3e3e0",
     },
     dark: {
         background:          "#16161a",
-        primaryColor:        "#1c1c22",
-        primaryBorderColor:  "#9a9a9a",
+        primaryColor:        "#272e3b",
+        primaryBorderColor:  "#8ab4f8",
         primaryTextColor:    "#e6e6e6",
-        lineColor:           "#9a9a9a",
+        lineColor:           "#8ab4f8",
         textColor:           "#e6e6e6",
         edgeLabelBackground: "#16161a",
-        clusterBkg:          "#1c1c22",
+        clusterBkg:          "#1c1e25",
         clusterBorder:       "#33333a",
     },
 };
@@ -52,6 +58,21 @@ async function renderAll() {
     for (const [i, div] of blocks.entries()) {
         const { svg } = await mermaid.render(`mermaid-diagram-${pass}-${i}`, div.dataset.source);
         div.innerHTML = svg;
+
+        /* Mermaid ships width="100%" plus an inline max-width capped at the
+         * diagram's natural pixel size, so it shrinks to fit a narrower
+         * container but never grows past its own size in a wider one. That
+         * asymmetry is exactly what we don't want: it leaves large diagrams
+         * shrunk while small ones sit at natural size, so the same node
+         * looks a different size depending on which diagram it's in. Pin
+         * width/height to the viewBox's own pixel size instead, so every
+         * diagram always renders 1:1 -- oversized ones then overflow into
+         * the .mermaid container's horizontal scroll rather than shrinking. */
+        const svgEl = div.querySelector("svg");
+        const { width, height } = svgEl.viewBox.baseVal;
+        svgEl.style.width = `${width}px`;
+        svgEl.style.height = `${height}px`;
+        svgEl.style.maxWidth = "none";
     }
 }
 
