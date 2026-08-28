@@ -93,6 +93,8 @@
     (p (@ (class "colophon"))
        "Built with " (a (@ (href "https://www.gnu.org/software/guile/")) "Guile")
        " and " (a (@ (href "https://dthompson.us/projects/haunt.html")) "Haunt") ".")
+    (img (@ (class "hero-gif") (src "/static/me.gif") (alt "Matteo Giorgi")
+            (width "1000") (height "300")))
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
        "mathematics, computer science, and finance. Holding a BSc in "
        (em "Computer Science") " from the Department of Computer Science, "

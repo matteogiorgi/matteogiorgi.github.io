@@ -177,6 +177,14 @@ li:target { border-left-color: var(--link); }
     text-align: center;
 }
 
+.hero-gif {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 2rem;
+    border-radius: 8px;
+}
+
 .theme-toggle {
     position: fixed;
     top: 1.25rem;
