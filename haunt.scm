@@ -80,7 +80,7 @@
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
     (make-repo "amele"                  "electronic administrator"                     "Python"           "#3572a5")
-    (make-repo "geonote"                "simple code setup tool"                       "HTML"             "#e34c26" #t)
+    (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
