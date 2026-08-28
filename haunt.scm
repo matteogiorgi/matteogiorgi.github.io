@@ -79,6 +79,8 @@
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
+    (make-repo "amele"                  "electronic administrator"                     "Python"           "#3572a5")
+    (make-repo "geonote"                "simple code setup tool"                       "HTML"             "#e34c26" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
@@ -111,9 +113,7 @@
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
-  `(h4 (code (a (@ (href "https://geoteo.net/cv")) "CV")) " · "
-       (code (a (@ (href "https://geoteo.net/geonote")) "NOTES")) " · "
-       (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
+  `(h4 (code (a (@ (href "https://github.com/matteogiorgi")) "GITHUB")) " · "
        (code (a (@ (href "mailto:matteo.giorgi@protonmail.com")) "MAIL")) " · "
        (code (a (@ (href "https://meet.google.com/msc-hnrq-efd")) "MEET"))))
 
