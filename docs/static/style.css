@@ -254,6 +254,10 @@ li:target { border-left-color: var(--link); }
     border-left: none;
 }
 
+/* Raw URLs used as link text (e.g. <https://...>) have no natural break
+ * points, so a long one overflows the container instead of wrapping. */
+.markdown-body a { overflow-wrap: anywhere; }
+
 .markdown-body blockquote {
     margin: 1rem 0;
     padding: 0 0 0 1rem;
