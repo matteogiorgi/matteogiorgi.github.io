@@ -54,6 +54,8 @@
 
 (define pinned-repos
   (list
+    (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
+    (make-repo "abulafia"               "Markov-Chain text generator"                  "C"                "#555555" #t)
     (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8" #t)
     (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8" #t)
     (make-repo "matescm"                "tiny implementation of scheme"                "Scheme"           "#1e4aec")
@@ -79,8 +81,6 @@
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
-    (make-repo "amele"                  "electronic administrator"                     "Python"           "#3572a5")
-    (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
@@ -96,10 +96,11 @@
     (img (@ (class "hero-gif") (src "/static/me.gif") (alt "Matteo Giorgi")
             (width "1000") (height "300")))
     (p "I'm Matthew, a computational tinkerer with a strong foundation in "
-       "mathematics, computer science, and finance. Holding a BSc in "
+       "mathematics, computer science, and finance. I started my studies with "
+       (em "Mechanical Engineering") " before earning a BSc in "
        (em "Computer Science") " from the Department of Computer Science, "
        (a (@ (href "https://di.unipi.it/en/")) "University of Pisa")
-       ", I'm currently enrolled full-time at the "
+       ". I'm currently enrolled full-time at the "
        (a (@ (href "https://stat.unibo.it/en/")) "University of Bologna")
        ", Department of Statistical Sciences, pursuing an MSc in " (em "Statistical, Financial and Actuarial Sciences") ".")
     (p "My academic interests lie at the intersection of numerical methods and "
