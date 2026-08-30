@@ -17,13 +17,13 @@ import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
  * next to inline code and code blocks than in Mermaid's default sans-serif. */
 const FONT_FAMILY = '"Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace';
 
-/* Matches .markdown-body code's rendered size (measured ~15px against the
- * site's 17.6px body text), rather than Mermaid's own default of 16px,
- * which is neither the body size nor the inline-code size. A literal px
- * value for the same reason FONT_FAMILY is literal above: not a live
- * binding, just a snapshot -- if the `.markdown-body code { font-size:
- * .85em }` rule in style.css changes, re-measure and update this by hand. */
-const FONT_SIZE = "15px";
+/* Matches .markdown-body pre code's rendered size (.85rem against the
+ * site's 16px root), the fenced-code-block size, rather than Mermaid's own
+ * default of 16px or the larger inline-code size. A literal px value for
+ * the same reason FONT_FAMILY is literal above: not a live binding, just a
+ * snapshot -- if the `.markdown-body pre code { font-size: .85rem }` rule
+ * in style.css changes, re-measure and update this by hand. */
+const FONT_SIZE = "13.6px";
 
 const THEME_VARS = {
     light: {
