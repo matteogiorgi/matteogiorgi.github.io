@@ -54,7 +54,7 @@
 
 (define pinned-repos
   (list
-    (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
+    (make-repo "floe"                   "X11 floating window manager"                  "C"                "#555555" #t)
     (make-repo "abulafia"               "Markov-Chain text generator"                  "C"                "#555555" #t)
     (make-repo "karp"                   "explicit NP-complete reductions"              "Go"               "#00add8" #t)
     (make-repo "octfmt"                 "GNU-Octave formatter"                         "Go"               "#00add8" #t)
@@ -81,6 +81,7 @@
     (make-repo "membox"                 "object repository concurrent server"          "C"                "#555555")
     (make-repo "sparse"                 "sparce matrices functions library"            "C"                "#555555")
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
+    (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
@@ -107,7 +108,9 @@
        "mathematical programming, with a particular focus on stochastic optimization "
        "and portfolio management. Additionally, I maintain a keen interest in "
        "cryptanalysis and since the beginning of my studies I have been passionate "
-       "about programming languages and compiler construction.")
+       "about programming languages and compiler construction. Have a look at "
+       (a (@ (href "https://geoteo.net/geonote/")) "Geonote") ": I keep notes on "
+       "some of these topics.")
     (p "I'm also a passionate " (em "Linux") " enthusiast and a long-time "
        (em "Vim") " user. Over the years, I have refined a minimal yet powerful setup "
        "that reflects my preference for efficiency, simplicity and full control of the "
