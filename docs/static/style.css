@@ -391,7 +391,14 @@ li:target { border-left-color: var(--link); }
     background: var(--card-bg);
     padding: .15em .4em;
     border-radius: 4px;
-    font-size: .85rem;
+    /* em, not rem: inline code also sits inside headings (h1/h2/h4), where
+     * it should scale with the surrounding heading size instead of staying
+     * pinned to one absolute size. .7727em is calibrated so that in normal
+     * body text -- font-size 1.1rem, see body{} above -- it resolves to
+     * exactly .85rem, matching .markdown-body pre code's size below. If
+     * body's or pre code's font-size ever changes, recompute: target-rem /
+     * 1.1rem. */
+    font-size: .7727em;
 }
 
 .markdown-body pre code {
