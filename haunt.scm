@@ -67,7 +67,7 @@
     (make-repo "ulpe"                   "UNIX-like work environment"                   "Shell"            "#89e051" #t)
     (make-repo "nine"                   "plan9port zero-config setup"                  "Shell"            "#89e051" #t)
     (make-repo "nn-option-pricing"      "feed-forward nn to approximate Black-Scholes" "Python"           "#3572a5" #t)
-    (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5")
+    (make-repo "toody"                  "project for my BSc thesis"                    "Python"           "#3572a5" #t)
     (make-repo "wordle"                 "Wordle implementation from NYT"               "Java"             "#b07219" #t)
     (make-repo "dmenu"                  "patched fork of dmenu"                        "C"                "#555555")
     (make-repo "st"                     "patched fork of st"                           "C"                "#555555")
