@@ -116,7 +116,7 @@
        (em "Vim") " user. Over the years, I have refined a minimal yet powerful setup "
        "that reflects my preference for efficiency, simplicity and full control of the "
        "development environment; eventually this inspired "
-       (a (@ (href "https://geoteo.net/ulpe/")) (code "ULPE"))
+       (a (@ (href "https://geoteo.net/ulpe/")) "ULPE")
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
