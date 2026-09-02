@@ -62,7 +62,7 @@ main {
     padding: 3rem 1.25rem 5rem;
 }
 
-h1, h2, h4 {
+h1, h2, h3, h4 {
     line-height: 1.25;
     font-weight: 700;
 }
@@ -75,6 +75,8 @@ h2 {
     padding-bottom: .3rem;
     border-bottom: 1px solid var(--rule);
 }
+
+h3 { font-size: 1.35rem; margin: 2rem 0 .6rem; }
 
 h4 { font-size: 1.1rem; margin: 2.6rem 0 .2rem; text-align: center; }
 
