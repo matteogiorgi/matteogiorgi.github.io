@@ -468,7 +468,7 @@ li:target { border-left-color: var(--link); }
 .markdown-body .highlight .vi,
 .markdown-body .highlight .no { color: var(--code-const); }
 
-.markdown-body .highlight .err { color: var(--code-keyword); text-decoration: underline wavy; }
+.markdown-body .highlight .err { color: inherit; }
 
 .gh-footer {
     width: calc(100% - 2.5rem);
