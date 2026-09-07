@@ -337,7 +337,8 @@ li:target { border-left-color: var(--link); }
     margin: 1.5rem 0;
 }
 
-.markdown-body .code-block-wrap pre {
+.markdown-body .code-block-wrap pre,
+.markdown-body .code-block-wrap .mermaid {
     grid-area: 1 / 1;
 }
 
