@@ -45,6 +45,14 @@
 
 * { box-sizing: border-box; }
 
+body, body *, .theme-toggle {
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease, fill .25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body, body *, .theme-toggle { transition: none; }
+}
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
