@@ -110,13 +110,13 @@
        "and portfolio management. Additionally, I maintain a keen interest in "
        "cryptanalysis and since the beginning of my studies I have been passionate "
        "about programming languages and compiler construction. Have a look at "
-       (a (@ (href "https://geoteo.net/geonote/")) "Geonote") ": I keep notes on "
+       (code (a (@ (href "https://geoteo.net/geonote/")) "geonote")) ": I keep notes on "
        "some of these topics.")
     (p "I'm also a passionate " (em "Linux") " enthusiast and a long-time "
        (em "Vim") " user. Over the years, I have refined a minimal yet powerful setup "
        "that reflects my preference for efficiency, simplicity and full control of the "
        "development environment; eventually this inspired "
-       (a (@ (href "https://geoteo.net/ulpe/")) "ULPE")
+       (code (a (@ (href "https://geoteo.net/ulpe/")) "ULPE"))
        " as my personal project for a streamlined " (em "UNIX") " workspace.")))
 
 (define (contact)
