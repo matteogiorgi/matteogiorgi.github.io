@@ -488,3 +488,10 @@ li:target { border-left-color: var(--link); }
     color: var(--muted);
     text-align: right;
 }
+
+/* Repo name in the footer: monospace like inline code, but without the
+ * card background so it sits directly on the page. */
+.markdown-body .gh-footer code {
+    background: none;
+    padding: 0;
+}
