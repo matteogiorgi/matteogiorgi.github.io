@@ -593,3 +593,12 @@ li:target { border-left-color: var(--link); }
 .nav-tree .nav-headings a { color: var(--muted); }
 .nav-tree .nav-headings a:hover { color: var(--link); }
 .nav-tree .nav-headings .nav-h3 { padding-left: 1rem; }
+
+/* Inline code in headings, as it looks in the page (.markdown-body code,
+ * which doesn't reach the popup: it sits outside .markdown-body). */
+.nav-tree code {
+    background: var(--card-bg);
+    padding: .15em .4em;
+    border-radius: 4px;
+    font-size: .7727em;
+}

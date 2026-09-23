@@ -136,13 +136,26 @@
                     return a;
                 }
 
+                // A copy of the heading's own markup, so inline code/emphasis keep
+                // their look in the menu. Links inside it are unwrapped (a link
+                // can't nest in another) and ids dropped (they'd be duplicates).
+                function headingLink(h) {
+                    var a = link('#' + h.id, '');
+                    var copy = h.cloneNode(true);
+                    copy.querySelectorAll('.anchorjs-link').forEach(function (el) { el.remove(); });
+                    copy.querySelectorAll('a').forEach(function (el) { el.replaceWith.apply(el, el.childNodes); });
+                    copy.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+                    while (copy.firstChild) a.appendChild(copy.firstChild);
+                    return a;
+                }
+
                 function headingList() {
                     var ul = document.createElement('ul');
                     ul.className = 'nav-headings';
                     headings.forEach(function (h) {
                         var li = document.createElement('li');
                         li.className = 'nav-' + h.tagName.toLowerCase();
-                        li.appendChild(link('#' + h.id, h.textContent.trim()));
+                        li.appendChild(headingLink(h));
                         ul.appendChild(li);
                     });
                     return ul;
