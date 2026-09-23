@@ -224,26 +224,28 @@ li:target { border-left-color: var(--link); }
 }
 .theme-toggle:hover, .nav-toggle:hover { border-color: var(--link); }
 
-/* The index button sits right below the theme toggle, and follows it to
- * the left corner on narrow screens (see the media query below). */
-.nav-toggle { top: 3.95rem; }
+/* The index button sits beside the theme toggle, which keeps the corner:
+ * to its left here, to its right once both move to the left corner on
+ * narrow screens (see the media query below). Stacking them would cover
+ * the first heading of the page there. */
+.nav-toggle { right: 3.95rem; }
 .nav-toggle[hidden] { display: none; }
 .nav-toggle svg { display: block; }
 
 /* Below this width .code-toolbar (top-right corner of a code block,
- * sticky) starts colliding with this fixed button — measured the actual
- * crossover around 990px/62rem, so 64rem leaves a safety margin for
- * scrollbar-width differences across browsers/OSes. Move the button to
+ * sticky) starts colliding with these fixed buttons — they reach 6.15rem
+ * from the right edge, and the content's edge (58rem measure + 1.25rem
+ * padding) clears that above ~68rem, so 70rem leaves a safety margin for
+ * scrollbar-width differences across browsers/OSes. Move the buttons to
  * the opposite corner instead of touching the toolbar's own positioning. */
-@media (max-width: 64rem) {
-    .theme-toggle, .nav-toggle {
+@media (max-width: 70rem) {
+    .theme-toggle {
         left: 1.25rem;
         right: auto;
     }
-    /* Stacked, it would cover the first heading of the page. */
     .nav-toggle {
-        top: 1.25rem;
         left: 3.95rem;
+        right: auto;
     }
 }
 
