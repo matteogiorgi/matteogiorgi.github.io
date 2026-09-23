@@ -55,6 +55,43 @@
                 <line x1="5.6" y1="18.4" x2="4.2" y2="19.8"/><line x1="19.8" y1="4.2" x2="18.4" y2="5.6"/>
             </svg>
         </button>
+        <button id="nav-toggle" type="button" class="nav-toggle" aria-label="Site index (Ctrl+K)" aria-haspopup="dialog" hidden>
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                <circle cx="2" cy="3" r="1.25" fill="currentColor"/>
+                <circle cx="2" cy="8" r="1.25" fill="currentColor"/>
+                <circle cx="2" cy="13" r="1.25" fill="currentColor"/>
+                <path d="M5.5 3h9M5.5 8h9M5.5 13h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <dialog id="nav-dialog" class="nav-dialog" aria-labelledby="nav-dialog-title">
+            <div class="nav-dialog-inner">
+                <div class="nav-dialog-head">
+                    <code id="nav-dialog-title">{{ site.github.repository_name }}</code>
+                    <button type="button" class="nav-close" aria-label="Close">&times;</button>
+                </div>
+                <nav id="nav-tree" class="nav-tree" tabindex="-1"></nav>
+            </div>
+        </dialog>
+        {%- comment -%}
+            Every Markdown page of the repo, for the index popup. Boilerplate
+            files are skipped, and any page can opt out with `nav_exclude: true`
+            in its front matter. The "</" escape keeps a title from closing
+            the script element early.
+        {%- endcomment -%}
+        {%- assign nav_skip = "license,licence,copying,contributing,code_of_conduct,security,404" | split: "," -%}
+        {%- assign nav_sep = "" -%}
+        <script type="application/json" id="nav-data">
+            {"current": {{ page.url | relative_url | jsonify }}, "pages": [
+            {%- for p in site.pages -%}
+                {%- assign nav_ext = p.name | split: "." | last | downcase -%}
+                {%- unless nav_ext == "md" or nav_ext == "markdown" -%}{%- continue -%}{%- endunless -%}
+                {%- assign nav_base = p.name | downcase | remove: ".markdown" | remove: ".md" -%}
+                {%- if nav_skip contains nav_base or p.nav_exclude -%}{%- continue -%}{%- endif -%}
+                {{ nav_sep }}{"path": {{ p.path | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "title": {{ p.title | default: p.name | jsonify | replace: "</", "<\/" }}}
+                {%- assign nav_sep = "," -%}
+            {%- endfor -%}
+            ]}
+        </script>
         <div class="container-lg px-3 my-5 markdown-body">
             <main>
                 {{ content }}
@@ -65,6 +102,114 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
         <script>anchors.add();</script>
+        <script>
+            // Index popup: the repo's pages as a tree sorted by path (each
+            // folder's README/index first), with the current page highlighted
+            // and its h2/h3 headings listed under it.
+            (function () {
+                var btn = document.getElementById('nav-toggle');
+                var dialog = document.getElementById('nav-dialog');
+                var tree = document.getElementById('nav-tree');
+                var data = JSON.parse(document.getElementById('nav-data').textContent);
+                var headings = Array.prototype.filter.call(
+                    document.querySelectorAll('main h2[id], main h3[id]'),
+                    function (h) { return h.textContent.trim(); });
+                if (data.pages.length < 2 && headings.length < 2) return;
+
+                var isIndex = function (name) { return /^(index|readme)\.(md|markdown)$/i.test(name); };
+                var byName = function (a, b) { return a.localeCompare(b, undefined, { numeric: true }); };
+
+                var root = { files: [], dirs: {} };
+                data.pages.forEach(function (p) {
+                    var parts = p.path.split('/');
+                    var node = root;
+                    for (var i = 0; i < parts.length - 1; i++) {
+                        node = node.dirs[parts[i]] || (node.dirs[parts[i]] = { files: [], dirs: {} });
+                    }
+                    node.files.push({ name: parts[parts.length - 1], url: p.url, title: p.title });
+                });
+
+                function link(href, text) {
+                    var a = document.createElement('a');
+                    a.href = href;
+                    a.textContent = text;
+                    return a;
+                }
+
+                function headingList() {
+                    var ul = document.createElement('ul');
+                    ul.className = 'nav-headings';
+                    headings.forEach(function (h) {
+                        var li = document.createElement('li');
+                        li.className = 'nav-' + h.tagName.toLowerCase();
+                        li.appendChild(link('#' + h.id, h.textContent.trim()));
+                        ul.appendChild(li);
+                    });
+                    return ul;
+                }
+
+                // Returns the <ul> for a folder and whether it holds the current page,
+                // so that only the folders leading to it start open.
+                function render(node) {
+                    var ul = document.createElement('ul');
+                    var hasCurrent = false;
+                    node.files.sort(function (a, b) {
+                        return (isIndex(b.name) - isIndex(a.name)) || byName(a.name, b.name);
+                    }).forEach(function (f) {
+                        var li = document.createElement('li');
+                        var a = link(f.url, f.title);
+                        li.appendChild(a);
+                        if (f.url === data.current) {
+                            hasCurrent = true;
+                            li.className = 'nav-current';
+                            a.setAttribute('aria-current', 'page');
+                            if (headings.length) li.appendChild(headingList());
+                        }
+                        ul.appendChild(li);
+                    });
+                    Object.keys(node.dirs).sort(byName).forEach(function (name) {
+                        var sub = render(node.dirs[name]);
+                        var li = document.createElement('li');
+                        var details = document.createElement('details');
+                        var summary = document.createElement('summary');
+                        summary.textContent = name + '/';
+                        details.open = sub.hasCurrent;
+                        details.appendChild(summary);
+                        details.appendChild(sub.ul);
+                        li.appendChild(details);
+                        ul.appendChild(li);
+                        hasCurrent = hasCurrent || sub.hasCurrent;
+                    });
+                    return { ul: ul, hasCurrent: hasCurrent };
+                }
+                tree.appendChild(render(root).ul);
+
+                function open() {
+                    dialog.showModal();
+                    // Focus the tree rather than a link, so Tab starts from
+                    // the top without a focus ring showing up on open.
+                    tree.focus();
+                    var cur = tree.querySelector('.nav-current');
+                    if (cur) cur.scrollIntoView({ block: 'nearest' });
+                }
+                btn.hidden = false;
+                btn.addEventListener('click', open);
+                dialog.querySelector('.nav-close').addEventListener('click', function () { dialog.close(); });
+                // Clicks on the backdrop land on the <dialog> itself, since
+                // .nav-dialog-inner covers all of its content box.
+                dialog.addEventListener('click', function (e) {
+                    if (e.target === dialog) dialog.close();
+                    else if (e.target.closest('a[href^="#"]')) dialog.close();
+                });
+                document.addEventListener('keydown', function (e) {
+                    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                        e.preventDefault();
+                        if (dialog.open) dialog.close();
+                        else open();
+                    }
+                });
+            })();
+        </script>
         <script>
             (function () {
                 document.querySelectorAll('.markdown-body pre').forEach(function (pre) {

@@ -204,7 +204,7 @@ li:target { border-left-color: var(--link); }
     border-radius: 8px;
 }
 
-.theme-toggle {
+.theme-toggle, .nav-toggle {
     position: fixed;
     top: 1.25rem;
     right: 1.25rem;
@@ -222,7 +222,13 @@ li:target { border-left-color: var(--link); }
     color: var(--fg);
     cursor: pointer;
 }
-.theme-toggle:hover { border-color: var(--link); }
+.theme-toggle:hover, .nav-toggle:hover { border-color: var(--link); }
+
+/* The index button sits right below the theme toggle, and follows it to
+ * the left corner on narrow screens (see the media query below). */
+.nav-toggle { top: 3.95rem; }
+.nav-toggle[hidden] { display: none; }
+.nav-toggle svg { display: block; }
 
 /* Below this width .code-toolbar (top-right corner of a code block,
  * sticky) starts colliding with this fixed button — measured the actual
@@ -230,9 +236,14 @@ li:target { border-left-color: var(--link); }
  * scrollbar-width differences across browsers/OSes. Move the button to
  * the opposite corner instead of touching the toolbar's own positioning. */
 @media (max-width: 64rem) {
-    .theme-toggle {
+    .theme-toggle, .nav-toggle {
         left: 1.25rem;
         right: auto;
+    }
+    /* Stacked, it would cover the first heading of the page. */
+    .nav-toggle {
+        top: 1.25rem;
+        left: 3.95rem;
     }
 }
 
@@ -495,3 +506,86 @@ li:target { border-left-color: var(--link); }
     background: none;
     padding: 0;
 }
+
+/* --------------------------------------------------------------------
+ * Index popup: the repo's pages as a tree, opened by .nav-toggle
+ * -------------------------------------------------------------------- */
+
+.nav-dialog {
+    width: min(36rem, calc(100vw - 2rem));
+    max-height: min(80vh, 42rem);
+    padding: 0;
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+}
+.nav-dialog::backdrop { background: rgba(0, 0, 0, .45); }
+
+.nav-dialog-inner { padding: 1rem 1.25rem 1.25rem; }
+
+.nav-dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: .6rem;
+    margin-bottom: .6rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted);
+}
+
+.nav-close {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--muted);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.nav-close:hover { color: var(--link); border-color: var(--link); }
+
+.nav-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-tree ul ul {
+    margin-left: .9rem;
+    padding-left: .5rem;
+    border-left: 1px solid var(--rule);
+}
+.nav-tree li {
+    margin: .15rem 0;
+    padding: 0;
+    border: none;
+}
+.nav-tree:focus { outline: none; }
+
+.nav-tree a {
+    display: block;
+    padding: .1rem .5rem;
+    border-left: 2px solid transparent;
+    border-radius: 0 4px 4px 0;
+}
+.nav-tree a:hover { background: var(--link-bg); }
+.nav-tree .nav-current > a {
+    font-weight: 600;
+    border-left-color: var(--link);
+    background: var(--link-bg);
+}
+
+.nav-tree summary {
+    padding: .1rem .5rem;
+    color: var(--muted);
+    font-family: monospace;
+    font-size: .9em;
+    cursor: pointer;
+}
+
+.nav-tree .nav-headings { font-size: .9em; }
+.nav-tree .nav-headings a { color: var(--muted); }
+.nav-tree .nav-headings a:hover { color: var(--link); }
+.nav-tree .nav-headings .nav-h3 { padding-left: 1rem; }
