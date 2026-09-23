@@ -12,7 +12,7 @@ import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
  * here since fill/lineColor need solid colors, not the rgba() --link-bg itself.
  * primaryBorderColor/lineColor use --link at full strength so nodes and arrows
  * pick up the site's accent color instead of reading flat grayscale. */
-/* Same monospace stack as `code` in style.css -- diagram labels are almost
+/* Same monospace stack as --mono in style.css -- diagram labels are almost
  * always code (function calls, indices), so they read more consistently
  * next to inline code and code blocks than in Mermaid's default sans-serif. */
 const FONT_FAMILY = '"Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace';

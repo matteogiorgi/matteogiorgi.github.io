@@ -14,6 +14,7 @@
     --card-bg:#f4f4f2;
     --rule:   #e3e3e0;
     --measure: 58rem;
+    --mono:   "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
     /* Syntax-highlighting palette (Rouge token classes, see below). */
     --code-comment: #6a6a6a;
@@ -98,7 +99,7 @@ a:hover { text-decoration: underline; }
 em { font-style: italic; }
 
 code {
-    font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: .9rem;
 }
 
@@ -160,7 +161,7 @@ li:target { border-left-color: var(--link); }
     align-items: center;
     line-height: 1;
     gap: .4rem;
-    font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: .78rem;
     color: var(--muted);
 }
@@ -174,7 +175,7 @@ li:target { border-left-color: var(--link); }
 
 .license {
     margin-top: .3rem;
-    font-family: monospace;
+    font-family: var(--mono);
     font-size: .77rem;
     color: var(--muted);
     text-align: center;
@@ -393,7 +394,7 @@ li:target { border-left-color: var(--link); }
     background: var(--bg);
     border: 1px solid var(--rule);
     border-radius: 6px;
-    font-family: "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: .72rem;
     text-transform: uppercase;
     letter-spacing: .03em;
@@ -583,8 +584,8 @@ li:target { border-left-color: var(--link); }
 .nav-tree summary {
     padding: .1rem .5rem;
     color: var(--muted);
-    font-family: monospace;
-    font-size: .9em;
+    font-family: var(--mono);
+    font-size: .9rem;
     cursor: pointer;
 }
 
