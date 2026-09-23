@@ -268,6 +268,49 @@
                     var atBottom = dialog.scrollTop + dialog.clientHeight >= dialog.scrollHeight - 1;
                     if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) e.preventDefault();
                 }, { passive: false });
+                // Arrow keys walk the tree like a file explorer: up/down over the
+                // visible entries (starting from the current page), right opens a
+                // folder or steps into it, left closes it or goes up to the parent
+                // entry (a heading's parent is its page). Enter is native: it
+                // follows a link, or toggles a folder's <details>.
+                tree.addEventListener('keydown', function (e) {
+                    if (e.altKey || e.ctrlKey || e.metaKey) return;
+                    // Visible = not inside a closed folder (a folder's own summary
+                    // only depends on the folders above it). Checked on the markup,
+                    // not on layout: Chrome keeps boxes for a closed <details>'
+                    // content, it just doesn't paint them.
+                    var items = Array.prototype.filter.call(tree.querySelectorAll('a, summary'), function (el) {
+                        var from = el.tagName === 'SUMMARY' ? el.parentNode.parentNode : el;
+                        return !from.closest('details:not([open])');
+                    });
+                    var cur = document.activeElement;
+                    var i = items.indexOf(cur);
+                    var start = tree.querySelector('.nav-current > a');
+                    var next;
+                    switch (e.key) {
+                        case 'ArrowDown': next = i < 0 ? start || items[0] : items[i + 1]; break;
+                        case 'ArrowUp': next = i < 0 ? start || items[items.length - 1] : items[i - 1]; break;
+                        case 'Home': next = items[0]; break;
+                        case 'End': next = items[items.length - 1]; break;
+                        case 'ArrowRight':
+                            if (cur.tagName !== 'SUMMARY') break;
+                            if (cur.parentNode.open) next = items[i + 1];
+                            else cur.parentNode.open = true;
+                            break;
+                        case 'ArrowLeft':
+                            if (i < 0) break;
+                            if (cur.tagName === 'SUMMARY' && cur.parentNode.open) {
+                                cur.parentNode.open = false;
+                                break;
+                            }
+                            var parent = cur.closest('li').parentNode.closest('li');
+                            if (parent) next = parent.querySelector('summary, a');
+                            break;
+                        default: return;
+                    }
+                    e.preventDefault();
+                    if (next) next.focus();
+                });
                 document.addEventListener('keydown', function (e) {
                     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                         e.preventDefault();

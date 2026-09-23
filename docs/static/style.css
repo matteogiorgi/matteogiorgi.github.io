@@ -669,6 +669,13 @@ li:target { border-left-color: var(--link); }
     background: var(--link-bg);
 }
 
+/* Keyboard focus while walking the tree with the arrow keys. */
+.nav-tree a:focus-visible, .nav-tree summary:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: -2px;
+    border-radius: 4px;
+}
+
 .nav-tree summary {
     padding: .1rem .5rem;
     color: var(--muted);
