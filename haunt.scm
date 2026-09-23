@@ -173,15 +173,24 @@
 
 ;; Wires up the toggle button: flips data-theme, remembers the choice,
 ;; then reruns applyTheme so the favicon follows. Which of the two SVG
-;; icons is visible is handled by CSS, not JS.
+;; icons is visible is handled by CSS, not JS. A bare T does the same,
+;; as long as it isn't meant as text or part of a browser/OS shortcut;
+;; held down, it doesn't flicker. Same as in _layouts/default.html.
 (define theme-toggle-script
   "(function () {
   var btn = document.getElementById('theme-toggle');
-  btn.addEventListener('click', function () {
+  function toggle() {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     window.applyTheme();
+  }
+  btn.addEventListener('click', toggle);
+  document.addEventListener('keydown', function (e) {
+    if (e.key.toLowerCase() !== 't' || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+    var t = e.target;
+    if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    toggle();
   });
 })();")
 
@@ -226,8 +235,11 @@
             (link (@ (rel "stylesheet") (href "/static/style.css"))))
           (body
             (button (@ (id "theme-toggle") (type "button")
-                       (class "theme-toggle") (aria-label "Toggle dark mode"))
-                    ,(moon-icon) ,(sun-icon))
+                       (class "theme-toggle") (aria-label "Toggle dark mode")
+                       (aria-keyshortcuts "T"))
+                    ,(moon-icon) ,(sun-icon)
+                    (span (@ (class "btn-tip") (aria-hidden "true"))
+                          "Toggle theme" (kbd "T")))
             (main ,@body)
             (script ,theme-toggle-script)))))
 

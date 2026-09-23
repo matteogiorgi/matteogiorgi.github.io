@@ -14,6 +14,7 @@
     --card-bg:#f4f4f2;
     --rule:   #e3e3e0;
     --measure: 58rem;
+    --serif:  "Spectral", Georgia, "Times New Roman", serif;
     --mono:   "Cascadia Code", ui-monospace, "SFMono-Regular", "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
     /* Syntax-highlighting palette (Rouge token classes, see below). */
@@ -60,7 +61,7 @@ body {
     margin: 0;
     color: var(--fg);
     background: var(--bg);
-    font-family: "Spectral", Georgia, "Times New Roman", serif;
+    font-family: var(--serif);
     font-size: 1.1rem;
     line-height: 1.5;
 }
@@ -254,6 +255,61 @@ li:target { border-left-color: var(--link); }
 .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Label under each corner button: what it does and its shortcut. Shown
+ * on hover after a short delay, so it doesn't flash when the pointer just
+ * passes by, and right away on keyboard focus. Hover only where hover is
+ * real: on touch screens it would stick after a tap. Anchored on the
+ * corner side, so it never runs off the screen. */
+.btn-tip {
+    position: absolute;
+    top: calc(100% + .45rem);
+    right: 0;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+    font-family: var(--serif);
+    font-size: .85rem;
+    line-height: 1.4;
+    color: var(--fg);
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Delays per property: the fade waits, the theme colors don't. */
+    transition: opacity .15s ease, visibility .15s,
+                background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+@media (hover: hover) {
+    .theme-toggle:hover .btn-tip, .nav-toggle:hover .btn-tip {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: .4s, .4s, 0s, 0s, 0s;
+    }
+}
+.theme-toggle:focus-visible .btn-tip, .nav-toggle:focus-visible .btn-tip {
+    opacity: 1;
+    visibility: visible;
+}
+@media (max-width: 70rem) {
+    .btn-tip {
+        left: 0;
+        right: auto;
+    }
+}
+
+.btn-tip kbd {
+    margin-left: .45rem;
+    padding: 0 .3rem;
+    font-family: var(--mono);
+    font-size: .75rem;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-bottom-width: 2px;
+    border-radius: 3px;
+}
 
 /* --------------------------------------------------------------------
  * Markdown content (Jekyll/GitHub Pages READMEs, e.g. cobe) that load
@@ -525,6 +581,38 @@ li:target { border-left-color: var(--link); }
     overscroll-behavior: contain;
 }
 .nav-dialog::backdrop { background: rgba(0, 0, 0, .45); }
+
+/* Fade and slight rise in and out. Opening animates from @starting-style.
+ * Closing also has to keep the dialog displayed, and in the top layer,
+ * until the fade ends: that takes transitioning `overlay`, so it's gated
+ * on support for it. Elsewhere (Firefox, so far) the dialog would drop
+ * out of the top layer mid-fade and jump, so it just closes at once. */
+.nav-dialog, .nav-dialog::backdrop {
+    opacity: 0;
+    transition: opacity .18s ease, transform .18s ease,
+                background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.nav-dialog { transform: translateY(.5rem) scale(.98); }
+.nav-dialog[open], .nav-dialog[open]::backdrop {
+    opacity: 1;
+    transform: none;
+}
+@starting-style {
+    .nav-dialog[open], .nav-dialog[open]::backdrop { opacity: 0; }
+    .nav-dialog[open] { transform: translateY(.5rem) scale(.98); }
+}
+@supports (overlay: auto) {
+    .nav-dialog, .nav-dialog::backdrop {
+        transition: opacity .18s ease, transform .18s ease,
+                    overlay .18s allow-discrete, display .18s allow-discrete,
+                    background-color .25s ease, color .25s ease, border-color .25s ease;
+    }
+}
+
+/* The global reduced-motion rule (body *) loses to these class selectors. */
+@media (prefers-reduced-motion: reduce) {
+    .btn-tip, .nav-dialog, .nav-dialog::backdrop { transition: none; }
+}
 
 .nav-dialog-inner { padding: 1rem 1.25rem 1.25rem; }
 

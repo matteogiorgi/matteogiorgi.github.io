@@ -39,7 +39,7 @@
         <script type="module" src="https://geoteo.net/static/mermaid-render.js"></script>
     </head>
     <body>
-        <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Toggle dark mode">
+        <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-keyshortcuts="T">
             <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                 <mask id="moon-mask">
                 <rect width="24" height="24" fill="white"/>
@@ -54,14 +54,16 @@
                 <line x1="5.6" y1="5.6" x2="4.2" y2="4.2"/><line x1="19.8" y1="19.8" x2="18.4" y2="18.4"/>
                 <line x1="5.6" y1="18.4" x2="4.2" y2="19.8"/><line x1="19.8" y1="4.2" x2="18.4" y2="5.6"/>
             </svg>
+            <span class="btn-tip" aria-hidden="true">Toggle theme<kbd>T</kbd></span>
         </button>
-        <button id="nav-toggle" type="button" class="nav-toggle" aria-label="Site index (Ctrl+K)" aria-haspopup="dialog" hidden>
+        <button id="nav-toggle" type="button" class="nav-toggle" aria-label="Site index" aria-keyshortcuts="Control+K Meta+K" aria-haspopup="dialog" hidden>
             <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <circle cx="2" cy="3" r="1.25" fill="currentColor"/>
                 <circle cx="2" cy="8" r="1.25" fill="currentColor"/>
                 <circle cx="2" cy="13" r="1.25" fill="currentColor"/>
                 <path d="M5.5 3h9M5.5 8h9M5.5 13h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
+            <span class="btn-tip" aria-hidden="true">Site index<kbd>Ctrl K</kbd></span>
         </button>
         <dialog id="nav-dialog" class="nav-dialog" aria-labelledby="nav-dialog-title">
             <div class="nav-dialog-inner">
@@ -244,6 +246,9 @@
                     if (cur) cur.scrollIntoView({ block: 'nearest' });
                 }
                 btn.hidden = false;
+                // The shortcut takes Cmd on macOS (see keydown below), so say so.
+                var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform;
+                if (/mac|iphone|ipad/i.test(platform)) btn.querySelector('kbd').textContent = '\u2318 K';
                 btn.addEventListener('click', open);
                 dialog.querySelector('.nav-close').addEventListener('click', function () { dialog.close(); });
                 // Clicks on the backdrop land on the <dialog> itself, since
@@ -321,11 +326,20 @@
         <script>
             (function () {
                 var btn = document.getElementById('theme-toggle');
-                btn.addEventListener('click', function () {
+                function toggle() {
                     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
                     document.documentElement.setAttribute('data-theme', next);
                     localStorage.setItem('theme', next);
                     window.applyTheme();
+                }
+                btn.addEventListener('click', toggle);
+                // A bare T, as long as it isn't meant as text or part of a
+                // browser/OS shortcut; held down, it doesn't flicker.
+                document.addEventListener('keydown', function (e) {
+                    if (e.key.toLowerCase() !== 't' || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+                    var t = e.target;
+                    if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+                    toggle();
                 });
             })();
         </script>
