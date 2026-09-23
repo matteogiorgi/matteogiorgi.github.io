@@ -521,6 +521,7 @@ li:target { border-left-color: var(--link); }
     background: var(--bg);
     border: 1px solid var(--rule);
     border-radius: 8px;
+    overscroll-behavior: contain;
 }
 .nav-dialog::backdrop { background: rgba(0, 0, 0, .45); }
 

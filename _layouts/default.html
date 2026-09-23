@@ -201,6 +201,17 @@
                     if (e.target === dialog) dialog.close();
                     else if (e.target.closest('a[href^="#"]')) dialog.close();
                 });
+                // Over the popup, the wheel scrolls the popup or nothing: without
+                // this it falls through to the page whenever the popup has nothing
+                // (left) to scroll, since overscroll-behavior only covers the latter
+                // case. Over the backdrop (target is the <dialog> itself, as above)
+                // the page still scrolls.
+                dialog.addEventListener('wheel', function (e) {
+                    if (e.target === dialog || !e.deltaY) return;
+                    var atTop = dialog.scrollTop <= 0;
+                    var atBottom = dialog.scrollTop + dialog.clientHeight >= dialog.scrollHeight - 1;
+                    if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) e.preventDefault();
+                }, { passive: false });
                 document.addEventListener('keydown', function (e) {
                     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                         e.preventDefault();
