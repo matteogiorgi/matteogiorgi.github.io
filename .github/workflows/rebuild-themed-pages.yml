@@ -1,0 +1,68 @@
+# Rebuilds every GitHub Pages site that inherits _layouts/ from this repo
+# through jekyll-remote-theme. A remote theme is only fetched at build time,
+# so without this a layout change reaches each site only on its next push.
+#
+# Sites are discovered automatically: every non-archived repo of the owner
+# with Pages enabled whose _config.yml contains
+#   remote_theme: <owner>/matteogiorgi.github.io
+#
+# Requires the PAGES_REBUILD_TOKEN secret: a fine-grained personal access
+# token with only "Pages: Read and write" permission on those repos.
+
+name: Rebuild themed Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_layouts/**"
+      - "_includes/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rebuild-themed-pages
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find sites using the remote theme
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          theme_re="^remote_theme:[[:space:]]*[\"']?${GITHUB_REPOSITORY//./\\.}([@\"'[:space:]]|$)"
+          gh api --paginate "users/$GITHUB_REPOSITORY_OWNER/repos?per_page=100" \
+            --jq '.[] | select(.has_pages and (.archived | not)) | "\(.name) \(.default_branch)"' |
+          while read -r name branch; do
+            if gh api -H "Accept: application/vnd.github.raw" \
+                 "repos/$GITHUB_REPOSITORY_OWNER/$name/contents/_config.yml?ref=$branch" 2>/dev/null |
+               grep -Eq "$theme_re"; then
+              echo "$name" >> sites.txt
+            fi
+          done
+          touch sites.txt
+          echo "Found $(wc -l < sites.txt) site(s):"
+          cat sites.txt
+
+      - name: Request a Pages build for each site
+        env:
+          GH_TOKEN: ${{ secrets.PAGES_REBUILD_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::PAGES_REBUILD_TOKEN secret is missing or empty"
+            exit 1
+          fi
+          failed=0
+          while read -r name; do
+            if gh api -X POST "repos/$GITHUB_REPOSITORY_OWNER/$name/pages/builds" --silent; then
+              echo "requested: $name"
+            else
+              echo "::error::could not request a build for $name"
+              failed=1
+            fi
+          done < sites.txt
+          exit $failed
