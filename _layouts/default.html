@@ -77,6 +77,14 @@
             files are skipped, and any page can opt out with `nav_exclude: true`
             in its front matter. The "</" escape keeps a title from closing
             the script element early.
+
+            `title` is plain text: jekyll-titles-from-headings strips the markup
+            off the first heading, inline code included. So the h1 is also read
+            back from the page itself, as `html`, whenever it carries markup.
+            p.content is either still Markdown or already converted, depending
+            on build order, so a Markdown "# " line is converted first. The h1
+            is only trusted when its text matches the title, which rules out
+            a front matter title that differs from it.
         {%- endcomment -%}
         {%- assign nav_skip = "license,licence,copying,contributing,code_of_conduct,security,404" | split: "," -%}
         {%- assign nav_sep = "" -%}
@@ -87,7 +95,27 @@
                 {%- unless nav_ext == "md" or nav_ext == "markdown" -%}{%- continue -%}{%- endunless -%}
                 {%- assign nav_base = p.name | downcase | remove: ".markdown" | remove: ".md" -%}
                 {%- if nav_skip contains nav_base or p.nav_exclude -%}{%- continue -%}{%- endif -%}
-                {{ nav_sep }}{"path": {{ p.path | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "title": {{ p.title | default: p.name | jsonify | replace: "</", "<\/" }}}
+                {%- assign nav_html = "" -%}
+                {%- assign nav_src = p.content | default: "" -%}
+                {%- unless nav_src contains "<h1" -%}
+                    {%- assign nav_lines = nav_src | split: "
+" -%}
+                    {%- for nav_line in nav_lines -%}
+                        {%- assign nav_line = nav_line | strip -%}
+                        {%- assign nav_head = nav_line | slice: 0, 2 -%}
+                        {%- if nav_head == "# " -%}{%- assign nav_src = nav_line | markdownify -%}{%- break -%}{%- endif -%}
+                    {%- endfor -%}
+                {%- endunless -%}
+                {%- if nav_src contains "<h1" -%}
+                    {%- assign nav_h1 = nav_src | split: "<h1" -%}
+                    {%- assign nav_h1 = nav_h1[1] | split: "</h1>" | first -%}
+                    {%- assign nav_attrs = nav_h1 | split: ">" | first -%}
+                    {%- assign nav_h1 = nav_h1 | remove_first: nav_attrs | remove_first: ">" | strip -%}
+                    {%- assign nav_plain = nav_h1 | strip_html | normalize_whitespace -%}
+                    {%- if nav_h1 contains "<" and nav_plain == p.title -%}{%- assign nav_html = nav_h1 -%}{%- endif -%}
+                {%- endif -%}
+                {{ nav_sep }}{"path": {{ p.path | jsonify }}, "url": {{ p.url | relative_url | jsonify }}, "title": {{ p.title | default: p.name | jsonify | replace: "</", "<\/" }}
+                {%- if nav_html != "" -%}, "html": {{ nav_html | jsonify | replace: "</", "<\/" }}{%- endif -%}}
                 {%- assign nav_sep = "," -%}
             {%- endfor -%}
             ]}
@@ -126,7 +154,7 @@
                     for (var i = 0; i < parts.length - 1; i++) {
                         node = node.dirs[parts[i]] || (node.dirs[parts[i]] = { files: [], dirs: {} });
                     }
-                    node.files.push({ name: parts[parts.length - 1], url: p.url, title: p.title });
+                    node.files.push({ name: parts[parts.length - 1], url: p.url, title: p.title, html: p.html });
                 });
 
                 function link(href, text) {
@@ -136,17 +164,27 @@
                     return a;
                 }
 
-                // A copy of the heading's own markup, so inline code/emphasis keep
-                // their look in the menu. Links inside it are unwrapped (a link
+                // A link made of a heading's own markup, so inline code/emphasis
+                // keep their look in the menu. Links inside it are unwrapped (a link
                 // can't nest in another) and ids dropped (they'd be duplicates).
-                function headingLink(h) {
-                    var a = link('#' + h.id, '');
-                    var copy = h.cloneNode(true);
-                    copy.querySelectorAll('.anchorjs-link').forEach(function (el) { el.remove(); });
-                    copy.querySelectorAll('a').forEach(function (el) { el.replaceWith.apply(el, el.childNodes); });
-                    copy.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
-                    while (copy.firstChild) a.appendChild(copy.firstChild);
+                function markupLink(href, markup) {
+                    var a = link(href, '');
+                    markup.querySelectorAll('.anchorjs-link').forEach(function (el) { el.remove(); });
+                    markup.querySelectorAll('a').forEach(function (el) { el.replaceWith.apply(el, el.childNodes); });
+                    markup.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+                    while (markup.firstChild) a.appendChild(markup.firstChild);
                     return a;
+                }
+
+                function headingLink(h) {
+                    return markupLink('#' + h.id, h.cloneNode(true));
+                }
+
+                function pageLink(f) {
+                    if (!f.html) return link(f.url, f.title);
+                    var t = document.createElement('template');
+                    t.innerHTML = f.html;
+                    return markupLink(f.url, t.content);
                 }
 
                 function headingList() {
@@ -170,7 +208,7 @@
                         return (isIndex(b.name) - isIndex(a.name)) || byName(a.name, b.name);
                     }).forEach(function (f) {
                         var li = document.createElement('li');
-                        var a = link(f.url, f.title);
+                        var a = pageLink(f);
                         li.appendChild(a);
                         if (f.url === data.current) {
                             hasCurrent = true;
