@@ -626,6 +626,11 @@ li:target { border-left-color: var(--link); }
     color: var(--muted);
 }
 
+/* Same line as the page footer (.gh-footer), repo name included: its
+ * code gets the footer's inline-code size, which .markdown-body code
+ * sets there but can't reach up here. */
+.nav-dialog-title code { font-size: .7727em; }
+
 .nav-close {
     width: 1.8rem;
     height: 1.8rem;

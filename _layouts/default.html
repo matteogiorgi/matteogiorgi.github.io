@@ -68,7 +68,9 @@
         <dialog id="nav-dialog" class="nav-dialog" aria-labelledby="nav-dialog-title">
             <div class="nav-dialog-inner">
                 <div class="nav-dialog-head">
-                    <code id="nav-dialog-title">{{ site.github.repository_name }}</code>
+                    <span id="nav-dialog-title" class="nav-dialog-title">
+                        <a href="{{ site.github.repository_url }}"><code>{{ site.github.repository_name }}</code></a> powered by <a href="https://geoteo.net">Geoteo</a>
+                    </span>
                     <button type="button" class="nav-close" aria-label="Close">&times;</button>
                 </div>
                 <nav id="nav-tree" class="nav-tree" tabindex="-1"></nav>
