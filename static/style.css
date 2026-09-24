@@ -634,6 +634,7 @@ li:target { border-left-color: var(--link); }
 .nav-close {
     width: 1.8rem;
     height: 1.8rem;
+    font-family: var(--serif);  /* buttons don't inherit it */
     font-size: 1.2rem;
     line-height: 1;
     color: var(--muted);
@@ -685,11 +686,11 @@ li:target { border-left-color: var(--link); }
     padding: .1rem .5rem;
     color: var(--muted);
     font-family: var(--mono);
-    font-size: .9rem;
+    font-size: .85rem;  /* as inline code next to body text, e.g. the header's repo name */
     cursor: pointer;
 }
 
-.nav-tree .nav-headings { font-size: .9em; }
+.nav-tree .nav-headings { font-size: 1rem; }
 .nav-tree .nav-headings a { color: var(--muted); }
 .nav-tree .nav-headings a:hover { color: var(--link); }
 .nav-tree .nav-headings .nav-h3 { padding-left: 1rem; }
