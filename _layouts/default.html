@@ -137,15 +137,19 @@
         <script>
             // Index popup: the repo's pages as a tree sorted by path (each
             // folder's README/index first), with the current page highlighted
-            // and its h2/h3 headings listed under it.
+            // and its h2/h3 headings listed under it. Every other page can be
+            // expanded too: its headings are fetched from the page itself.
             (function () {
                 var btn = document.getElementById('nav-toggle');
                 var dialog = document.getElementById('nav-dialog');
                 var tree = document.getElementById('nav-tree');
                 var data = JSON.parse(document.getElementById('nav-data').textContent);
-                var headings = Array.prototype.filter.call(
-                    document.querySelectorAll('main h2[id], main h3[id]'),
-                    function (h) { return h.textContent.trim(); });
+                function sectionHeadings(doc) {
+                    return Array.prototype.filter.call(
+                        doc.querySelectorAll('main h2[id], main h3[id]'),
+                        function (h) { return h.textContent.trim(); });
+                }
+                var headings = sectionHeadings(document);
                 if (data.pages.length < 2 && headings.length < 2) return;
 
                 var isIndex = function (name) { return /^(index|readme)\.(md|markdown)$/i.test(name); };
@@ -180,9 +184,6 @@
                     return a;
                 }
 
-                function headingLink(h) {
-                    return markupLink('#' + h.id, h.cloneNode(true));
-                }
 
                 function pageLink(f) {
                     if (!f.html) return link(f.url, f.title);
@@ -191,16 +192,56 @@
                     return markupLink(f.url, t.content);
                 }
 
-                function headingList() {
+                // base is '' for the current page, the page's url for the others.
+                function headingList(hs, base) {
                     var ul = document.createElement('ul');
                     ul.className = 'nav-headings';
-                    headings.forEach(function (h) {
+                    hs.forEach(function (h) {
                         var li = document.createElement('li');
                         li.className = 'nav-' + h.tagName.toLowerCase();
-                        li.appendChild(headingLink(h));
+                        li.appendChild(markupLink(base + '#' + h.id, h.cloneNode(true)));
                         ul.appendChild(li);
                     });
                     return ul;
+                }
+
+                function setExpanded(li, on) {
+                    li.querySelector('.nav-expand').setAttribute('aria-expanded', on);
+                    var ul = li.querySelector('.nav-headings');
+                    if (ul) ul.hidden = !on;
+                }
+
+                // Expanding another page fetches it (same site, so the browser
+                // cache usually has it) and reads its headings, ids included, as
+                // the page itself renders them. Math in them is raw TeX there, so
+                // MathJax gets a pass over the new list. A page without headings
+                // loses its triangle.
+                function expand(li, url) {
+                    if (li.querySelector('.nav-headings')) return setExpanded(li, true);
+                    if (li.classList.contains('nav-loading')) return;
+                    li.classList.add('nav-loading');
+                    fetch(url).then(function (r) {
+                        if (!r.ok) throw new Error(r.status);
+                        return r.text();
+                    }).then(function (html) {
+                        var hs = sectionHeadings(new DOMParser().parseFromString(html, 'text/html'));
+                        if (!hs.length) {
+                            li.classList.add('nav-empty');
+                            return;
+                        }
+                        var ul = headingList(hs, url);
+                        li.appendChild(ul);
+                        setExpanded(li, true);
+                        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([ul]).catch(function () {});
+                    }).catch(function () {}).then(function () {
+                        li.classList.remove('nav-loading');
+                    });
+                }
+
+                function toggle(li, url, on) {
+                    if (li.classList.contains('nav-empty')) return;
+                    if (on) expand(li, url);
+                    else setExpanded(li, false);
                 }
 
                 // Returns the <ul> for a folder and whether it holds the current page,
@@ -212,13 +253,30 @@
                         return (isIndex(b.name) - isIndex(a.name)) || byName(a.name, b.name);
                     }).forEach(function (f) {
                         var li = document.createElement('li');
+                        li.className = 'nav-page';
+                        // Out of the Tab order: the arrow keys expand pages too.
+                        var b = document.createElement('button');
+                        b.type = 'button';
+                        b.className = 'nav-expand';
+                        b.tabIndex = -1;
+                        b.setAttribute('aria-label', 'Sections');
+                        b.setAttribute('aria-expanded', 'false');
+                        b.addEventListener('click', function () {
+                            toggle(li, f.url, b.getAttribute('aria-expanded') !== 'true');
+                        });
                         var a = pageLink(f);
+                        li.appendChild(b);
                         li.appendChild(a);
                         if (f.url === data.current) {
                             hasCurrent = true;
-                            li.className = 'nav-current';
+                            li.classList.add('nav-current');
                             a.setAttribute('aria-current', 'page');
-                            if (headings.length) li.appendChild(headingList());
+                            if (headings.length) {
+                                li.appendChild(headingList(headings, ''));
+                                setExpanded(li, true);
+                            } else {
+                                li.classList.add('nav-empty');
+                            }
                         }
                         ul.appendChild(li);
                     });
@@ -272,22 +330,26 @@
                 }, { passive: false });
                 // Arrow keys walk the tree like a file explorer: up/down over the
                 // visible entries (starting from the current page), right opens a
-                // folder or steps into it, left closes it or goes up to the parent
-                // entry (a heading's parent is its page). Enter is native: it
-                // follows a link, or toggles a folder's <details>.
+                // folder or a page's sections or steps into them, left closes them
+                // or goes up to the parent entry (a heading's parent is its page).
+                // Enter is native: it follows a link, or toggles a folder's <details>.
                 tree.addEventListener('keydown', function (e) {
                     if (e.altKey || e.ctrlKey || e.metaKey) return;
-                    // Visible = not inside a closed folder (a folder's own summary
-                    // only depends on the folders above it). Checked on the markup,
-                    // not on layout: Chrome keeps boxes for a closed <details>'
-                    // content, it just doesn't paint them.
+                    // Visible = not inside a closed folder or collapsed page (a
+                    // folder's own summary only depends on the folders above it).
+                    // Checked on the markup, not on layout: Chrome keeps boxes for
+                    // a closed <details>' content, it just doesn't paint them.
                     var items = Array.prototype.filter.call(tree.querySelectorAll('a, summary'), function (el) {
                         var from = el.tagName === 'SUMMARY' ? el.parentNode.parentNode : el;
-                        return !from.closest('details:not([open])');
+                        return !from.closest('details:not([open]), ul[hidden]');
                     });
                     var cur = document.activeElement;
                     var i = items.indexOf(cur);
                     var start = tree.querySelector('.nav-current > a');
+                    // A page link that can be expanded: its <li> and whether it is.
+                    var page = i >= 0 && cur.tagName === 'A' && cur.parentNode.classList.contains('nav-page') &&
+                        !cur.parentNode.classList.contains('nav-empty') ? cur.parentNode : null;
+                    var expanded = page && page.querySelector('.nav-expand').getAttribute('aria-expanded') === 'true';
                     var next;
                     switch (e.key) {
                         case 'ArrowDown': next = i < 0 ? start || items[0] : items[i + 1]; break;
@@ -295,6 +357,11 @@
                         case 'Home': next = items[0]; break;
                         case 'End': next = items[items.length - 1]; break;
                         case 'ArrowRight':
+                            if (page) {
+                                if (expanded) next = items[i + 1];
+                                else toggle(page, cur.getAttribute('href'), true);
+                                break;
+                            }
                             if (cur.tagName !== 'SUMMARY') break;
                             if (cur.parentNode.open) next = items[i + 1];
                             else cur.parentNode.open = true;
@@ -303,6 +370,10 @@
                             if (i < 0) break;
                             if (cur.tagName === 'SUMMARY' && cur.parentNode.open) {
                                 cur.parentNode.open = false;
+                                break;
+                            }
+                            if (expanded) {
+                                toggle(page, cur.getAttribute('href'), false);
                                 break;
                             }
                             var parent = cur.closest('li').parentNode.closest('li');

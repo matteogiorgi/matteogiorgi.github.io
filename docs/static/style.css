@@ -681,11 +681,55 @@ li:target { border-left-color: var(--link); }
 }
 
 .nav-tree summary {
-    padding: .1rem .5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .1rem .5rem .1rem 0;
     color: var(--muted);
     font-family: var(--mono);
     font-size: .85rem;  /* as inline code next to body text, e.g. the header's repo name */
     cursor: pointer;
+}
+.nav-tree summary::-webkit-details-marker { display: none; }
+
+/* A page: its triangle, then its link, then (when expanded) its sections
+ * under the link. The triangle column is as wide as a folder's, so page
+ * titles and folder names line up. */
+.nav-tree .nav-page {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+}
+.nav-tree .nav-page > .nav-headings { grid-column: 2; }
+
+.nav-expand {
+    height: calc(1.5em + .2rem);  /* the link's first line */
+    padding: 0;
+    font: inherit;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.nav-expand:hover { color: var(--link); }
+.nav-empty > .nav-expand { visibility: hidden; }
+.nav-loading > .nav-expand { opacity: .4; }
+
+/* Disclosure triangle, drawn the same for folders and pages instead of
+ * the browser's own marker, which only <summary> would get. */
+.nav-tree summary::before, .nav-expand::before {
+    content: "";
+    display: block;
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    background: currentColor;
+    clip-path: polygon(28% 18%, 80% 50%, 28% 82%);
+    transition: transform .15s ease;
+}
+.nav-tree details[open] > summary::before,
+.nav-expand[aria-expanded="true"]::before { transform: rotate(90deg); }
+@media (prefers-reduced-motion: reduce) {
+    .nav-tree summary::before, .nav-expand::before { transition: none; }
 }
 
 .nav-tree .nav-headings { font-size: 1rem; }
