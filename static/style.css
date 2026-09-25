@@ -650,14 +650,9 @@ li:target { border-left-color: var(--link); }
     margin: 0;
     padding: 0;
 }
-/* Each level steps in by 2rem: the guide line sits under the parent
- * folder's disclosure triangle (.9rem), the entries start 1.1rem past it,
- * clearly after the start of the parent's own name. */
-.nav-tree ul ul {
-    margin-left: .9rem;
-    padding-left: 1.1rem;
-    border-left: 1px solid var(--rule);
-}
+/* Each level steps in by 2rem, so its entries start clearly after the
+ * start of the parent's own name: the indentation alone shows the nesting. */
+.nav-tree ul ul { padding-left: 2rem; }
 .nav-tree li {
     margin: .15rem 0;
     padding: 0;
