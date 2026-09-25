@@ -650,9 +650,12 @@ li:target { border-left-color: var(--link); }
     margin: 0;
     padding: 0;
 }
+/* Each level steps in by 2rem: the guide line sits under the parent
+ * folder's disclosure triangle (.9rem), the entries start 1.1rem past it,
+ * clearly after the start of the parent's own name. */
 .nav-tree ul ul {
     margin-left: .9rem;
-    padding-left: .5rem;
+    padding-left: 1.1rem;
     border-left: 1px solid var(--rule);
 }
 .nav-tree li {
