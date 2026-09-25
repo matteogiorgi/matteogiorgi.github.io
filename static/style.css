@@ -683,7 +683,7 @@ li:target { border-left-color: var(--link); }
 .nav-tree summary {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: .25rem;
     padding: .1rem .5rem .1rem 0;
     color: var(--muted);
     font-family: var(--mono);
@@ -700,6 +700,8 @@ li:target { border-left-color: var(--link); }
     grid-template-columns: 1rem 1fr;
 }
 .nav-tree .nav-page > .nav-headings { grid-column: 2; }
+/* Title close to its triangle, by as much as a folder's name (the gap above). */
+.nav-tree .nav-page > a { padding-left: .25rem; }
 
 .nav-expand {
     height: calc(1.5em + .2rem);  /* the link's first line */
