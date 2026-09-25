@@ -401,6 +401,15 @@ li:target { border-left-color: var(--link); }
 .markdown-body th { border-bottom: 2px solid var(--rule); }
 .markdown-body tr:last-child td { border-bottom: none; }
 
+/* Keep inline code whole inside table cells: in a narrow column the
+ * browser would otherwise break `--claude` after the hyphen. The table
+ * already scrolls horizontally if a cell gets too wide; paragraphs don't,
+ * so this stays scoped to cells. */
+.markdown-body td code,
+.markdown-body th code {
+    white-space: nowrap;
+}
+
 /* pre is the horizontally-scrolling element; .code-block-wrap stacks it
  * with .code-toolbar in the same grid cell so the toolbar overlays the
  * top-right corner without reserving its own row. Combined with
