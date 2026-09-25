@@ -660,16 +660,18 @@ li:target { border-left-color: var(--link); }
 }
 .nav-tree:focus { outline: none; }
 
+/* The current page's accent bar is on the right, away from the triangles;
+ * every link keeps the (transparent) room for it, so none shifts. */
 .nav-tree a {
     display: block;
     padding: .1rem .5rem;
-    border-left: 2px solid transparent;
-    border-radius: 0 4px 4px 0;
+    border-right: 2px solid transparent;
+    border-radius: 4px 0 0 4px;
 }
 .nav-tree a:hover { background: var(--link-bg); }
 .nav-tree .nav-current > a {
     font-weight: 600;
-    border-left-color: var(--link);
+    border-right-color: var(--link);
     background: var(--link-bg);
 }
 
