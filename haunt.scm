@@ -83,6 +83,7 @@
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
     (make-repo "amele"                  "Streamlit condo-manager app"                  "Python"           "#3572a5" #t)
     (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
+    (make-repo "second-brain"           "personal knowledge management system"         "Shell"            "#89e051" #t)
     (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
 
 
