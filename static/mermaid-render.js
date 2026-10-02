@@ -68,6 +68,18 @@ async function renderAll() {
         startOnLoad: false,
         theme: "base",
         themeVariables: THEME_VARS[currentTheme()],
+        /* Sequence diagrams ignore themeVariables.fontFamily/fontSize for
+         * actors, messages and notes: they read their own sequence.* keys,
+         * which otherwise fall back to Mermaid's defaults (16px messages,
+         * 14px actors/notes) and come out larger than every other diagram. */
+        sequence: {
+            actorFontFamily:   FONT_FAMILY,
+            actorFontSize:     FONT_SIZE,
+            messageFontFamily: FONT_FAMILY,
+            messageFontSize:   FONT_SIZE,
+            noteFontFamily:    FONT_FAMILY,
+            noteFontSize:      FONT_SIZE,
+        },
     });
 
     const pass = renderPass++;
