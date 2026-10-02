@@ -760,3 +760,21 @@ li:target { border-left-color: var(--link); }
     border-radius: 4px;
     font-size: .7727em;
 }
+
+/* The home page's Geopages popup (haunt.scm): each entry as its card has
+ * it, language dot in the triangle's column (centered on the first line,
+ * should the description wrap), then the name as plain monospace and the
+ * description in muted text. */
+.nav-repos .lang-dot {
+    justify-self: center;
+    margin-top: calc(.1rem + .5lh - .325rem);
+}
+.nav-tree .nav-repos code {
+    background: none;
+    padding: 0;
+    font-size: .9rem;
+}
+.nav-repos .nav-desc {
+    font-size: .95rem;
+    color: var(--muted);
+}

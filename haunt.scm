@@ -223,9 +223,9 @@
 
 ;; Index button and popup listing every Geopage, in the order of the cards,
 ;; with the same markup (and so the same look) as the index popup of the
-;; repo pages in _layouts/default.html. Entries can't be expanded there, so
-;; each keeps an invisible placeholder for the triangle, as a page without
-;; sections does in the repo menu: names line up the same way. The button
+;; repo pages in _layouts/default.html. Entries can't be expanded there:
+;; the language dot of the card takes the triangle's place, and the name
+;; and description follow, as on the card. The button
 ;; starts hidden and static/nav.js reveals it, so it never shows without
 ;; the script that makes it work.
 (define (nav-icon)
@@ -251,12 +251,15 @@
                       (button (@ (type "button") (class "nav-close") (aria-label "Close"))
                               "×"))
                  (nav (@ (id "nav-tree") (class "nav-tree") (tabindex "-1"))
-                      (ul ,@(map (lambda (r)
-                                   `(li (@ (class "nav-page nav-empty"))
-                                        (span (@ (class "nav-expand") (aria-hidden "true")))
+                      (ul (@ (class "nav-repos"))
+                          ,@(map (lambda (r)
+                                   `(li (@ (class "nav-page"))
+                                        (span (@ (class "lang-dot")
+                                                 (style ,(string-append "background:" (repo-color r)))))
                                         (a (@ (href ,(string-append "https://geoteo.net/"
                                                                     (repo-name r) "/")))
-                                           ,(repo-name r))))
+                                           (code ,(repo-name r)) " "
+                                           (span (@ (class "nav-desc")) ,(repo-description r)))))
                                  (filter repo-pages? pinned-repos))))))))
 
 (define* (layout site title body #:key (nav? #f))
