@@ -221,7 +221,45 @@
         (line (@ (x1 "5.6") (y1 "18.4") (x2 "4.2") (y2 "19.8")))
         (line (@ (x1 "19.8") (y1 "4.2") (x2 "18.4") (y2 "5.6")))))
 
-(define (layout site title body)
+;; Index button and popup listing every Geopage, in the order of the cards,
+;; with the same markup (and so the same look) as the index popup of the
+;; repo pages in _layouts/default.html. Entries can't be expanded there, so
+;; each keeps an invisible placeholder for the triangle, as a page without
+;; sections does in the repo menu: names line up the same way. The button
+;; starts hidden and static/nav.js reveals it, so it never shows without
+;; the script that makes it work.
+(define (nav-icon)
+  `(svg (@ (viewBox "0 0 16 16") (width "16") (height "16") (aria-hidden "true"))
+        (circle (@ (cx "2") (cy "3") (r "1.25") (fill "currentColor")))
+        (circle (@ (cx "2") (cy "8") (r "1.25") (fill "currentColor")))
+        (circle (@ (cx "2") (cy "13") (r "1.25") (fill "currentColor")))
+        (path (@ (d "M5.5 3h9M5.5 8h9M5.5 13h9") (stroke "currentColor")
+                 (stroke-width "1.5") (stroke-linecap "round")))))
+
+(define (geopages-nav)
+  `((button (@ (id "nav-toggle") (type "button") (class "nav-toggle")
+               (aria-label "Geopages") (aria-keyshortcuts "Control+K Meta+K")
+               (aria-haspopup "dialog") (hidden "hidden"))
+            ,(nav-icon)
+            (span (@ (class "btn-tip") (aria-hidden "true"))
+                  "Geopages" (kbd "Ctrl K")))
+    (dialog (@ (id "nav-dialog") (class "nav-dialog") (aria-labelledby "nav-dialog-title"))
+            (div (@ (class "nav-dialog-inner"))
+                 (div (@ (class "nav-dialog-head"))
+                      (span (@ (id "nav-dialog-title") (class "nav-dialog-title"))
+                            "Geopages")
+                      (button (@ (type "button") (class "nav-close") (aria-label "Close"))
+                              "×"))
+                 (nav (@ (id "nav-tree") (class "nav-tree") (tabindex "-1"))
+                      (ul ,@(map (lambda (r)
+                                   `(li (@ (class "nav-page nav-empty"))
+                                        (span (@ (class "nav-expand") (aria-hidden "true")))
+                                        (a (@ (href ,(string-append "https://geoteo.net/"
+                                                                    (repo-name r) "/")))
+                                           ,(repo-name r))))
+                                 (filter repo-pages? pinned-repos))))))))
+
+(define* (layout site title body #:key (nav? #f))
   `((doctype "html")
     (html (@ (lang "en"))
           (head
@@ -241,7 +279,9 @@
                     ,(moon-icon) ,(sun-icon)
                     (span (@ (class "btn-tip") (aria-hidden "true"))
                           "Toggle theme" (kbd "T")))
+            ,@(if nav? (geopages-nav) '())
             (main ,@body)
+            ,@(if nav? `((script (@ (src "/static/nav.js")))) '())
             (script ,theme-toggle-script)))))
 
 
@@ -249,10 +289,10 @@
 ;;; Builders
 ;;; --------------------------------------------------------------------
 
-;; The single home page.
+;; The single home page, the only one with the Geopages popup.
 (define (home-page)
   (lambda (site posts)
-    (list (make-page "index.html" (layout site "" (home)) sxml->html))))
+    (list (make-page "index.html" (layout site "" (home) #:nav? #t) sxml->html))))
 
 ;; Emit an empty .nojekyll so GitHub Pages serves the output verbatim
 ;; instead of running it through Jekyll. Regenerated on every build.
