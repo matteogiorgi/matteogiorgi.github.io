@@ -68,17 +68,17 @@ async function renderAll() {
         startOnLoad: false,
         theme: "base",
         themeVariables: THEME_VARS[currentTheme()],
-        /* Sequence diagrams ignore themeVariables.fontFamily/fontSize for
-         * actors, messages and notes: they read their own sequence.* keys,
-         * which otherwise fall back to Mermaid's defaults (16px messages,
-         * 14px actors/notes) and come out larger than every other diagram. */
+        /* Sequence diagrams ignore themeVariables.fontSize and size actors,
+         * messages and notes from the top-level config fontSize instead
+         * (a plain number), falling back to Mermaid's larger defaults.
+         * Same values as a per-diagram `config:` frontmatter block, so
+         * diagrams don't each need to repeat it; a diagram's own
+         * frontmatter still overrides these. */
+        fontSize: parseFloat(FONT_SIZE),
         sequence: {
-            actorFontFamily:   FONT_FAMILY,
-            actorFontSize:     FONT_SIZE,
-            messageFontFamily: FONT_FAMILY,
-            messageFontSize:   FONT_SIZE,
-            noteFontFamily:    FONT_FAMILY,
-            noteFontSize:      FONT_SIZE,
+            width:        150,
+            actorMargin:  80,
+            messageAlign: "left",
         },
     });
 
