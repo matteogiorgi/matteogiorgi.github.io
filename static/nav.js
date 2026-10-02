@@ -22,6 +22,15 @@
     if (/mac|iphone|ipad/i.test(platform)) btn.querySelector('kbd').textContent = '⌘ K';
     btn.addEventListener('click', open);
     dialog.querySelector('.nav-close').addEventListener('click', function () { dialog.close(); });
+    // Leaving the page closes the popup, so that coming back to it (browser
+    // back/forward restores the page as it was left) doesn't find it still
+    // open. At once, without the fade, which the restored page would replay.
+    window.addEventListener('pagehide', function () {
+        if (!dialog.open) return;
+        dialog.classList.add('nav-instant');
+        dialog.close();
+    });
+    window.addEventListener('pageshow', function () { dialog.classList.remove('nav-instant'); });
     // Clicks on the backdrop land on the <dialog> itself, since
     // .nav-dialog-inner covers all of its content box.
     dialog.addEventListener('click', function (e) {

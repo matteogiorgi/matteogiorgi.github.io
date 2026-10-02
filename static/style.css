@@ -622,6 +622,8 @@ li:target { border-left-color: var(--link); }
 @media (prefers-reduced-motion: reduce) {
     .btn-tip, .nav-dialog, .nav-dialog::backdrop { transition: none; }
 }
+/* Closed on leaving the page (see pagehide in the scripts): no fade. */
+.nav-dialog.nav-instant, .nav-dialog.nav-instant::backdrop { transition: none; }
 
 .nav-dialog-inner { padding: 1rem 1.25rem 1.25rem; }
 
