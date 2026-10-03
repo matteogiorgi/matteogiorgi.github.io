@@ -206,7 +206,7 @@ li:target { border-left-color: var(--link); }
     border-radius: 8px;
 }
 
-.theme-toggle, .nav-toggle {
+.theme-toggle, .nav-toggle, .top-toggle {
     position: fixed;
     top: 1.25rem;
     right: 1.25rem;
@@ -224,7 +224,7 @@ li:target { border-left-color: var(--link); }
     color: var(--fg);
     cursor: pointer;
 }
-.theme-toggle:hover, .nav-toggle:hover { border-color: var(--link); }
+.theme-toggle:hover, .nav-toggle:hover, .top-toggle:hover { border-color: var(--link); }
 
 /* The index button sits beside the theme toggle, which keeps the corner:
  * to its left here, to its right once both move to the left corner on
@@ -241,7 +241,7 @@ li:target { border-left-color: var(--link); }
  * scrollbar-width differences across browsers/OSes. Move the buttons to
  * the opposite corner instead of touching the toolbar's own positioning. */
 @media (max-width: 70rem) {
-    .theme-toggle {
+    .theme-toggle, .top-toggle {
         left: 1.25rem;
         right: auto;
     }
@@ -255,6 +255,26 @@ li:target { border-left-color: var(--link); }
 .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Back-to-top button (static/to-top.js): in the bottom corner, right
+ * under the theme toggle, so it follows it to the left on narrow screens
+ * (see the media query above). Hidden until the page is scrolled past
+ * one screen; the safe-area inset keeps it clear of the iOS home bar. */
+.top-toggle {
+    top: auto;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s,
+                background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.top-toggle.is-shown {
+    opacity: 1;
+    visibility: visible;
+}
+.top-toggle svg { display: block; }
+/* Tab target after jumping back up: no ring around the whole page. */
+main[tabindex="-1"]:focus { outline: none; }
 
 /* Label under each corner button: what it does and its shortcut. Shown
  * on hover after a short delay, so it doesn't flash when the pointer just
@@ -282,13 +302,14 @@ li:target { border-left-color: var(--link); }
                 background-color .25s ease, color .25s ease, border-color .25s ease;
 }
 @media (hover: hover) {
-    .theme-toggle:hover .btn-tip, .nav-toggle:hover .btn-tip {
+    .theme-toggle:hover .btn-tip, .nav-toggle:hover .btn-tip, .top-toggle:hover .btn-tip {
         opacity: 1;
         visibility: visible;
         transition-delay: .4s, .4s, 0s, 0s, 0s;
     }
 }
-.theme-toggle:focus-visible .btn-tip, .nav-toggle:focus-visible .btn-tip {
+.theme-toggle:focus-visible .btn-tip, .nav-toggle:focus-visible .btn-tip,
+.top-toggle:focus-visible .btn-tip {
     opacity: 1;
     visibility: visible;
 }
@@ -297,6 +318,11 @@ li:target { border-left-color: var(--link); }
         left: 0;
         right: auto;
     }
+}
+/* At the bottom of the screen the label goes above the button instead. */
+.top-toggle .btn-tip {
+    top: auto;
+    bottom: calc(100% + .45rem);
 }
 
 .btn-tip kbd {
@@ -620,7 +646,7 @@ li:target { border-left-color: var(--link); }
 
 /* The global reduced-motion rule (body *) loses to these class selectors. */
 @media (prefers-reduced-motion: reduce) {
-    .btn-tip, .nav-dialog, .nav-dialog::backdrop { transition: none; }
+    .btn-tip, .top-toggle, .nav-dialog, .nav-dialog::backdrop { transition: none; }
 }
 /* Closed on leaving the page (see pagehide in the scripts): no fade. */
 .nav-dialog.nav-instant, .nav-dialog.nav-instant::backdrop { transition: none; }

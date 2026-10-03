@@ -285,6 +285,7 @@
             ,@(if nav? (geopages-nav) '())
             (main ,@body)
             ,@(if nav? `((script (@ (src "/static/nav.js")))) '())
+            (script (@ (src "/static/to-top.js")))
             (script ,theme-toggle-script)))))
 
 
