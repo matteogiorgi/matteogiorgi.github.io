@@ -308,8 +308,13 @@ main[tabindex="-1"]:focus { outline: none; }
         transition-delay: .4s, .4s, 0s, 0s, 0s;
     }
 }
-.theme-toggle:focus-visible .btn-tip, .nav-toggle:focus-visible .btn-tip,
-.top-toggle:focus-visible .btn-tip {
+/* Only while navigating with Tab (see data-input in the theme script):
+   otherwise a key pressed after a click, or the Esc that closes the
+   popup and hands focus back to its button, would leave the label
+   showing with the pointer elsewhere. */
+:root:not([data-input="pointer"]) .theme-toggle:focus-visible .btn-tip,
+:root:not([data-input="pointer"]) .nav-toggle:focus-visible .btn-tip,
+:root:not([data-input="pointer"]) .top-toggle:focus-visible .btn-tip {
     opacity: 1;
     visibility: visible;
 }

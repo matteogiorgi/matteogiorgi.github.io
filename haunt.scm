@@ -193,6 +193,11 @@
     if (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
     toggle();
   });
+  // Pointer or Tab, whichever came last: the toolbar tooltips show on
+  // focus only after Tab (see .btn-tip in style.css).
+  var root = document.documentElement;
+  document.addEventListener('pointerdown', function () { root.setAttribute('data-input', 'pointer'); }, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Tab') root.removeAttribute('data-input'); }, true);
 })();")
 
 ;; Moon/sun icons for the theme toggle, drawn as inline SVG instead of
