@@ -151,7 +151,8 @@
 
 ;; Not CommonMark, only the subset the README actually uses, so the build
 ;; needs nothing beyond Guile and Haunt: `#` headings, paragraphs, `- `
-;; lists, ``` fenced code, and inline `code`, *emphasis* and [links](url).
+;; lists, `>` quotes, ``` fenced code, and inline `code`, *emphasis* and
+;; [links](url).
 ;; Anything else comes through as plain text: extend this if the README
 ;; starts using more.
 
@@ -203,6 +204,12 @@
 (define (md-fence? line) (string-prefix? "```" line))
 (define (md-item? line) (string-prefix? "- " line))
 (define (md-heading? line) (string-prefix? "#" line))
+(define (md-quote? line) (string-prefix? ">" line))
+
+;; A quoted line without its `>' marker and the one space after it.
+(define (md-unquote line)
+  (let ((rest (substring line 1)))
+    (if (string-prefix? " " rest) (substring rest 1) rest)))
 
 ;; A fenced code block, marked up as kramdown does (a language-* class
 ;; around the <pre>), so static/code-blocks.js gives it the same frame,
@@ -234,6 +241,14 @@
              (text (string-trim-both (substring line level)))
              (tag (string->symbol (string-append "h" (number->string (min level 6))))))
         (loop (cdr lines) (cons `(,tag (@ (id ,(md-slug text))) ,@(md-inline text)) acc))))
+     ((md-quote? (car lines))
+      ;; The quoted lines, unquoted, are a document of their own: a lone
+      ;; `>' separates paragraphs, and lists, code and so on work inside.
+      (let collect ((rest lines) (body '()))
+        (if (and (pair? rest) (md-quote? (car rest)))
+            (collect (cdr rest) (cons (md-unquote (car rest)) body))
+            (loop rest (cons `(blockquote ,@(markdown->sxml (string-join (reverse body) "\n")))
+                             acc)))))
      ((md-item? (car lines))
       (let collect ((rest lines) (items '()))
         (if (and (pair? rest) (md-item? (car rest)))
@@ -247,7 +262,7 @@
                  (not (md-blank? (car rest)))
                  (or (null? para)
                      (not (or (md-fence? (car rest)) (md-item? (car rest))
-                              (md-heading? (car rest))))))
+                              (md-heading? (car rest)) (md-quote? (car rest))))))
             (collect (cdr rest) (cons (string-trim-both (car rest)) para))
             (loop rest (cons `(p ,@(md-inline (string-join (reverse para) " "))) acc))))))))
 

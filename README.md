@@ -4,7 +4,7 @@ Source for my personal website, [geoteo.net](https://geoteo.net), built with *Ha
 
 The repo also hosts the Jekyll theme of the other Geopages, which pull it in as a `remote_theme`.
 
-Content is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+> Content is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 
 
 
