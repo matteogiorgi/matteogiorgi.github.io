@@ -15,7 +15,7 @@
              (haunt html)
              (haunt builder assets)
              (ice-9 textual-ports)   ; get-string-all
-             (srfi srfi-1)           ; filter-map
+             (srfi srfi-1)           ; filter-map, find
              (srfi srfi-9))          ; define-record-type
 
 
@@ -185,6 +185,9 @@
                    (loop (+ i 1) start acc))))
             (else (loop (+ i 1) start acc)))))))
 
+;; The id of a heading as markdown->sxml builds it: (hN (@ (id ID)) ...).
+(define (md-heading-id h) (cadr (assq 'id (cdadr h))))
+
 ;; Heading id, as Jekyll makes them, so #fragment links match the other
 ;; Geopages: lowercase, punctuation dropped, spaces to dashes.
 (define (md-slug text)
@@ -342,13 +345,11 @@
         (line (@ (x1 "5.6") (y1 "18.4") (x2 "4.2") (y2 "19.8")))
         (line (@ (x1 "19.8") (y1 "4.2") (x2 "18.4") (y2 "5.6")))))
 
-;; Index button and popup listing every Geopage, in the order of the cards,
-;; with the same markup (and so the same look) as the index popup of the
-;; repo pages in _layouts/default.html. Entries can't be expanded there:
-;; the language dot of the card takes the triangle's place, and the name
-;; and description follow, as on the card. The button
-;; starts hidden and static/nav.js reveals it, so it never shows without
-;; the script that makes it work.
+;; The index button and its popup, with the same markup (and so the same
+;; look) as the index popup of the repo pages in _layouts/default.html:
+;; `label' names the button, `title' (a list of SXML nodes) heads the popup
+;; and `tree' fills it. The button starts hidden and static/nav.js reveals
+;; it, so it never shows without the script that makes it work.
 (define (nav-icon)
   `(svg (@ (viewBox "0 0 16 16") (width "16") (height "16") (aria-hidden "true"))
         (circle (@ (cx "2") (cy "3") (r "1.25") (fill "currentColor")))
@@ -357,36 +358,64 @@
         (path (@ (d "M5.5 3h9M5.5 8h9M5.5 13h9") (stroke "currentColor")
                  (stroke-width "1.5") (stroke-linecap "round")))))
 
-(define (geopages-nav)
+(define (nav-popup label title tree)
   `((button (@ (id "nav-toggle") (type "button") (class "nav-toggle")
-               (aria-label "Geopages") (aria-keyshortcuts "Control+K Meta+K")
+               (aria-label ,label) (aria-keyshortcuts "Control+K Meta+K")
                (aria-haspopup "dialog") (hidden "hidden"))
             ,(nav-icon)
             (span (@ (class "btn-tip") (aria-hidden "true"))
-                  "Geopages" (kbd "Ctrl K")))
+                  ,label (kbd "Ctrl K")))
     (dialog (@ (id "nav-dialog") (class "nav-dialog") (aria-labelledby "nav-dialog-title"))
             (div (@ (class "nav-dialog-inner"))
                  (div (@ (class "nav-dialog-head"))
                       (span (@ (id "nav-dialog-title") (class "nav-dialog-title"))
-                            "Geopages")
+                            ,@title)
                       (button (@ (type "button") (class "nav-close") (aria-label "Close"))
                               "×"))
                  (nav (@ (id "nav-tree") (class "nav-tree") (tabindex "-1"))
-                      (ul (@ (class "nav-repos"))
-                          ,@(map (lambda (r)
-                                   `(li (@ (class "nav-page"))
-                                        (span (@ (class "lang-dot")
-                                                 (style ,(string-append "background:" (repo-color r)))))
-                                        (a (@ (href ,(repo-pages-url r)))
-                                           (code ,(repo-name r)) " "
-                                           (span (@ (class "nav-desc")) ,(repo-description r)))))
-                                 (filter repo-pages? pinned-repos))))))))
+                      ,tree)))))
+
+;; The home page's popup lists every Geopage, in the order of the cards.
+;; Entries can't be expanded there: the language dot of the card takes the
+;; triangle's place, and the name and description follow, as on the card.
+(define (geopages-nav)
+  (nav-popup "Geopages" '("Geopages")
+             `(ul (@ (class "nav-repos"))
+                  ,@(map (lambda (r)
+                           `(li (@ (class "nav-page"))
+                                (span (@ (class "lang-dot")
+                                         (style ,(string-append "background:" (repo-color r)))))
+                                (a (@ (href ,(repo-pages-url r)))
+                                   (code ,(repo-name r)) " "
+                                   (span (@ (class "nav-desc")) ,(repo-description r)))))
+                         (filter repo-pages? pinned-repos)))))
+
+;; A repo page's popup, the "Site index" of the Jekyll Geopages: the page,
+;; titled by its h1, with its h2/h3 sections under it, already expanded as
+;; it is the current one. Built here from the headings, where the Jekyll
+;; layout builds it in the browser.
+(define (repo-nav repo url h1 headings)
+  (nav-popup "Site index"
+             `((a (@ (href ,(string-append "https://github.com/matteogiorgi/" repo)))
+                  (code ,repo))
+               " powered by " (a (@ (href "https://geoteo.net")) "Geoteo"))
+             `(ul (li (@ (class "nav-page nav-current"))
+                      (button (@ (type "button") (class "nav-expand") (tabindex "-1")
+                                 (aria-label "Sections") (aria-expanded "true")))
+                      (a (@ (href ,url) (aria-current "page")) ,@(cddr h1))
+                      (ul (@ (class "nav-headings"))
+                          ,@(map (lambda (h)
+                                   `(li (@ (class ,(string-append "nav-" (symbol->string (car h)))))
+                                        (a (@ (href ,(string-append "#" (md-heading-id h))))
+                                           ,@(cddr h))))
+                                 headings))))))
 
 ;; With #:repo, the body is a repo's README and gets the same frame as the
 ;; Geopages built by _layouts/default.html: a .markdown-body wrapper (the
 ;; styles scoped to it in style.css), the "powered by Geoteo" footer, and
-;; static/code-blocks.js for the code blocks.
-(define* (layout site title body #:key (nav? #f) (repo #f))
+;; static/code-blocks.js for the code blocks. With #:nav (from nav-popup),
+;; the page gets the index button and popup, and static/nav.js.
+(define* (layout site title body #:key (nav #f) (repo #f))
   `((doctype "html")
     (html (@ (lang "en"))
           (head
@@ -406,7 +435,7 @@
                     ,(moon-icon) ,(sun-icon)
                     (span (@ (class "btn-tip") (aria-hidden "true"))
                           "Toggle theme" (kbd "T")))
-            ,@(if nav? (geopages-nav) '())
+            ,@(or nav '())
             ,(if repo
                `(div (@ (class "markdown-body"))
                      (main ,@body)
@@ -416,7 +445,7 @@
                         " powered by " (a (@ (href "https://geoteo.net")) "Geoteo")))
                `(main ,@body))
             ,@(if repo `((script (@ (src "/static/code-blocks.js")))) '())
-            ,@(if nav? `((script (@ (src "/static/nav.js")))) '())
+            ,@(if nav `((script (@ (src "/static/nav.js")))) '())
             (script (@ (src "/static/to-top.js")))
             (script ,theme-toggle-script)))))
 
@@ -428,17 +457,22 @@
 ;; The single home page, the only one with the Geopages popup.
 (define (home-page)
   (lambda (site posts)
-    (list (make-page "index.html" (layout site "" (home) #:nav? #t) sxml->html))))
+    (list (make-page "index.html" (layout site "" (home) #:nav (geopages-nav)) sxml->html))))
 
 ;; This repo's own Geopage, at /readme/ (see repo-pages-url): README.md
-;; rendered with the subset of Markdown above.
+;; rendered with the subset of Markdown above. Like the Jekyll layout, it
+;; gets the index popup only when there are at least two sections to list.
 (define (readme-page)
   (lambda (site posts)
-    (let ((name "matteogiorgi.github.io"))
+    (let* ((name "matteogiorgi.github.io")
+           (body (markdown->sxml (call-with-input-file "README.md" get-string-all)))
+           (h1 (find (lambda (b) (eq? (car b) 'h1)) body))
+           (headings (filter (lambda (b) (memq (car b) '(h2 h3))) body)))
       (list (make-page "readme/index.html"
-                       (layout site name
-                               (markdown->sxml (call-with-input-file "README.md" get-string-all))
-                               #:repo name)
+                       (layout site name body
+                               #:repo name
+                               #:nav (and h1 (>= (length headings) 2)
+                                          (repo-nav name "/readme/" h1 headings)))
                        sxml->html)))))
 
 ;; Emit an empty .nojekyll so GitHub Pages serves the output verbatim
