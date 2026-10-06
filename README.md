@@ -1,6 +1,6 @@
-# Geoteo
+# Geoteo: a static site as a Scheme program
 
-Source for my personal website, [geoteo.net](https://geoteo.net), built with *Haunt*, the static site generator for *GNU Guile*. The whole site is a single Scheme program (`haunt.scm`): content lives as data, and the pages are generated from it as SXML, this README included, rendered as the repo's own [Geopage](https://geoteo.net/matteogiorgi.github.io/). Client-side JavaScript is limited to a few small scripts: the light/dark theme toggle (`T`), the Geopages popup (`Ctrl K`), the back-to-top button, and the copy button on code blocks.
+Source for my personal website, [geoteo.net](https://geoteo.net), built with *Haunt*, the static site generator for *GNU Guile*. The whole site is a single Scheme program (`haunt.scm`): content lives as data, and the pages are generated from it as SXML, this README included, rendered as the repo's own [Geopage](https://geoteo.net/readme/). Client-side JavaScript is limited to a few small scripts: the light/dark theme toggle (`T`), the Geopages popup (`Ctrl K`), the back-to-top button, and the copy button on code blocks.
 
 The repo also hosts the Jekyll theme of the other Geopages, which pull it in as a `remote_theme`.
 

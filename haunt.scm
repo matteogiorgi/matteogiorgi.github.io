@@ -30,11 +30,20 @@
   (description repo-description)  ; string
   (language    repo-language)     ; string, GitHub's detected primary language
   (color       repo-color)        ; string, hex color for the language dot
-  (pages?      repo-pages?))      ; boolean, has a GitHub Pages site at geoteo.net/<name>/
+  (pages?      repo-pages?))      ; #t: has a GitHub Pages site at geoteo.net/<name>/,
+                                  ; or a string: the path of its Geopage instead
 
 ;; Most repos don't have a Pages site, so make that argument optional.
 (define* (make-repo name description language color #:optional (pages? #f))
   (make-repo* name description language color pages?))
+
+;; Where a repo's Geopage lives: geoteo.net/<name>/, unless the repo gives
+;; its own path. This repo needs one: GitHub Pages redirects anything under
+;; /matteogiorgi.github.io/ to the same path without that prefix.
+(define (repo-pages-url r)
+  (string-append "https://geoteo.net/"
+                 (if (string? (repo-pages? r)) (repo-pages? r) (repo-name r))
+                 "/"))
 
 ;; Render a single pinned repo as a card, GitHub-style: name, description,
 ;; language dot and name. Repos with a GitHub Pages site also get a
@@ -46,7 +55,7 @@
               (code (a (@ (href ,url)) ,(repo-name r)))
               ,@(if (repo-pages? r)
                   `((a (@ (class "badge badge-link")
-                          (href ,(string-append "https://geoteo.net/" (repo-name r) "/")))
+                          (href ,(repo-pages-url r)))
                        "Geopage"))
                   '()))
          (p (@ (class "repo-desc")) ,(repo-description r))
@@ -87,7 +96,7 @@
     (make-repo "amele"                  "Streamlit condo-manager app"                  "Python"           "#3572a5" #t)
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
     (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
-    (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec" #t)))
+    (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec" "readme")))
 
 
 ;;; --------------------------------------------------------------------
@@ -368,8 +377,7 @@
                                    `(li (@ (class "nav-page"))
                                         (span (@ (class "lang-dot")
                                                  (style ,(string-append "background:" (repo-color r)))))
-                                        (a (@ (href ,(string-append "https://geoteo.net/"
-                                                                    (repo-name r) "/")))
+                                        (a (@ (href ,(repo-pages-url r)))
                                            (code ,(repo-name r)) " "
                                            (span (@ (class "nav-desc")) ,(repo-description r)))))
                                  (filter repo-pages? pinned-repos))))))))
@@ -422,12 +430,12 @@
   (lambda (site posts)
     (list (make-page "index.html" (layout site "" (home) #:nav? #t) sxml->html))))
 
-;; This repo's own Geopage, at /matteogiorgi.github.io/ like every other
-;; repo's: README.md rendered with the subset of Markdown above.
+;; This repo's own Geopage, at /readme/ (see repo-pages-url): README.md
+;; rendered with the subset of Markdown above.
 (define (readme-page)
   (lambda (site posts)
     (let ((name "matteogiorgi.github.io"))
-      (list (make-page (string-append name "/index.html")
+      (list (make-page "readme/index.html"
                        (layout site name
                                (markdown->sxml (call-with-input-file "README.md" get-string-all))
                                #:repo name)
