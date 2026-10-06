@@ -1,6 +1,7 @@
 ;;; haunt.scm --- geoteo.net
 ;;;
-;;; Build a static, single-page site with Haunt (GNU Guile).
+;;; Build a static site with Haunt (GNU Guile): the home page, plus this
+;;; repo's own Geopage rendered from README.md.
 ;;;
 ;;;   haunt build            build into ./docs
 ;;;   haunt serve --watch    live preview on http://localhost:8080
@@ -13,6 +14,8 @@
              (haunt page)
              (haunt html)
              (haunt builder assets)
+             (ice-9 textual-ports)   ; get-string-all
+             (srfi srfi-1)           ; filter-map
              (srfi srfi-9))          ; define-record-type
 
 
@@ -84,7 +87,7 @@
     (make-repo "amele"                  "Streamlit condo-manager app"                  "Python"           "#3572a5" #t)
     (make-repo "cobe"                   "simple code setup tool"                       "Shell"            "#89e051" #t)
     (make-repo "geonote"                "topics I do care about"                       "HTML"             "#e34c26" #t)
-    (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec")))
+    (make-repo "matteogiorgi.github.io" "personal page witten in Guile"                "Scheme"           "#1e4aec" #t)))
 
 
 ;;; --------------------------------------------------------------------
@@ -131,6 +134,110 @@
      ,(contact)
      (p (@ (class "license"))
         (a (@ (href "https://creativecommons.org/licenses/by-sa/4.0")) "CC BY-SA 4.0"))))
+
+
+;;; --------------------------------------------------------------------
+;;; Markdown: just enough of it to render this repo's README.md
+;;; --------------------------------------------------------------------
+
+;; Not CommonMark, only the subset the README actually uses, so the build
+;; needs nothing beyond Guile and Haunt: `#` headings, paragraphs, `- `
+;; lists, ``` fenced code, and inline `code`, *emphasis* and [links](url).
+;; Anything else comes through as plain text: extend this if the README
+;; starts using more.
+
+;; Inline markup of one line (or paragraph) of text, as a list of SXML
+;; nodes. An unclosed delimiter is just kept as text.
+(define (md-inline s)
+  (let ((n (string-length s)))
+    (let loop ((i 0) (start 0) (acc '()))
+      (define (emit i* node)
+        (loop i* i* (cons node (if (< start i) (cons (substring s start i) acc) acc))))
+      (if (>= i n)
+          (reverse (if (< start n) (cons (substring s start n) acc) acc))
+          (case (string-ref s i)
+            ((#\`)
+             (let ((j (string-index s #\` (+ i 1))))
+               (if j
+                   (emit (+ j 1) `(code ,(substring s (+ i 1) j)))
+                   (loop (+ i 1) start acc))))
+            ((#\*)
+             (let ((j (string-index s #\* (+ i 1))))
+               (if j
+                   (emit (+ j 1) `(em ,@(md-inline (substring s (+ i 1) j))))
+                   (loop (+ i 1) start acc))))
+            ((#\[)
+             (let* ((j (string-index s #\] (+ i 1)))
+                    (k (and j (< (+ j 1) n) (char=? (string-ref s (+ j 1)) #\()
+                            (string-index s #\) (+ j 2)))))
+               (if k
+                   (emit (+ k 1) `(a (@ (href ,(substring s (+ j 2) k)))
+                                     ,@(md-inline (substring s (+ i 1) j))))
+                   (loop (+ i 1) start acc))))
+            (else (loop (+ i 1) start acc)))))))
+
+;; Heading id, as Jekyll makes them, so #fragment links match the other
+;; Geopages: lowercase, punctuation dropped, spaces to dashes.
+(define (md-slug text)
+  (list->string
+   (filter-map (lambda (c)
+                 (cond ((char-alphabetic? c) (char-downcase c))
+                       ((char-numeric? c) c)
+                       ((memv c '(#\space #\-)) #\-)
+                       (else #f)))
+               (string->list (string-trim-both text)))))
+
+(define (md-blank? line) (string-null? (string-trim-both line)))
+(define (md-fence? line) (string-prefix? "```" line))
+(define (md-item? line) (string-prefix? "- " line))
+(define (md-heading? line) (string-prefix? "#" line))
+
+;; A fenced code block, marked up as kramdown does (a language-* class
+;; around the <pre>), so static/code-blocks.js gives it the same frame,
+;; language label and copy button as on the other Geopages.
+(define (md-code lang text)
+  (if (string-null? lang)
+      `(pre (code ,text))
+      `(div (@ (class ,(string-append "language-" lang)))
+            (pre (code ,text)))))
+
+;; The whole document, as a list of block-level SXML nodes.
+(define (markdown->sxml str)
+  (let loop ((lines (string-split str #\newline)) (acc '()))
+    (cond
+     ((null? lines) (reverse acc))
+     ((md-blank? (car lines)) (loop (cdr lines) acc))
+     ((md-fence? (car lines))
+      (let collect ((rest (cdr lines)) (body '()))
+        (if (or (null? rest) (md-fence? (car rest)))
+            (loop (if (null? rest) rest (cdr rest))
+                  (cons (md-code (string-trim-both (substring (car lines) 3))
+                                 (string-concatenate
+                                  (map (lambda (l) (string-append l "\n")) (reverse body))))
+                        acc))
+            (collect (cdr rest) (cons (car rest) body)))))
+     ((md-heading? (car lines))
+      (let* ((line (car lines))
+             (level (or (string-skip line #\#) (string-length line)))
+             (text (string-trim-both (substring line level)))
+             (tag (string->symbol (string-append "h" (number->string (min level 6))))))
+        (loop (cdr lines) (cons `(,tag (@ (id ,(md-slug text))) ,@(md-inline text)) acc))))
+     ((md-item? (car lines))
+      (let collect ((rest lines) (items '()))
+        (if (and (pair? rest) (md-item? (car rest)))
+            (collect (cdr rest) (cons `(li ,@(md-inline (substring (car rest) 2))) items))
+            (loop rest (cons `(ul ,@(reverse items)) acc)))))
+     (else
+      ;; A paragraph runs until a blank line or the start of another block;
+      ;; its lines are joined with a space, as they would render anyway.
+      (let collect ((rest lines) (para '()))
+        (if (and (pair? rest)
+                 (not (md-blank? (car rest)))
+                 (or (null? para)
+                     (not (or (md-fence? (car rest)) (md-item? (car rest))
+                              (md-heading? (car rest))))))
+            (collect (cdr rest) (cons (string-trim-both (car rest)) para))
+            (loop rest (cons `(p ,@(md-inline (string-join (reverse para) " "))) acc))))))))
 
 
 ;;; --------------------------------------------------------------------
@@ -267,7 +374,11 @@
                                            (span (@ (class "nav-desc")) ,(repo-description r)))))
                                  (filter repo-pages? pinned-repos))))))))
 
-(define* (layout site title body #:key (nav? #f))
+;; With #:repo, the body is a repo's README and gets the same frame as the
+;; Geopages built by _layouts/default.html: a .markdown-body wrapper (the
+;; styles scoped to it in style.css), the "powered by Geoteo" footer, and
+;; static/code-blocks.js for the code blocks.
+(define* (layout site title body #:key (nav? #f) (repo #f))
   `((doctype "html")
     (html (@ (lang "en"))
           (head
@@ -288,7 +399,15 @@
                     (span (@ (class "btn-tip") (aria-hidden "true"))
                           "Toggle theme" (kbd "T")))
             ,@(if nav? (geopages-nav) '())
-            (main ,@body)
+            ,(if repo
+               `(div (@ (class "markdown-body"))
+                     (main ,@body)
+                     (p (@ (class "gh-footer"))
+                        (a (@ (href ,(string-append "https://github.com/matteogiorgi/" repo)))
+                           (code ,repo))
+                        " powered by " (a (@ (href "https://geoteo.net")) "Geoteo")))
+               `(main ,@body))
+            ,@(if repo `((script (@ (src "/static/code-blocks.js")))) '())
             ,@(if nav? `((script (@ (src "/static/nav.js")))) '())
             (script (@ (src "/static/to-top.js")))
             (script ,theme-toggle-script)))))
@@ -302,6 +421,17 @@
 (define (home-page)
   (lambda (site posts)
     (list (make-page "index.html" (layout site "" (home) #:nav? #t) sxml->html))))
+
+;; This repo's own Geopage, at /matteogiorgi.github.io/ like every other
+;; repo's: README.md rendered with the subset of Markdown above.
+(define (readme-page)
+  (lambda (site posts)
+    (let ((name "matteogiorgi.github.io"))
+      (list (make-page (string-append name "/index.html")
+                       (layout site name
+                               (markdown->sxml (call-with-input-file "README.md" get-string-all))
+                               #:repo name)
+                       sxml->html)))))
 
 ;; Emit an empty .nojekyll so GitHub Pages serves the output verbatim
 ;; instead of running it through Jekyll. Regenerated on every build.
@@ -328,6 +458,7 @@
       #:build-directory "docs"        ; point GitHub Pages at /docs
       #:default-metadata '((author . "Matteo Giorgi"))
       #:builders (list (home-page)
+                       (readme-page)
                        (nojekyll)
                        (cname)
                        (static-directory "static")))

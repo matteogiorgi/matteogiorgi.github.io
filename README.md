@@ -1,14 +1,18 @@
 # Geoteo
 
-Source for my personal website, [geoteo.net](https://geoteo.net), built with *Haunt*, the static site generator for *GNU Guile*. The whole site is a single Scheme program (`haunt.scm`): content lives as data, and the page is generated from it as SXML. The only client-side JavaScript is a small snippet powering the light/dark theme toggle, plus `static/nav.js` for the Geopages popup (`Ctrl K`).
+Source for my personal website, [geoteo.net](https://geoteo.net), built with *Haunt*, the static site generator for *GNU Guile*. The whole site is a single Scheme program (`haunt.scm`): content lives as data, and the pages are generated from it as SXML, this README included, rendered as the repo's own [Geopage](https://geoteo.net/matteogiorgi.github.io/). Client-side JavaScript is limited to a few small scripts: the light/dark theme toggle (`T`), the Geopages popup (`Ctrl K`), the back-to-top button, and the copy button on code blocks.
+
+The repo also hosts the Jekyll theme of the other Geopages, which pull it in as a `remote_theme`.
 
 
 
 
 ## Layout
 
-- [`haunt.scm`](https://github.com/matteogiorgi/matteogiorgi.github.io/blob/main/haunt.scm) — site content, page layout, and build configuration
-- [`static/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/static) — stylesheet and favicon, copied as-is into the build
+- [`haunt.scm`](https://github.com/matteogiorgi/matteogiorgi.github.io/blob/main/haunt.scm) — site content, page layout, Markdown rendering of this README, and build configuration
+- [`static/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/static) — stylesheet, favicons, and scripts, copied as-is into the build and shared with the other Geopages
+- [`_layouts/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/_layouts) — Jekyll layout of the other Geopages
+- [`.github/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/.github) — workflow rebuilding the other Geopages whenever their layout changes
 - [`docs/`](https://github.com/matteogiorgi/matteogiorgi.github.io/tree/main/docs) — generated output, served directly by GitHub Pages
 
 
