@@ -374,8 +374,11 @@ main[tabindex="-1"]:focus { outline: none; }
 }
 
 /* Raw URLs used as link text (e.g. <https://...>) have no natural break
- * points, so a long one overflows the container instead of wrapping. */
-.markdown-body a { overflow-wrap: anywhere; }
+ * points, so a long one overflows the container instead of wrapping.
+ * break-word rather than anywhere: anywhere also lowers the min-content
+ * width, so table columns holding links (e.g. file names) would shrink
+ * mid-word instead of letting the table scroll horizontally. */
+.markdown-body a { overflow-wrap: break-word; }
 
 .markdown-body blockquote {
     margin: 1rem 0;
