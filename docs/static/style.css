@@ -425,8 +425,14 @@ main[tabindex="-1"]:focus { outline: none; }
     margin: 1.5rem 0;
 }
 
+/* Without a floor, a column of prose gets squeezed down to its longest
+ * word whenever a sibling can't shrink (e.g. one holding nowrap code),
+ * and the table never reaches the point where it scrolls. 12rem keeps
+ * ~20-25 characters per line while tables of up to 4 columns still fit
+ * the desktop measure without scrolling. */
 .markdown-body th,
 .markdown-body td {
+    min-width: 12rem;
     padding: .6rem 1rem;
     text-align: left;
     border-bottom: 1px solid var(--rule);
